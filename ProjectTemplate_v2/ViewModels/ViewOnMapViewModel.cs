@@ -47,7 +47,6 @@ namespace ProjectTemplate_v2.ViewModels
             MapForSensorList = new Map
             {
                 ZoomLevel = 12,
-                Margin = new Thickness(0, 3, 0, 0),
                 Mode = new AerialMode(true),
                 CredentialsProvider = new ApplicationIdCredentialsProvider("Arlj7m-YopkSpqjw8gdI2PHqnd8tulYdY91G_h8qZ42jmUOPjjqFRnO7iMpk9TuS")
             };

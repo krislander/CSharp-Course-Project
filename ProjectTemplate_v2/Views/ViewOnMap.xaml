@@ -8,8 +8,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="400"
-             Height="550" Width="550"
-             Padding="20">
+             Height="550" Width="750">
 
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="Loaded">
@@ -24,13 +23,15 @@
     </UserControl.Triggers>
 
 
-    <Grid>
-        <ContentControl Content="{Binding MapForSensorList}"/>
+    <Canvas>
+        <ContentControl Content="{Binding MapForSensorList}"
+                        Height="550" Width="750"/>
 
         <Button Content="Exit"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                     Background="White"
-                    Margin="40,380,350,90" Height="Auto"/>
-    </Grid>
+                    Canvas.Bottom="45" Canvas.Left="30"
+                    Height="30" Width="100"/>
+    </Canvas>
 </UserControl>
