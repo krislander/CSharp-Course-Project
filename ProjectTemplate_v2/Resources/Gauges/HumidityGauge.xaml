@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ProjectTemplate_v2.Models.Gauges.HumidityGaugeCtrl"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectTemplate_v2.Models.Gauges"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100">
+
+    <telerik:RadRadialGauge>
+        <telerik:RadialScale FontSize="11">
+            <telerik:RadialScale.Indicators>
+                <telerik:Marker x:Name="minMarker"/>
+                <telerik:Marker x:Name="maxMarker"/>
+                <telerik:Needle x:Name="Needle"/>
+            </telerik:RadialScale.Indicators>
+        </telerik:RadialScale>
+    </telerik:RadRadialGauge>
+</UserControl>

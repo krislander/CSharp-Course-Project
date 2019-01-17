@@ -1,0 +1,81 @@
+﻿<Window x:Class="ProjectTemplate_v2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectTemplate_v2"
+        xmlns:viewmodels="clr-namespace:ProjectTemplate_v2.ViewModels"
+        xmlns:views="clr-namespace:ProjectTemplate_v2.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{StaticResource MaterialDesignFont}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        Icon=".\Resources\icon.png"
+        Title="Project" 
+        Height="640" Width="1024">
+
+    <Window.Resources>
+        <DataTemplate x:Name="mainViewTemplate" DataType="{x:Type viewmodels:DashViewModel}">
+            <views:MainView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="addSensorViewTemplate" DataType="{x:Type viewmodels:AddSensorViewModel}">
+            <views:AddSensorView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="listViewTemplate" DataType="{x:Type viewmodels:ListViewModel}">
+            <views:ListView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="mapViewTemplate" DataType="{x:Type viewmodels:MapViewModel}">
+            <views:MapView DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <materialDesign:DialogHost CloseOnClickAway="True">
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton,Path=IsChecked}">
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <DockPanel MinWidth="200">
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                                  DockPanel.Dock="Top"
+                                  HorizontalAlignment="Right"
+                                  Margin="16"
+                                  IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked,Mode=TwoWay}"/>
+
+                    <ListBox x:Name="MenuItemsListbox" Margin="0 16 0 16" SelectedIndex="0"
+                         HorizontalContentAlignment="Center"
+                         FontSize="16"
+                         FontWeight="Normal">
+                        <ListBoxItem x:Name="btnToMain" 
+                                 PreviewMouseLeftButtonUp="BtnToMain_PreviewMouseLeftButtonUp" 
+                                 Content="Dashboard"/>
+                        <ListBoxItem x:Name="btnToSensorList" 
+                                 PreviewMouseLeftButtonUp="BtnToSensorList_PreviewMouseLeftButtonUp" 
+                                 Content="Sensors"/>
+                        <ListBoxItem x:Name="btnToSensorAdd" 
+                                 PreviewMouseLeftButtonUp="BtnToSensorAdd_PreviewMouseLeftButtonUp" 
+                                 Content="Add Sensor"/>
+                        <ListBoxItem x:Name="btnToMap" 
+                                 PreviewMouseLeftButtonUp="BtnToMap_PreviewMouseLeftButtonUp" 
+                                 Content="Map"/>
+                    </ListBox>
+                </DockPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <DockPanel>
+                <materialDesign:ColorZone Mode="PrimaryMid"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                                          Padding="16" DockPanel.Dock="Top">
+                    <DockPanel>
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"                     
+                                      x:Name="MenuToggleButton"
+                                      Grid.Column="0"/>
+                        <TextBlock Text="smartDormitory" 
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="30"/>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+
+                <ContentControl Content="{Binding}"/>
+            </DockPanel>
+        </materialDesign:DrawerHost>
+    </materialDesign:DialogHost>
+</Window>

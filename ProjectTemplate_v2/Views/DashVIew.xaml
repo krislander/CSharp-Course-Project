@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="ProjectTemplate_v2.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectTemplate_v2.Views"
+             xmlns:vm="clr-namespace:ProjectTemplate_v2.ViewModels"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="542" d:DesignWidth="1016">
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+              Storyboard.TargetProperty="Opacity"
+              From="0.0" To="1.0" Duration="0:0:0.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Canvas>
+        <WrapPanel Canvas.Top="-5" Canvas.Right="0">
+            <TextBlock Text="C# Project 2018" Foreground="Teal" VerticalAlignment="Center" FontSize="30"/>
+            <Image Height="125" Width="222" Source="/Resources/logo.png" Stretch="Fill" />
+        </WrapPanel>
+
+        <telerik:RadTileList ItemsSource="{Binding FollowedList}"
+                             Height="410" Canvas.Left="22" Canvas.Top="90" Width="968" telerik:StyleManager.Theme="Material"
+                             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                             CanUserSelect="False"
+                             Background="Transparent"
+                             AutoGeneratingTile="RadTileList_AutoGeneratingTile">
+
+            <!--<telerik:EventToCommandBehavior.EventBindings>
+                <telerik:EventBinding EventName="AutoGeneratingTile"
+                                      Command="{Binding AutoTileCommand}"
+                                      PassEventArgsToCommand="True"/>
+            </telerik:EventToCommandBehavior.EventBindings>-->
+
+        </telerik:RadTileList>
+    </Canvas>
+</UserControl>

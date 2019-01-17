@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="ProjectTemplate_v2.Views.AddSensorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectTemplate_v2.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="542" d:DesignWidth="1016">
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+              Storyboard.TargetProperty="Opacity"
+              From="0.0" To="1.0" Duration="0:0:0.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Canvas>
+        <StackPanel Canvas.Left="50" Canvas.Top="30">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock Text="Name"/>
+            <TextBox Text="{Binding Name}" Width="300" Margin="40 5 0 30" FontSize="16"/>
+
+            <TextBlock Text="URL"/>
+            <TextBox Text="{Binding Url}" Width="300" Margin="40 5 0 30" FontSize="16"/>
+
+            <TextBlock Text="Sensor Type"/>
+            <ComboBox Width="300" Margin="40 5 0 30" FontSize="16" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedItem}"/>
+
+            <TextBlock Text="Acceptable Values"/>
+            <WrapPanel Margin="40 5 0 30" Visibility="{Binding Visibility1}">
+                <TextBox Text="{Binding MinValue}" Width="120" FontSize="16" TextAlignment="Right" />
+                <Label Content="{Binding Unit}" FontSize="16" Foreground="LightSlateGray" FontWeight="SemiBold"/>
+                <TextBlock Text="-" Margin="10 0 10 0" Foreground="LightSlateGray" FontWeight="SemiBold"/>
+                <TextBox Text="{Binding MaxValue}" Width="120" FontSize="16" TextAlignment="Right"/>
+                <Label Content="{Binding Unit}" FontSize="16" Foreground="LightSlateGray" FontWeight="SemiBold"/>
+            </WrapPanel>
+            <ComboBox SelectedIndex="{Binding Opened}" Width="130" FontSize="16"  Margin="200 5 0 30" Visibility="{Binding Visibility2}">
+                <ComboBoxItem Content="Closed"/>
+                <ComboBoxItem Content="Opened"/>
+            </ComboBox>
+
+            <TextBlock Text="Geo Coordinates"/>
+            <WrapPanel Margin="40 5 0 0">
+                <TextBox Text="{Binding Latitude}" Width="140" FontSize="16" TextAlignment="Right"/>
+                <TextBlock Text="°" Margin="0 0 10 0" Foreground="LightSlateGray" FontWeight="SemiBold"/>
+                <TextBox Text="{Binding Longitude}" Width="140" FontSize="16" TextAlignment="Right"/>
+                <TextBlock Text="°" Foreground="LightSlateGray" FontWeight="SemiBold"/>
+            </WrapPanel>
+
+        </StackPanel>
+
+        <StackPanel Canvas.Right="60"  Canvas.Top="60">
+            <TextBlock Text="Description" FontSize="20"/>
+            <TextBox Text="{Binding Description}" Margin="10 20 0 0" Padding="10" Height="300" Width="400" FontSize="16" Background="#FFE7F4F4"
+                     SelectionBrush="Teal" TextWrapping="Wrap" VerticalContentAlignment="Top"/>
+        </StackPanel>
+
+        <CheckBox Content="Track Sensor" IsChecked="{Binding Tracking}" Canvas.Bottom="80" Canvas.Right="330" FontSize="20"/>
+        <!--<WrapPanel Canvas.Bottom="80" Canvas.Right="330">
+            <CheckBox IsChecked="{Binding Tracking}" Style="{StaticResource MaterialDesignSwitchToggleButton}" />
+            <TextBlock FontSize="20">Tracking</TextBlock>
+        </WrapPanel>-->
+        
+        <Button Command="{Binding SubmitCommand}" Content="Submit" Canvas.Bottom="80" Canvas.Right="70" FontSize="19"/>
+
+        <materialDesign:Snackbar MessageQueue="{Binding SensorAdded}" Canvas.Bottom="10" Canvas.Left="400"/>
+    </Canvas>
+</UserControl>
