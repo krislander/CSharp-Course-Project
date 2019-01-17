@@ -4,6 +4,7 @@ using System.Linq;
 using ProjectTemplate_v2.Views;
 using System.Windows.Input;
 using Telerik.Windows.Controls;
+using System;
 
 namespace ProjectTemplate_v2.ViewModels
 {
@@ -12,6 +13,7 @@ namespace ProjectTemplate_v2.ViewModels
         public ICommand RemoveCommand { get; private set; }
         public ICommand FollowCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
+        public ICommand MapViewCommand { get; private set; }
 
         private Sensor selected;
         private string followButtonContent;
@@ -26,7 +28,17 @@ namespace ProjectTemplate_v2.ViewModels
             List = sensors.List;
             RemoveCommand = new DelegateCommand(RemoveSensor);
             FollowCommand = new DelegateCommand(ChangeFollow);
-            EditCommand = new DelegateCommand(ExecuteEditDialog);           
+            EditCommand = new DelegateCommand(ExecuteEditDialog);
+            MapViewCommand = new DelegateCommand(ViewOnMap);
+        }
+
+        private async void ViewOnMap(object obj)
+        {
+            var view = new ViewOnMap
+            {
+                DataContext = new ViewOnMapViewModel(sensors, Selected)
+            };
+            await DialogHost.Show(view);
         }
 
         private async void ExecuteEditDialog(object obj)

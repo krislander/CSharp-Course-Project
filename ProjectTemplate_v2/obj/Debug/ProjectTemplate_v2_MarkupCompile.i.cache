@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\source\projectrepo\CSharp-Course-Project\ProjectTemplate_v2\obj\Debug\
+D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\
 ProjectTemplate_v2
 none
 false
 DEBUG;TRACE
-D:\source\projectrepo\CSharp-Course-Project\ProjectTemplate_v2\App.xaml
-71115476700
+D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\App.xaml
+8-1934936836
 
-31-891221689
-24554395090
-MainWindow.xaml;Resources\Gauges\HumidityGaugeCtrl.xaml;Views\AddSensorView.xaml;Views\EditFormDialog.xaml;Views\ListView.xaml;Views\DashVIew.xaml;Views\MapView.xaml;
+33-704815030
+24-1030098657
+MainWindow.xaml;Resources\Gauges\HumidityGaugeCtrl.xaml;Views\AddSensorView.xaml;Views\EditFormDialog.xaml;Views\ListView.xaml;Views\DashVIew.xaml;Views\MapView.xaml;Views\ViewOnMap.xaml;
 
 True
 

@@ -34,14 +34,9 @@ namespace ProjectTemplate_v2.ViewModels
         {
             this.sensors = sensors;
             MapLayer dataLayer = new MapLayer();
-
             ObservableCollection<PushpinModel> Pushpins = new ObservableCollection<PushpinModel>();
 
             InitMap();
-            Map MapWithSensors = new Map();
-            if (sensors.List.Count == 0)
-                MapWithSensors.Center = new Location(42.698334, 23.319941);
-
         }
 
         private void InitMap()

@@ -21,62 +21,71 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center"> 
+    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <ListBox x:Name="lbListBox" ItemsSource="{Binding List}" SelectedItem="{Binding Selected}" ScrollViewer.VerticalScrollBarVisibility="Hidden"
                      MaxWidth="600" MaxHeight="500"
                      FontSize="18"
                  Margin="0 0 0 5">
 
-                <ListBox.Resources>
-                    <DataTemplate x:Key="ListItem">
+            <ListBox.Resources>
+                <DataTemplate x:Key="ListItem">
                     <WrapPanel>
                         <Label x:Name="lblLabel" Content="{Binding Name}" Width="540" Foreground="#484848"/>
                         <TextBlock Width="40"/>
                     </WrapPanel>
                 </DataTemplate>
-                    <DataTemplate x:Key="SelectedItem">
-                        <WrapPanel>
-                            <Label x:Name="lblLabel" Content="{Binding Name}" Width="540" Foreground="#212121"/>
-                            
-                            <materialDesign:PopupBox Width="40">
-                                <StackPanel>
-                                    <Button Content="View on Map"/> <!--TODO-->
-                                    <Button x:Name="btnFollow"
-                                        Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.FollowButtonContent}">
-                                        <telerik:EventToCommandBehavior.EventBindings>
-                                            <telerik:EventBinding EventName="Click"
-                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.FollowCommand}"/>
-                                        </telerik:EventToCommandBehavior.EventBindings>
-                                    </Button>
-                                    <Button Content="Edit">
-                                        <telerik:EventToCommandBehavior.EventBindings>
-                                            <telerik:EventBinding EventName="Click"
-                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.EditCommand}"/>
-                                        </telerik:EventToCommandBehavior.EventBindings>
-                                    </Button>
-                                    <Button x:Name="btnRemove" Content="Remove">
-                                        <telerik:EventToCommandBehavior.EventBindings>
-                                            <telerik:EventBinding EventName="Click"
-                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.RemoveCommand}"/>
-                                        </telerik:EventToCommandBehavior.EventBindings>
-                                    </Button>
-                                </StackPanel>
-                            </materialDesign:PopupBox>
-                        </WrapPanel>
-                    </DataTemplate>
+                <DataTemplate x:Key="SelectedItem">
+                    <WrapPanel>
+                        <Label x:Name="lblLabel" Content="{Binding Name}" Width="540" Foreground="#212121"/>
 
-                    <Style TargetType="{x:Type ListBoxItem}"
+                        <materialDesign:PopupBox Width="40">
+                            <StackPanel>
+                                <!--View On Map Button-->
+                                <Button Content="View On Map">
+                                    <telerik:EventToCommandBehavior.EventBindings>
+                                        <telerik:EventBinding EventName="Click"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.MapViewCommand}"/>
+                                    </telerik:EventToCommandBehavior.EventBindings>
+                                </Button>
+                                <!--Follow Button-->
+                                <Button x:Name="btnFollow"
+                                        Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.FollowButtonContent}">
+                                    <telerik:EventToCommandBehavior.EventBindings>
+                                        <telerik:EventBinding EventName="Click"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.FollowCommand}"/>
+                                    </telerik:EventToCommandBehavior.EventBindings>
+                                </Button>
+                                <!--Edit Button-->
+                                <Button Content="Edit">
+                                    <telerik:EventToCommandBehavior.EventBindings>
+                                        <telerik:EventBinding EventName="Click"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.EditCommand}"/>
+                                    </telerik:EventToCommandBehavior.EventBindings>
+                                </Button>
+                                <!--Remove Button-->
+                                <Button x:Name="btnRemove" Content="Remove">
+                                    <telerik:EventToCommandBehavior.EventBindings>
+                                        <telerik:EventBinding EventName="Click"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.RemoveCommand}"/>
+                                    </telerik:EventToCommandBehavior.EventBindings>
+                                </Button>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                    </WrapPanel>
+                </DataTemplate>
+
+                <Style TargetType="{x:Type ListBoxItem}"
                            BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                        <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown"/>
-                        <Setter Property="ContentTemplate" Value="{StaticResource ListItem}"/>
-                        <Style.Triggers>
-                            <Trigger Property="ListBoxItem.IsMouseOver" Value="True">
-                                <Setter Property="ContentTemplate" Value="{StaticResource SelectedItem}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBox.Resources>
-            </ListBox>
+                    <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown"/>
+                    <Setter Property="ContentTemplate" Value="{StaticResource ListItem}"/>
+                    <Style.Triggers>
+                        <Trigger Property="ListBoxItem.IsMouseOver" Value="True">
+                            <Setter Property="ContentTemplate" Value="{StaticResource SelectedItem}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
 
         <materialDesign:Card DataContext="{Binding Selected}" 
                                  Margin="10 0 0 0"
