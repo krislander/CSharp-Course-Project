@@ -23,7 +23,7 @@
 
     <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <materialDesign:Card Padding="20">
-
+            <!-- Sensor info -->
             <WrapPanel>
                 <DockPanel Width="300" Height="400" >
                     <StackPanel DataContext="{Binding Selected}" 
@@ -51,72 +51,96 @@
                                                  Width="25"/>
                     </Button>
                 </DockPanel>
-                <ListBox x:Name="lbListBox" ItemsSource="{Binding List}" SelectedItem="{Binding Selected}" ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                     Width="600" Height="500"
+                <StackPanel>
+                    
+                    <!--Filter buttons-->
+                    <UniformGrid Columns="7">
+                        <UniformGrid.Resources>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignTabRadioButton}">
+                                <Setter Property="Padding" Value="0"/>
+                            </Style>
+                        </UniformGrid.Resources>
+                        <RadioButton Content="All" IsChecked="True"
+                                     Command="{Binding AllCommand}"/>
+                        <RadioButton Content="Temperature"
+                                     Command="{Binding TempCommand}"/>
+                        <RadioButton Content="Noise"
+                                     Command="{Binding NoiseCommand}"/>
+                        <RadioButton Content="Humidity"
+                                     Command="{Binding HumCommand}"/>
+                        <RadioButton Content="Electricity"
+                                     Command="{Binding EleCommand}"/>
+                        <RadioButton Content="Door/Window"
+                                     Command="{Binding WDCommand}"/>
+                    </UniformGrid>
+                    
+                    <!--Sensor list-->
+                    <ListBox x:Name="lbListBox" ItemsSource="{Binding List}" SelectedItem="{Binding Selected}" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                     Width="600" Height="450"
                      FontSize="18"
                  Margin="0 0 0 5">
 
-                    <ListBox.Resources>
-                        <DataTemplate x:Key="ListItem">
-                            <WrapPanel>
-                                <Label x:Name="lblLabel" Content="{Binding Name}" Width="540" Foreground="#484848"/>
-                                <TextBlock Width="40"/>
-                            </WrapPanel>
-                        </DataTemplate>
-                        <DataTemplate x:Key="SelectedItem">
-                            <WrapPanel>
-                                <Label x:Name="lblLabel" Content="{Binding Name}" Width="540" Foreground="#212121"/>
+                        <ListBox.Resources>
+                            <DataTemplate x:Key="ListItem">
+                                <WrapPanel>
+                                    <Label x:Name="lblLabel" Content="{Binding Name}" Width="540" Foreground="#484848"/>
+                                    <TextBlock Width="40"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                            <DataTemplate x:Key="SelectedItem">
+                                <WrapPanel>
+                                    <Label x:Name="lblLabel" Content="{Binding Name}" Width="540" Foreground="#212121"/>
 
-                                <materialDesign:PopupBox Width="40">
-                                    <StackPanel>
-                                        <!--View On Map Button-->
-                                        <Button Content="View On Map">
-                                            <telerik:EventToCommandBehavior.EventBindings>
-                                                <telerik:EventBinding EventName="Click"
+                                    <materialDesign:PopupBox Width="40">
+                                        <StackPanel>
+                                            <!--View On Map Button-->
+                                            <Button Content="View On Map">
+                                                <telerik:EventToCommandBehavior.EventBindings>
+                                                    <telerik:EventBinding EventName="Click"
                                         Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.MapViewCommand}"/>
-                                            </telerik:EventToCommandBehavior.EventBindings>
-                                        </Button>
-                                        <!--Follow Button-->
-                                        <Button x:Name="btnFollow"
+                                                </telerik:EventToCommandBehavior.EventBindings>
+                                            </Button>
+                                            <!--Follow Button-->
+                                            <Button x:Name="btnFollow"
                                         Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.FollowButtonContent}">
-                                            <telerik:EventToCommandBehavior.EventBindings>
-                                                <telerik:EventBinding EventName="Click"
+                                                <telerik:EventToCommandBehavior.EventBindings>
+                                                    <telerik:EventBinding EventName="Click"
                                         Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.FollowCommand}"/>
-                                            </telerik:EventToCommandBehavior.EventBindings>
-                                        </Button>
-                                        <!--Edit Button-->
-                                        <Button Content="Edit">
-                                            <telerik:EventToCommandBehavior.EventBindings>
-                                                <telerik:EventBinding EventName="Click"
+                                                </telerik:EventToCommandBehavior.EventBindings>
+                                            </Button>
+                                            <!--Edit Button-->
+                                            <Button Content="Edit">
+                                                <telerik:EventToCommandBehavior.EventBindings>
+                                                    <telerik:EventBinding EventName="Click"
                                         Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.EditCommand}"/>
-                                            </telerik:EventToCommandBehavior.EventBindings>
-                                        </Button>
-                                        <!--Remove Button-->
-                                        <Button x:Name="btnRemove" Content="Remove">
-                                            <telerik:EventToCommandBehavior.EventBindings>
-                                                <telerik:EventBinding EventName="Click"
+                                                </telerik:EventToCommandBehavior.EventBindings>
+                                            </Button>
+                                            <!--Remove Button-->
+                                            <Button x:Name="btnRemove" Content="Remove">
+                                                <telerik:EventToCommandBehavior.EventBindings>
+                                                    <telerik:EventBinding EventName="Click"
                                         Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.RemoveCommand}"/>
-                                            </telerik:EventToCommandBehavior.EventBindings>
-                                        </Button>
-                                    </StackPanel>
-                                </materialDesign:PopupBox>
-                            </WrapPanel>
-                        </DataTemplate>
+                                                </telerik:EventToCommandBehavior.EventBindings>
+                                            </Button>
+                                        </StackPanel>
+                                    </materialDesign:PopupBox>
+                                </WrapPanel>
+                            </DataTemplate>
 
-                        <Style TargetType="{x:Type ListBoxItem}"
+                            <Style TargetType="{x:Type ListBoxItem}"
                            BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                            <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown"/>
-                            <Setter Property="ContentTemplate" Value="{StaticResource ListItem}"/>
-                            <Style.Triggers>
-                                <Trigger Property="ListBoxItem.IsMouseOver" Value="True">
-                                    <Setter Property="ContentTemplate" Value="{StaticResource SelectedItem}"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ListBox.Resources>
-                </ListBox>
+                                <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown"/>
+                                <Setter Property="ContentTemplate" Value="{StaticResource ListItem}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="ListBoxItem.IsMouseOver" Value="True">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource SelectedItem}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
 
-
+                </StackPanel>
             </WrapPanel>
         </materialDesign:Card>
     </WrapPanel>

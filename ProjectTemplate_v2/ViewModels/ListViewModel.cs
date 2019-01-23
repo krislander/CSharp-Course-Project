@@ -5,6 +5,10 @@ using ProjectTemplate_v2.Views;
 using System.Windows.Input;
 using Telerik.Windows.Controls;
 using System;
+using System.Windows.Controls;
+using System.ComponentModel;
+using System.Windows.Data;
+using System.Windows;
 
 namespace ProjectTemplate_v2.ViewModels
 {
@@ -14,7 +18,13 @@ namespace ProjectTemplate_v2.ViewModels
         public ICommand FollowCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
         public ICommand MapViewCommand { get; private set; }
-        public ICommand AddCommand { get; private set; }
+        public ICommand AddCommand { get; set; }
+        public ICommand AllCommand { get; private set; }
+        public ICommand TempCommand { get; private set; }
+        public ICommand HumCommand { get; private set; }
+        public ICommand NoiseCommand { get; private set; }
+        public ICommand EleCommand { get; private set; }
+        public ICommand WDCommand { get; private set; }
         public SnackbarMessageQueue Snackbar { get; set; }
 
         private Sensor selected;
@@ -26,7 +36,6 @@ namespace ProjectTemplate_v2.ViewModels
         public ListViewModel(Sensors sensors,SnackbarMessageQueue snackbar)
         {
             this.sensors = sensors;
-            //GetList(ref sensors);
             Snackbar = snackbar;
             List = sensors.List;
             RemoveCommand = new DelegateCommand(RemoveSensor);
@@ -34,6 +43,24 @@ namespace ProjectTemplate_v2.ViewModels
             EditCommand = new DelegateCommand(ExecuteEditDialog);
             MapViewCommand = new DelegateCommand(ViewOnMap);
             AddCommand = new DelegateCommand(OpenAddForm);
+
+            AllCommand = new DelegateCommand((object obj)=>Filter(typeof(object)));
+            TempCommand = new DelegateCommand((object obj) => Filter(typeof(TemperatureSensor)));
+            HumCommand = new DelegateCommand((object obj) => Filter(typeof(HumiditySensor)));
+            EleCommand = new DelegateCommand((object obj) => Filter(typeof(PowerConsumptionSensor)));
+            WDCommand = new DelegateCommand((object obj) => Filter(typeof(WindowDoorSensor)));
+            NoiseCommand = new DelegateCommand((object obj) => Filter(typeof(NoiseSensor)));
+        }
+
+        private void Filter(Type type)
+        {
+            ICollectionView source = CollectionViewSource.GetDefaultView(List);
+            if (type != typeof(object))
+            {
+                source.Filter = item => item.GetType() == type;
+            }
+            else
+                source.Filter = item => true;
         }
 
         private async void OpenAddForm(object obj)
@@ -148,10 +175,5 @@ namespace ProjectTemplate_v2.ViewModels
                 }
             }
         }
-
-        //private void GetList(ref Sensors sensors)
-        //{
-        //    List = sensors.List;
-        //}
     }
 }

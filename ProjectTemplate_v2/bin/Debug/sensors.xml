@@ -11,5 +11,15 @@
       <MaxValue>34</MaxValue>
       <MinValue>2</MinValue>
     </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>123</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor1</Link>
+      <Description>qweq</Description>
+      <Name>temp</Name>
+      <MaxValue>42</MaxValue>
+      <MinValue>3</MinValue>
+    </Sensor>
   </Sensors>
 </Sensors>
