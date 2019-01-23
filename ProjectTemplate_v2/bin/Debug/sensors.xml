@@ -11,35 +11,5 @@
       <MaxValue>34</MaxValue>
       <MinValue>2</MinValue>
     </Sensor>
-    <Sensor xsi:type="HumiditySensor">
-      <Followed>true</Followed>
-      <Longitude>3</Longitude>
-      <Latitude>2</Latitude>
-      <Link>HumiditySensor1</Link>
-      <Description>weqaeqe</Description>
-      <Name>wada</Name>
-      <MaxValue>22</MaxValue>
-      <MinValue>3</MinValue>
-    </Sensor>
-    <Sensor xsi:type="HumiditySensor">
-      <Followed>true</Followed>
-      <Longitude>23</Longitude>
-      <Latitude>3</Latitude>
-      <Link>HumiditySensor2</Link>
-      <Description>aw</Description>
-      <Name>sdf</Name>
-      <MaxValue>33</MaxValue>
-      <MinValue>2</MinValue>
-    </Sensor>
-    <Sensor xsi:type="HumiditySensor">
-      <Followed>true</Followed>
-      <Longitude>23</Longitude>
-      <Latitude>23</Latitude>
-      <Link>HumiditySensor1</Link>
-      <Description>qweqw</Description>
-      <Name>dfg</Name>
-      <MaxValue>2</MaxValue>
-      <MinValue>2</MinValue>
-    </Sensor>
   </Sensors>
 </Sensors>

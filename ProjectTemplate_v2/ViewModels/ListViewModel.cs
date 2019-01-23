@@ -23,10 +23,11 @@ namespace ProjectTemplate_v2.ViewModels
         private ObservableCollection<Sensor> list;
 
 
-        public ListViewModel(Sensors sensors)
+        public ListViewModel(Sensors sensors,SnackbarMessageQueue snackbar)
         {
             this.sensors = sensors;
             //GetList(ref sensors);
+            Snackbar = snackbar;
             List = sensors.List;
             RemoveCommand = new DelegateCommand(RemoveSensor);
             FollowCommand = new DelegateCommand(ChangeFollow);
@@ -39,7 +40,7 @@ namespace ProjectTemplate_v2.ViewModels
         {
             var view = new AddFormDialog
             {
-                DataContext = new AddFormDialogViewModel(sensors)
+                DataContext = new AddFormDialogViewModel(sensors,Snackbar)
             };
             await DialogHost.Show(view);
         }
@@ -57,7 +58,7 @@ namespace ProjectTemplate_v2.ViewModels
         {
             var view = new EditFormDialog
             {
-                DataContext = new EditFormDialogViewModel(sensors, Selected)
+                DataContext = new EditFormDialogViewModel(sensors, Selected,Snackbar)
             };
             await DialogHost.Show(view);
         }
@@ -68,6 +69,7 @@ namespace ProjectTemplate_v2.ViewModels
                 .Where(item => Selected == item)
                 .ToList().All(i => sensors.List.Remove(i));
             UpdateXml(sensors);
+            Snackbar.Enqueue("Sensor removed");
         }
 
         private void ChangeFollow(object param)

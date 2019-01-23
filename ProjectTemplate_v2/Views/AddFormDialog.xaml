@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:ProjectTemplate_v2.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="400"
-             Width="400" Height="550"
+             d:DesignHeight="540" d:DesignWidth="400"
+             Width="400" Height="540"
              Padding="20">
     <StackPanel>
         <StackPanel.Resources>

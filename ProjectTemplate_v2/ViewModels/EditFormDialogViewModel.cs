@@ -9,8 +9,6 @@ namespace ProjectTemplate_v2.ViewModels
 {
     public class EditFormDialogViewModel : BaseViewModel
     {
-        //public List<string> Types { get; private set; } = 
-        //    new List<string>() { "Temperature", "Humidity", "Electricity Consumption", "Noise", "Window/Door" };
         private Sensor selected;
 
         public Sensor Selected
@@ -22,11 +20,13 @@ namespace ProjectTemplate_v2.ViewModels
         public Visibility DoorWindow { get; set; }
         public Visibility OtherVis { get; set; }
         public ICommand EditCommand { get; private set; }
-        public int Index { get; set; }
+        public SnackbarMessageQueue Snackbar { get; set; }
+        private int Index { get; set; }
 
-        public EditFormDialogViewModel(Sensors sensors, Sensor selected)
+        public EditFormDialogViewModel(Sensors sensors, Sensor selected,SnackbarMessageQueue snackbar)
         {
             this.sensors = sensors;
+            Snackbar = snackbar;
             EditCommand = new DelegateCommand(SubmitEdit);
             Index = sensors.List
                     .IndexOf(sensors.List.Where(sensor => sensor == selected).FirstOrDefault());
@@ -48,7 +48,7 @@ namespace ProjectTemplate_v2.ViewModels
         {
             sensors.List[Index] = Selected;
             UpdateXml(sensors);
-
+            Snackbar.Enqueue("Changes saved");
             DialogHost.CloseDialogCommand.Execute(null, null);
         }
 

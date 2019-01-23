@@ -52,7 +52,7 @@
                     </Button>
                 </DockPanel>
                 <ListBox x:Name="lbListBox" ItemsSource="{Binding List}" SelectedItem="{Binding Selected}" ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                     MaxWidth="600" MaxHeight="500"
+                     Width="600" Height="500"
                      FontSize="18"
                  Margin="0 0 0 5">
 

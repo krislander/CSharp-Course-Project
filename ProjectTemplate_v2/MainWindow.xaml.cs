@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Data;
 using System.Xml.Serialization;
 using MaterialDesignThemes.Wpf;
 using ProjectTemplate_v2.ViewModels;
@@ -13,14 +14,19 @@ namespace ProjectTemplate_v2
     public partial class MainWindow : Window
     {
         private Sensors sensors;
-        public SnackbarMessageQueue Snackbar { get; set; }
+        public SnackbarMessageQueue Snackbar { get; set; } = new SnackbarMessageQueue();
 
         public MainWindow()
         {
             InitializeComponent();
             InitializeList();
-            Snackbar=new SnackbarMessageQueue();
             DataContext = new DashViewModel(sensors);
+            //Binding binding = new Binding
+            //{
+            //    Path = new PropertyPath("Snackbar"),
+            //    Source=this
+            //};
+            //BindingOperations.SetBinding(dialogHost, DialogHost.SnackbarMessageQueueProperty, binding);
         }
 
         private void InitializeList()
@@ -53,7 +59,7 @@ namespace ProjectTemplate_v2
 
         private void BtnToSensorList_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            DataContext = new ListViewModel(sensors);
+            DataContext = new ListViewModel(sensors,Snackbar);
             MenuToggleButton.IsChecked = false;
         }
 

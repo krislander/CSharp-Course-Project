@@ -34,9 +34,10 @@ namespace ProjectTemplate_v2.ViewModels
         private Visibility visibility2 = Visibility.Collapsed;
         private bool isEnabled = false;
 
-        public AddFormDialogViewModel(Sensors sensors)
+        public AddFormDialogViewModel(Sensors sensors,SnackbarMessageQueue snackbar)
         {
             this.sensors = sensors;
+            Snackbar = snackbar;
             SubmitCommand = new DelegateCommand(Submit);
             Models = HttpService.SensorList;
         }
@@ -87,6 +88,8 @@ namespace ProjectTemplate_v2.ViewModels
 
             sensors.List.Add(sensor);
             UpdateXml(sensors);
+            Snackbar.Enqueue($"{sensor.Name} added");
+            DialogHost.CloseDialogCommand.Execute(null, null);
         }
 
         public string SelectedItem

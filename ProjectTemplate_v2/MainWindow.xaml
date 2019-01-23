@@ -29,8 +29,7 @@
         </DataTemplate>
     </Window.Resources>
 
-    <materialDesign:DialogHost CloseOnClickAway="True"
-                               SnackbarMessageQueue="{Binding Snackbar}">
+    <materialDesign:DialogHost SnackbarMessageQueue="{Binding ElementName=Snacky, Path=MessageQueue}" CloseOnClickAway="True">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton,Path=IsChecked}">
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel MinWidth="200">
@@ -59,10 +58,14 @@
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
-            <DockPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="71"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
                 <materialDesign:ColorZone Mode="PrimaryMid"
                                           materialDesign:ShadowAssist.ShadowDepth="Depth1"
-                                          Padding="16" DockPanel.Dock="Top">
+                                          Padding="16" Grid.Row="0" Height="69">
                     <DockPanel>
                         <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"                     
                                       x:Name="MenuToggleButton"
@@ -71,9 +74,10 @@
                                    HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="30"/>
                     </DockPanel>
                 </materialDesign:ColorZone>
-
-                <ContentControl Content="{Binding}"/>
-            </DockPanel>
+                <ContentControl Content="{Binding}" Grid.Row="1"/>
+                <materialDesign:Snackbar x:Name="Snacky" MessageQueue="{Binding Snackbar}"
+                                         HorizontalAlignment="Center" Grid.Row="1"/>
+            </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>
 </Window>
