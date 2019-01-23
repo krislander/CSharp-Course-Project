@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\App.xaml
-8-1934936836
+8-209941639
 
-29-107523697
+29-539667225
 24-164687128
-MainWindow.xaml;Resources\Gauges\HumidityGaugeCtrl.xaml;Views\AddSensorView.xaml;Views\EditFormDialog.xaml;Views\ListView.xaml;Views\DashVIew.xaml;Views\MapView.xaml;Views\ViewOnMap.xaml;
+MainWindow.xaml;Resources\Gauges\HumidityGaugeCtrl.xaml;Views\AddFormDialog.xaml;Views\EditFormDialog.xaml;Views\ListView.xaml;Views\DashVIew.xaml;Views\MapView.xaml;Views\ViewOnMap.xaml;
 
 False
 

@@ -45,7 +45,7 @@ namespace ProjectTemplate_v2.ViewModels
             {
                 Center = new Location(42.698334, 23.319941),
                 ZoomLevel = 10,
-                Margin = new Thickness(0, 3, 0, 0),
+                Margin = new Thickness(0, 1, 0, 0),
                 Mode = new AerialMode(true),
                 CredentialsProvider = new ApplicationIdCredentialsProvider("Arlj7m-YopkSpqjw8gdI2PHqnd8tulYdY91G_h8qZ42jmUOPjjqFRnO7iMpk9TuS")
             };

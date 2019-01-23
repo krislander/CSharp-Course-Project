@@ -21,9 +21,6 @@
         <DataTemplate x:Name="mainViewTemplate" DataType="{x:Type viewmodels:DashViewModel}">
             <views:MainView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="addSensorViewTemplate" DataType="{x:Type viewmodels:AddSensorViewModel}">
-            <views:AddSensorView DataContext="{Binding}"/>
-        </DataTemplate>
         <DataTemplate x:Name="listViewTemplate" DataType="{x:Type viewmodels:ListViewModel}">
             <views:ListView DataContext="{Binding}"/>
         </DataTemplate>
@@ -32,7 +29,8 @@
         </DataTemplate>
     </Window.Resources>
 
-    <materialDesign:DialogHost CloseOnClickAway="True">
+    <materialDesign:DialogHost CloseOnClickAway="True"
+                               SnackbarMessageQueue="{Binding Snackbar}">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton,Path=IsChecked}">
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel MinWidth="200">
@@ -52,12 +50,12 @@
                         <ListBoxItem x:Name="btnToSensorList" 
                                  PreviewMouseLeftButtonUp="BtnToSensorList_PreviewMouseLeftButtonUp" 
                                  Content="Sensors"/>
-                        <ListBoxItem x:Name="btnToSensorAdd" 
-                                 PreviewMouseLeftButtonUp="BtnToSensorAdd_PreviewMouseLeftButtonUp" 
-                                 Content="Add Sensor"/>
                         <ListBoxItem x:Name="btnToMap" 
                                  PreviewMouseLeftButtonUp="BtnToMap_PreviewMouseLeftButtonUp" 
                                  Content="Map"/>
+                        <ListBoxItem x:Name="btnAbout"
+                                     PreviewMouseLeftButtonUp="BtnAbout_PreviewMouseLeftButtonUp"
+                                     Content="About"/>
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>

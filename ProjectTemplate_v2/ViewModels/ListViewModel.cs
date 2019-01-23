@@ -14,6 +14,8 @@ namespace ProjectTemplate_v2.ViewModels
         public ICommand FollowCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
         public ICommand MapViewCommand { get; private set; }
+        public ICommand AddCommand { get; private set; }
+        public SnackbarMessageQueue Snackbar { get; set; }
 
         private Sensor selected;
         private string followButtonContent;
@@ -30,6 +32,16 @@ namespace ProjectTemplate_v2.ViewModels
             FollowCommand = new DelegateCommand(ChangeFollow);
             EditCommand = new DelegateCommand(ExecuteEditDialog);
             MapViewCommand = new DelegateCommand(ViewOnMap);
+            AddCommand = new DelegateCommand(OpenAddForm);
+        }
+
+        private async void OpenAddForm(object obj)
+        {
+            var view = new AddFormDialog
+            {
+                DataContext = new AddFormDialogViewModel(sensors)
+            };
+            await DialogHost.Show(view);
         }
 
         private async void ViewOnMap(object obj)

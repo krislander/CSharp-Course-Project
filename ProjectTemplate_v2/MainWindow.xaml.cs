@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Xml.Serialization;
+using MaterialDesignThemes.Wpf;
 using ProjectTemplate_v2.ViewModels;
 
 namespace ProjectTemplate_v2
@@ -12,11 +13,13 @@ namespace ProjectTemplate_v2
     public partial class MainWindow : Window
     {
         private Sensors sensors;
+        public SnackbarMessageQueue Snackbar { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             InitializeList();
+            Snackbar=new SnackbarMessageQueue();
             DataContext = new DashViewModel(sensors);
         }
 
@@ -44,8 +47,8 @@ namespace ProjectTemplate_v2
 
         private void BtnToMain_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            DataContext = new DashViewModel(sensors);
             MenuToggleButton.IsChecked = false;
+            DataContext = new DashViewModel(sensors);
         }
 
         private void BtnToSensorList_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -54,16 +57,15 @@ namespace ProjectTemplate_v2
             MenuToggleButton.IsChecked = false;
         }
 
-        private void BtnToSensorAdd_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            DataContext = new AddSensorViewModel(sensors);
-            MenuToggleButton.IsChecked = false;
-        }
-
         private void BtnToMap_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DataContext = new MapViewModel(ref sensors);
             MenuToggleButton.IsChecked = false;
+        }
+
+        private void BtnAbout_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
     }
 }

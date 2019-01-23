@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="400"
-             Height="500" Width="400"
+             Height="450" Width="400"
              Padding="20">
     <StackPanel>
         <StackPanel.Resources>
@@ -18,8 +18,8 @@
         
         <TextBox Text="{Binding Selected.Name}" 
                  materialDesign:HintAssist.Hint="Name"  Margin="0 0 0 10"/>
-        <TextBox Text="{Binding Selected.Url}"
-                 materialDesign:HintAssist.Hint="URL"  Margin="0 0 0 10"/>
+        <!--<TextBox Text="{Binding Selected.Url}"
+                 materialDesign:HintAssist.Hint="URL"  Margin="0 0 0 10"/>-->
         <!--<ComboBox ItemsSource="{Binding Types}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                   materialDesign:HintAssist.Hint="Type" 
                   FontSize="18" Margin="0 0 0 5"/>-->
@@ -34,7 +34,7 @@
                   materialDesign:HintAssist.Hint="Value"
                   Width="100" FontSize="18">
             <ComboBoxItem Content="Closed"/>
-            <ComboBoxItem Content="Opened"/>
+            <ComboBoxItem Content="Open"/>
         </ComboBox>
         <WrapPanel Margin="0 0 0 10">
             <TextBox Text="{Binding Selected.Latitude}"

@@ -43,7 +43,7 @@ namespace ProjectTemplate_v2.ViewModels
 
             if (sensor is HumiditySensor)
             {
-                var model = HttpService.SensorList.First(item => item.Tag == sensor.Name);
+                var model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
                 ((AutoGeneratingTileEventArgs)e).Tile.Content = new HumidityGaugeCtrl((HumiditySensor)sensor,model);
 
             }

@@ -24,14 +24,6 @@ namespace ProjectTemplate_v2
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _client.DefaultRequestHeaders.TryAddWithoutValidation("auth-token", "8e4c46fe-5e1d-4382-b7fc-19541f7bf3b0");
             SensorList = JsonConvert.DeserializeObject<List<SensorModel>>(GetList().Result);
-
-            //string names = "";
-
-            //foreach (var sensor in sensorList)
-            //{
-            //    names += sensor.Tag;
-            //}
-            //MessageBox.Show(names);
         }
 
         public static async Task<string> GetList()
@@ -62,26 +54,5 @@ namespace ProjectTemplate_v2
 
             return Convert.ToDouble(vm.Value);
         }
-
-        //public static async Task<double> GetProductValueAsync(string path)
-        //{
-        //    SensorModel sensor = null;
-
-        //    //await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
-
-        //    HttpResponseMessage responseMessage = await _client.GetAsync(path).ConfigureAwait(false);
-
-        //    if (responseMessage.IsSuccessStatusCode)
-        //    {
-        //        sensor = await responseMessage.Content.ReadAsAsync<SensorModel>().ConfigureAwait(false);
-        //    }
-        //    else
-        //    {
-        //        throw new Exception(responseMessage.ReasonPhrase);
-        //    }
-
-        //    return sensor.Value;
-        //}
-
     }
 }

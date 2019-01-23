@@ -85,23 +85,23 @@
     <Compile Include="Resources\Gauges\HumidityGaugeCtrl.xaml.cs">
       <DependentUpon>HumidityGaugeCtrl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\HumiditySensor.cs" />
-    <Compile Include="Models\NoiseSensor.cs" />
-    <Compile Include="Models\PowerConsumptionSensor.cs" />
-    <Compile Include="Models\Sensor.cs" />
+    <Compile Include="Models\SensorTypes\HumiditySensor.cs" />
+    <Compile Include="Models\SensorTypes\NoiseSensor.cs" />
+    <Compile Include="Models\SensorTypes\PowerConsumptionSensor.cs" />
+    <Compile Include="Models\SensorTypes\Sensor.cs" />
     <Compile Include="Models\SensorModel.cs" />
     <Compile Include="Models\Sensors.cs" />
-    <Compile Include="Models\TemperatureSensor.cs" />
-    <Compile Include="Models\WindowDoorSensor.cs" />
-    <Compile Include="ViewModels\AddSensorViewModel.cs" />
+    <Compile Include="Models\SensorTypes\TemperatureSensor.cs" />
+    <Compile Include="Models\SensorTypes\WindowDoorSensor.cs" />
+    <Compile Include="ViewModels\AddFormDialogViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\EditFormDialogViewModel.cs" />
     <Compile Include="ViewModels\ListViewModel.cs" />
     <Compile Include="ViewModels\DashViewModel.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\ViewOnMapViewModel.cs" />
-    <Compile Include="Views\AddSensorView.xaml.cs">
-      <DependentUpon>AddSensorView.xaml</DependentUpon>
+    <Compile Include="Views\AddFormDialog.xaml.cs">
+      <DependentUpon>AddFormDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditFormDialog.xaml.cs">
       <DependentUpon>EditFormDialog.xaml</DependentUpon>
@@ -134,7 +134,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddSensorView.xaml">
+    <Page Include="Views\AddFormDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
