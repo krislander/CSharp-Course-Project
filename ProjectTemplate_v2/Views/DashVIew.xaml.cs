@@ -22,5 +22,12 @@ namespace ProjectTemplate_v2.Views
 
             //DashViewModel.AutoGenerateTile(e);
         }
+
+        private void UserControl_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Unloaded -= UserControl_Unloaded;
+            DataContext = null;
+            GC.Collect();
+        }
     }
 }

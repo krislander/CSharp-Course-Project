@@ -8,13 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
 
-    <telerik:RadRadialGauge x:Name="humidityGauge" telerik:StyleManager.Theme="Windows8">
-        <telerik:RadialScale FontSize="14">
+    <telerik:RadRadialGauge x:Name="humidityGauge" telerik:StyleManager.Theme="Summer">
+        <telerik:RadialScale FontSize="16" LabelRotationMode="None">
             <telerik:RadialScale.Indicators>
-                <telerik:Marker x:Name="minMarker"/>
-                <telerik:Marker x:Name="maxMarker"/>
-                <telerik:Needle x:Name="Needle"/>
-                <telerik:Pinpoint/>
+                <telerik:Marker x:Name="minMarker" BorderBrush="IndianRed" BorderThickness="4" Background="IndianRed"/>
+                <telerik:Marker x:Name="maxMarker" BorderBrush="IndianRed" BorderThickness="4" Background="IndianRed"/>
+                <telerik:Needle x:Name="Needle" Background="{StaticResource PrimaryHueLightBrush}" />
+                <telerik:Pinpoint Background="{StaticResource PrimaryHueMidBrush}"/>
             </telerik:RadialScale.Indicators>
         </telerik:RadialScale>
     </telerik:RadRadialGauge>

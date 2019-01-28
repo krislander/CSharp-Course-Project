@@ -52,7 +52,7 @@
                   SelectedItem="{Binding ToLinkWith}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Tag}"/>
+                    <TextBlock Text="{Binding Tag}" ToolTip="{Binding Description}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>

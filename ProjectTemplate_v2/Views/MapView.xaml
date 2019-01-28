@@ -6,7 +6,8 @@
              xmlns:Maps="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:local="clr-namespace:ProjectTemplate_v2.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="542" d:DesignWidth="1016">
+             d:DesignHeight="542" d:DesignWidth="1016"
+             Unloaded="UserControl_Unloaded">
 
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="Loaded">

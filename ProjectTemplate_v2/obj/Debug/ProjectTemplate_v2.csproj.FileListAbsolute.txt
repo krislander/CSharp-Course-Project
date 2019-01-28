@@ -233,3 +233,5 @@ D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTempla
 D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.pdb
 D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\Views\AddFormDialog.g.cs
 D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\Views\AddFormDialog.baml
+D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\Resources\Gauges\TempGaugeCtrl.g.cs
+D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\Resources\Gauges\TempGaugeCtrl.baml

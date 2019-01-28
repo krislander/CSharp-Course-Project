@@ -24,5 +24,12 @@ namespace ProjectTemplate_v2.Views
         {
             InitializeComponent();
         }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            Unloaded -= UserControl_Unloaded;
+            DataContext = null;
+            GC.Collect();
+        }
     }
 }

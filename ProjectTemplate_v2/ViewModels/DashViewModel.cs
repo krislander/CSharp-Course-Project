@@ -1,16 +1,12 @@
-﻿using ProjectTemplate_v2.Models;
-using ProjectTemplate_v2.Models.Gauges;
-using System;
+﻿using ProjectTemplate_v2.Models.Gauges;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Linq;
 using System.Windows.Media;
 using Telerik.Windows.Controls;
+using ProjectTemplate_v2.Resources.Gauges;
+using System.Windows;
 
 namespace ProjectTemplate_v2.ViewModels
 {
@@ -18,14 +14,21 @@ namespace ProjectTemplate_v2.ViewModels
     {
         //public ICommand AutoTileCommand { get; private set; }
         public ObservableCollection<Sensor> FollowedList { get; set; }
+        //static int counter = 0;
 
         public DashViewModel(Sensors sensors)
         {
             this.sensors = sensors;
-            GetFollowedList(sensors);
-            HttpService.InitializeClient();
+            GetFollowedList(sensors);          
             //AutoTileCommand = new DelegateCommand(AutoGenerateTile);
+            //Interlocked.Increment(ref counter);
+            //MessageBox.Show($"{counter}");
         }
+
+        //~DashViewModel()
+        //{
+        //    Interlocked.Decrement(ref counter);
+        //}
 
         private void GetFollowedList(Sensors sensors)
         {
@@ -44,8 +47,19 @@ namespace ProjectTemplate_v2.ViewModels
             if (sensor is HumiditySensor)
             {
                 var model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
-                ((AutoGeneratingTileEventArgs)e).Tile.Content = new HumidityGaugeCtrl((HumiditySensor)sensor,model);
+                ((AutoGeneratingTileEventArgs)e).Tile.Content = new HumidityGaugeCtrl((HumiditySensor)sensor, model);
 
+            }
+            else if (sensor is TemperatureSensor)
+            {
+                ((AutoGeneratingTileEventArgs)e).Tile.TileType = TileType.Double;
+
+                if (((AutoGeneratingTileEventArgs)e).Tile.DisplayIndex % 2 == 1)
+                {
+                   // MessageBox.Show($"{((AutoGeneratingTileEventArgs)e).Tile.DisplayIndex}");
+                    ((AutoGeneratingTileEventArgs)e).Tile.DisplayIndex += 2;
+                }
+                ((AutoGeneratingTileEventArgs)e).Tile.Content = new TempGaugeCtrl();
             }
         }
     }

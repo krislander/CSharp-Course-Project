@@ -20,6 +20,7 @@ namespace ProjectTemplate_v2
         {
             InitializeComponent();
             InitializeList();
+            HttpService.InitializeClient();
             DataContext = new DashViewModel(sensors);
             //Binding binding = new Binding
             //{

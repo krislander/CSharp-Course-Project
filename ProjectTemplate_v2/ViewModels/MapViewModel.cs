@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,6 +30,7 @@ namespace ProjectTemplate_v2.ViewModels
         private ObservableCollection<PushpinModel> pushpins;
         public Map MapWithMarkers { get; set; }
         public Border Infobox = new Border();
+        //static int counter = 0;
 
         public MapViewModel(ref Sensors sensors)
         {
@@ -36,8 +38,16 @@ namespace ProjectTemplate_v2.ViewModels
             MapLayer dataLayer = new MapLayer();
             ObservableCollection<PushpinModel> Pushpins = new ObservableCollection<PushpinModel>();
 
+            //Interlocked.Increment(ref counter);
+            //MessageBox.Show($"{counter}");
+
             InitMap();
         }
+
+        //~MapViewModel()
+        //{
+        //    Interlocked.Decrement(ref counter);
+        //}
 
         private void InitMap()
         {

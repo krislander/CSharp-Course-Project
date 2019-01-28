@@ -31,6 +31,7 @@ namespace ProjectTemplate_v2.ViewModels
         private string followButtonContent;
         private PackIconKind iconKind;
         private ObservableCollection<Sensor> list;
+        private ICollectionView collectionView;
 
 
         public ListViewModel(Sensors sensors,SnackbarMessageQueue snackbar)
@@ -38,6 +39,10 @@ namespace ProjectTemplate_v2.ViewModels
             this.sensors = sensors;
             Snackbar = snackbar;
             List = sensors.List;
+            collectionView = CollectionViewSource.GetDefaultView(List);
+            if (collectionView.Filter!=null)
+                collectionView.Filter = null;
+
             RemoveCommand = new DelegateCommand(RemoveSensor);
             FollowCommand = new DelegateCommand(ChangeFollow);
             EditCommand = new DelegateCommand(ExecuteEditDialog);
@@ -54,13 +59,12 @@ namespace ProjectTemplate_v2.ViewModels
 
         private void Filter(Type type)
         {
-            ICollectionView source = CollectionViewSource.GetDefaultView(List);
             if (type != typeof(object))
             {
-                source.Filter = item => item.GetType() == type;
+                collectionView.Filter = item => item.GetType() == type;
             }
             else
-                source.Filter = item => true;
+                collectionView.Filter = null;
         }
 
         private async void OpenAddForm(object obj)

@@ -10,7 +10,6 @@ namespace ProjectTemplate_v2.Models.Gauges
     /// </summary>
     public partial class HumidityGaugeCtrl : UserControl
     {
-        private static Random rand;
         private HumiditySensor sensor;
         private string sensorId;
 
@@ -23,7 +22,6 @@ namespace ProjectTemplate_v2.Models.Gauges
             sensorId = model.SensorId;
             this.sensor = sensor;
 
-            rand = new Random();
             DispatcherTimer timer = new DispatcherTimer
             {               
                 Interval = TimeSpan.FromSeconds(model.MinPollingIntervalInSeconds)
@@ -35,7 +33,6 @@ namespace ProjectTemplate_v2.Models.Gauges
 
         void Timer_Tick(object sender,EventArgs e)
         {
-            //Needle.Value = rand.Next(0, 101);
             Needle.Value = HttpService.GetValueAsync(sensorId).Result;
             if (Needle.Value >(double) sensor.MaxValue || Needle.Value < (double)sensor.MinValue)
             {

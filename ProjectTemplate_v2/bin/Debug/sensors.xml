@@ -21,5 +21,45 @@
       <MaxValue>42</MaxValue>
       <MinValue>3</MinValue>
     </Sensor>
+    <Sensor xsi:type="HumiditySensor">
+      <Followed>true</Followed>
+      <Longitude>33</Longitude>
+      <Latitude>23</Latitude>
+      <Link>HumiditySensor2</Link>
+      <Description>saed</Description>
+      <Name>sada</Name>
+      <MaxValue>33</MaxValue>
+      <MinValue>2</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>22</Longitude>
+      <Latitude>32</Latitude>
+      <Link>TemperatureSensor1</Link>
+      <Description>aweaa</Description>
+      <Name>wfgedsg</Name>
+      <MaxValue>32</MaxValue>
+      <MinValue>12</MinValue>
+    </Sensor>
+    <Sensor xsi:type="PowerConsumptionSensor">
+      <Followed>true</Followed>
+      <Longitude>22</Longitude>
+      <Latitude>3</Latitude>
+      <Link>ElectricPowerConsumtionSensor1</Link>
+      <Description>awe</Description>
+      <Name>wae</Name>
+      <MaxValue>3</MaxValue>
+      <MinValue>3</MinValue>
+    </Sensor>
+    <Sensor xsi:type="PowerConsumptionSensor">
+      <Followed>true</Followed>
+      <Longitude>33</Longitude>
+      <Latitude>33</Latitude>
+      <Link>ElectricPowerConsumtionSensor2</Link>
+      <Description>ikouky</Description>
+      <Name>uilu</Name>
+      <MaxValue>32</MaxValue>
+      <MinValue>4</MinValue>
+    </Sensor>
   </Sensors>
 </Sensors>
