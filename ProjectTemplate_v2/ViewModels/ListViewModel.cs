@@ -136,6 +136,10 @@ namespace ProjectTemplate_v2.ViewModels
                         else
                             IconKind = PackIconKind.DoorOpen;
                     }
+                    else
+                    {
+                        IconKind = PackIconKind.AccessPoint;
+                    }
                     RaisePropertyChanged("Selected");
                 }
             }

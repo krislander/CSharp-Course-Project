@@ -6,16 +6,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectTemplate_v2.Models.Gauges"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100">
-
-    <telerik:RadRadialGauge x:Name="humidityGauge" telerik:StyleManager.Theme="Summer">
-        <telerik:RadialScale FontSize="16" LabelRotationMode="None">
-            <telerik:RadialScale.Indicators>
-                <telerik:Marker x:Name="minMarker" BorderBrush="IndianRed" BorderThickness="4" Background="IndianRed"/>
-                <telerik:Marker x:Name="maxMarker" BorderBrush="IndianRed" BorderThickness="4" Background="IndianRed"/>
-                <telerik:Needle x:Name="Needle" Background="{StaticResource PrimaryHueLightBrush}" />
-                <telerik:Pinpoint Background="{StaticResource PrimaryHueMidBrush}"/>
-            </telerik:RadialScale.Indicators>
-        </telerik:RadialScale>
-    </telerik:RadRadialGauge>
+             d:DesignHeight="200" d:DesignWidth="200">
+    <Grid>
+        <telerik:RadRadialGauge x:Name="humidityGauge" telerik:StyleManager.Theme="Summer">
+            <telerik:RadialScale FontSize="16" LabelRotationMode="None"
+                                 FontWeight="Light">
+                <telerik:RadialScale.Indicators>
+                    <telerik:Marker x:Name="minMarker" BorderBrush="IndianRed" BorderThickness="4" Background="IndianRed"/>
+                    <telerik:Marker x:Name="maxMarker" BorderBrush="IndianRed" BorderThickness="4" Background="IndianRed"/>
+                    <telerik:Needle x:Name="Needle" Background="{StaticResource PrimaryHueLightBrush}" />
+                    <telerik:Pinpoint Background="{StaticResource PrimaryHueMidBrush}"/>
+                </telerik:RadialScale.Indicators>
+            </telerik:RadialScale>
+        </telerik:RadRadialGauge>
+        <TextBlock Text="%" 
+                   FontSize="26"
+                   Margin="0 60 0 0"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Foreground="{StaticResource PrimaryHueDarkBrush}"
+                   Opacity=".70"
+                   FontWeight="Light"/>
+    </Grid>
 </UserControl>

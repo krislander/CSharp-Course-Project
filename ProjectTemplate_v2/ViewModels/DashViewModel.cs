@@ -14,21 +14,13 @@ namespace ProjectTemplate_v2.ViewModels
     {
         //public ICommand AutoTileCommand { get; private set; }
         public ObservableCollection<Sensor> FollowedList { get; set; }
-        //static int counter = 0;
 
         public DashViewModel(Sensors sensors)
         {
             this.sensors = sensors;
             GetFollowedList(sensors);          
             //AutoTileCommand = new DelegateCommand(AutoGenerateTile);
-            //Interlocked.Increment(ref counter);
-            //MessageBox.Show($"{counter}");
-        }
-
-        //~DashViewModel()
-        //{
-        //    Interlocked.Decrement(ref counter);
-        //}
+        }     
 
         private void GetFollowedList(Sensors sensors)
         {
@@ -37,29 +29,39 @@ namespace ProjectTemplate_v2.ViewModels
             source.Filter = item => ((Sensor)item).Followed;
         }
 
-        public static void AutoGenerateTile(object e)
+        public static void AutoGenerateTile(AutoGeneratingTileEventArgs e)
         {
-            Sensor sensor = ((AutoGeneratingTileEventArgs)e).Tile.Content as Sensor;
+            Sensor sensor = e.Tile.Content as Sensor;
 
-            ((AutoGeneratingTileEventArgs)e).Tile.Background = new SolidColorBrush(Colors.Teal);
-            ((AutoGeneratingTileEventArgs)e).Tile.TileType = TileType.Single;
+            e.Tile.Background = new SolidColorBrush(Colors.DarkCyan);
+            e.Tile.TileType = TileType.Single;
 
             if (sensor is HumiditySensor)
             {
-                var model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
-                ((AutoGeneratingTileEventArgs)e).Tile.Content = new HumidityGaugeCtrl((HumiditySensor)sensor, model);
+                try
+                {
+                    var model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
+                    e.Tile.Content = new HumidityGaugeCtrl((HumiditySensor)sensor, model);
+
+                }
+                catch
+                {
+                    e.Tile.Background = new SolidColorBrush(Colors.LightGray);
+                    //TODO: sensor off view    
+                }
 
             }
             else if (sensor is TemperatureSensor)
             {
-                ((AutoGeneratingTileEventArgs)e).Tile.TileType = TileType.Double;
+                e.Tile.TileType = TileType.Double;
 
-                if (((AutoGeneratingTileEventArgs)e).Tile.DisplayIndex % 2 == 1)
+                var model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
+
+                if (e.Tile.DisplayIndex % 2 == 1)
                 {
-                   // MessageBox.Show($"{((AutoGeneratingTileEventArgs)e).Tile.DisplayIndex}");
-                    ((AutoGeneratingTileEventArgs)e).Tile.DisplayIndex += 2;
+                    e.Tile.DisplayIndex += 2;
                 }
-                ((AutoGeneratingTileEventArgs)e).Tile.Content = new TempGaugeCtrl();
+                e.Tile.Content = new TempGaugeCtrl((TemperatureSensor)sensor, model);
             }
         }
     }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\
+C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\
 ProjectTemplate_v2
 none
 false
 DEBUG;TRACE
-D:\source\projectrepo\Smart-Dormitory\ProjectTemplate_v2\App.xaml
+C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\App.xaml
 92097400369
 
-34-1229568199
-24-164687128
+34-1148526070
+241178588413
 MainWindow.xaml;Resources\Gauges\HumidityGaugeCtrl.xaml;Resources\Gauges\TempGaugeCtrl.xaml;Views\AddFormDialog.xaml;Views\EditFormDialog.xaml;Views\ListView.xaml;Views\DashVIew.xaml;Views\MapView.xaml;Views\ViewOnMap.xaml;
 
-True
+False
 

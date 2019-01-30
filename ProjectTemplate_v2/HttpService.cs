@@ -23,7 +23,14 @@ namespace ProjectTemplate_v2
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _client.DefaultRequestHeaders.TryAddWithoutValidation("auth-token", "8e4c46fe-5e1d-4382-b7fc-19541f7bf3b0");
-            SensorList = JsonConvert.DeserializeObject<List<SensorModel>>(GetList().Result);
+            try
+            {
+                SensorList = JsonConvert.DeserializeObject<List<SensorModel>>(GetList().Result);
+            }
+            catch
+            {
+                SensorList = new List<SensorModel>();
+            }
         }
 
         public static async Task<string> GetList()

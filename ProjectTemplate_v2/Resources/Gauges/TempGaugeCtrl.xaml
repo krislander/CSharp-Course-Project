@@ -6,11 +6,64 @@
              xmlns:local="clr-namespace:ProjectTemplate_v2.Resources.Gauges"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="200">
+             d:DesignHeight="200" d:DesignWidth="400">
 
-    <telerik:RadHorizontalLinearGauge telerik:StyleManager.Theme="Material">
-        <telerik:HorizontalLinearScale Min="-40" Max="40" >
-            
-        </telerik:HorizontalLinearScale>
-    </telerik:RadHorizontalLinearGauge>
+    <Grid>
+        <telerik:RadHorizontalLinearGauge x:Name="tempGauge"
+                                      telerik:StyleManager.Theme="Windows8">
+            <telerik:RadHorizontalLinearGauge.Background>
+                <RadialGradientBrush RadiusX="1.5" RadiusY="1">
+                    <GradientStop Color="White" Offset="0.419"/>
+                    <GradientStop x:Name="gradient"  Offset="1"/>
+                </RadialGradientBrush>
+            </telerik:RadHorizontalLinearGauge.Background>
+            <telerik:HorizontalLinearScale Min="-10" Max="35"
+                                       RangeLocation="Outside"
+                                       RangeOffset="-0.02*"
+                                       MajorTickStep="5"
+                                       ShowLastLabel="False"
+                                       FontSize="16">
+                <telerik:HorizontalLinearScale.Ranges>
+                    <telerik:GaugeRange x:Name="hotRange"
+                                Max="35" 
+                                StartWidth="0.02" 
+                                EndWidth="0.02" 
+                                Background="Red" 
+                                TickBackground="Red" 
+                                LabelForeground="Red" 
+                                IndicatorBackground="Red"/>
+                    <telerik:GaugeRange x:Name="midRange"
+                                StartWidth="0.02" 
+                                EndWidth="0.02" 
+                                Background="#FFA0CCFF" 
+                                TickBackground="#FFA0CCFF" 
+                                LabelForeground="#FFA0CCFF" 
+                                IndicatorBackground="#FFA0CCFF"/>
+                    <telerik:GaugeRange x:Name="chillRange"
+                                Min="-10"
+                                StartWidth="0.02" 
+                                EndWidth="0.02" 
+                                Background="#FF23568F" 
+                                TickBackground="#FF23568F" 
+                                LabelForeground="#FF23568F" 
+                                IndicatorBackground="#FF23568F" />
+                </telerik:HorizontalLinearScale.Ranges>
+                <telerik:HorizontalLinearScale.Indicators>
+                    <telerik:BarIndicator x:Name="bar"
+                            UseRangeColor="True"  
+                            RangeColorSmoothing="0.5" 
+                            RangeColorMode="ProportionalGradient"
+                            StartWidth="0.07"/>
+                </telerik:HorizontalLinearScale.Indicators>
+
+            </telerik:HorizontalLinearScale>
+        </telerik:RadHorizontalLinearGauge>
+
+        <TextBlock Text="°C"
+                   FontSize="20"
+                   FontWeight="Light"
+                   Opacity=".70"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Margin="290 0 0 70"/>
+    </Grid>
 </UserControl>

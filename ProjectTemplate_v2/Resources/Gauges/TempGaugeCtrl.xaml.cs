@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using ProjectTemplate_v2.Models;
+using System;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ProjectTemplate_v2.Resources.Gauges
 {
@@ -20,9 +11,38 @@ namespace ProjectTemplate_v2.Resources.Gauges
     /// </summary>
     public partial class TempGaugeCtrl : UserControl
     {
-        public TempGaugeCtrl()
+        private TemperatureSensor sensor;
+        private string sensorId;
+
+        public TempGaugeCtrl(TemperatureSensor sensor,SensorModel model)
         {
             InitializeComponent();
+            chillRange.Max = (double)sensor.MinValue;
+            hotRange.Min = (double)sensor.MaxValue;
+            midRange.Max = hotRange.Min;
+            midRange.Min =chillRange.Max;
+            tempGauge.ToolTip = sensor.Name;
+            sensorId = model.SensorId;
+            this.sensor = sensor;
+
+            DispatcherTimer timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(model.MinPollingIntervalInSeconds)
+            };
+            timer.Tick += Timer_Tick;
+            timer.Start();
+            Timer_Tick(new object(), new EventArgs());
+        }
+
+         void Timer_Tick(object sender, EventArgs e)
+        {
+            bar.Value = HttpService.GetValueAsync(sensorId).Result;
+            if (bar.Value > (double)sensor.MaxValue || bar.Value < (double)sensor.MinValue)
+            {
+                gradient.Color = (Color)ColorConverter.ConvertFromString("IndianRed");
+            }
+            else
+                gradient.Color= (Color)ColorConverter.ConvertFromString("#FF009F98"); 
         }
     }
 }
