@@ -6,64 +6,46 @@
              xmlns:local="clr-namespace:ProjectTemplate_v2.Resources.Gauges"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="400">
+             d:DesignHeight="200" d:DesignWidth="200">
 
-    <Grid>
-        <telerik:RadHorizontalLinearGauge x:Name="tempGauge"
-                                      telerik:StyleManager.Theme="Windows8">
-            <telerik:RadHorizontalLinearGauge.Background>
-                <RadialGradientBrush RadiusX="1.5" RadiusY="1">
-                    <GradientStop Color="White" Offset="0.419"/>
-                    <GradientStop x:Name="gradient"  Offset="1"/>
-                </RadialGradientBrush>
-            </telerik:RadHorizontalLinearGauge.Background>
-            <telerik:HorizontalLinearScale Min="-10" Max="35"
-                                       RangeLocation="Outside"
-                                       RangeOffset="-0.02*"
-                                       MajorTickStep="5"
-                                       ShowLastLabel="False"
-                                       FontSize="16">
-                <telerik:HorizontalLinearScale.Ranges>
-                    <telerik:GaugeRange x:Name="hotRange"
-                                Max="35" 
-                                StartWidth="0.02" 
-                                EndWidth="0.02" 
-                                Background="Red" 
-                                TickBackground="Red" 
-                                LabelForeground="Red" 
-                                IndicatorBackground="Red"/>
-                    <telerik:GaugeRange x:Name="midRange"
-                                StartWidth="0.02" 
-                                EndWidth="0.02" 
-                                Background="#FFA0CCFF" 
-                                TickBackground="#FFA0CCFF" 
-                                LabelForeground="#FFA0CCFF" 
-                                IndicatorBackground="#FFA0CCFF"/>
-                    <telerik:GaugeRange x:Name="chillRange"
-                                Min="-10"
-                                StartWidth="0.02" 
-                                EndWidth="0.02" 
-                                Background="#FF23568F" 
-                                TickBackground="#FF23568F" 
-                                LabelForeground="#FF23568F" 
-                                IndicatorBackground="#FF23568F" />
-                </telerik:HorizontalLinearScale.Ranges>
-                <telerik:HorizontalLinearScale.Indicators>
+    <Grid Background="White" Width="170">
+        <telerik:RadVerticalLinearGauge x:Name="tempGauge"
+                                      telerik:StyleManager.Theme="Office2016"
+                                        Margin="-85 0 0 0">
+            <telerik:VerticalLinearScale Min="-10" Max="35"
+                                        RangeOffset="-0.02*"
+                                        MajorTickStep="10"
+                                        LabelFormat=""
+                                        MajorTickRelativeWidth="11"
+                                        MajorTickBackground="{StaticResource PrimaryHueMidBrush}">
+                <telerik:VerticalLinearScale.Indicators>
                     <telerik:BarIndicator x:Name="bar"
-                            UseRangeColor="True"  
-                            RangeColorSmoothing="0.5" 
-                            RangeColorMode="ProportionalGradient"
-                            StartWidth="0.07"/>
-                </telerik:HorizontalLinearScale.Indicators>
+                                          StartWidth="0.05"
+                                          telerik:ScaleObject.Offset="11"
+                                          Background="{StaticResource PrimaryHueLightBrush}"
+                                          telerik:ScaleObject.Location="CenterOutside"/>
 
-            </telerik:HorizontalLinearScale>
-        </telerik:RadHorizontalLinearGauge>
+                    <telerik:StateIndicator />
+                </telerik:VerticalLinearScale.Indicators>
+            </telerik:VerticalLinearScale>
+        </telerik:RadVerticalLinearGauge>
 
-        <TextBlock Text="°C"
-                   FontSize="20"
-                   FontWeight="Light"
-                   Opacity=".70"
-                   HorizontalAlignment="Center" VerticalAlignment="Center" 
-                   Margin="290 0 0 70"/>
+        <WrapPanel HorizontalAlignment="Right"
+                   Margin="0 20 4 0">
+            <TextBlock x:Name="numValue"
+                 Foreground="{StaticResource PrimaryHueMidBrush}"
+                 FontSize="50"
+                   FontWeight="Regular"
+                  FontStretch="UltraCondensed"/>
+            <TextBlock Text="°C"
+                       FontSize="30"
+                       FontWeight="Regular"
+                       Foreground="{StaticResource PrimaryHueLightBrush}"/>
+        </WrapPanel>
+
+        <Ellipse x:Name="stateIndicator"
+                 Width="35" Height="35"
+                 VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                 Margin="0 0 17 17"/>
     </Grid>
 </UserControl>

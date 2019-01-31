@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Media;
+using MaterialDesignColors;
 using System.Windows.Threading;
+using System.Windows;
 
 namespace ProjectTemplate_v2.Models.Gauges
 {
@@ -16,8 +18,6 @@ namespace ProjectTemplate_v2.Models.Gauges
         public HumidityGaugeCtrl(HumiditySensor sensor,SensorModel model)
         {
             InitializeComponent();
-            minMarker.Value=(double)sensor.MinValue;
-            maxMarker.Value = (double)sensor.MaxValue;
             humidityGauge.ToolTip = sensor.Name;
             sensorId = model.SensorId;
             this.sensor = sensor;
@@ -34,12 +34,17 @@ namespace ProjectTemplate_v2.Models.Gauges
         void Timer_Tick(object sender,EventArgs e)
         {
             Needle.Value = HttpService.GetValueAsync(sensorId).Result;
-            if (Needle.Value >(double) sensor.MaxValue || Needle.Value < (double)sensor.MinValue)
+            label.Text = string.Format($"{Needle.Value}");
+            if (Needle.Value > (double)sensor.MaxValue || Needle.Value < (double)sensor.MinValue)
             {
-                humidityGauge.Background = new SolidColorBrush(Colors.IndianRed);
+               // humidityGauge.Background = new SolidColorBrush(Colors.IndianRed);
+                Needle.Background = new SolidColorBrush(Colors.IndianRed);
             }
             else
+            {
                 humidityGauge.Background = new SolidColorBrush(Colors.Transparent);
+                Needle.Background= (Brush)Application.Current.Resources["PrimaryHueLightBrush"];
+            }
         }
     }
 }

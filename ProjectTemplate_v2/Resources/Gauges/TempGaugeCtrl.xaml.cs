@@ -17,11 +17,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
         public TempGaugeCtrl(TemperatureSensor sensor,SensorModel model)
         {
             InitializeComponent();
-            chillRange.Max = (double)sensor.MinValue;
-            hotRange.Min = (double)sensor.MaxValue;
-            midRange.Max = hotRange.Min;
-            midRange.Min =chillRange.Max;
-            tempGauge.ToolTip = sensor.Name;
+            this.ToolTip = sensor.Name;
             sensorId = model.SensorId;
             this.sensor = sensor;
 
@@ -37,12 +33,15 @@ namespace ProjectTemplate_v2.Resources.Gauges
          void Timer_Tick(object sender, EventArgs e)
         {
             bar.Value = HttpService.GetValueAsync(sensorId).Result;
-            if (bar.Value > (double)sensor.MaxValue || bar.Value < (double)sensor.MinValue)
+            numValue.Text = bar.Value.ToString();
+            if (bar.Value >= (double)sensor.MaxValue)
             {
-                gradient.Color = (Color)ColorConverter.ConvertFromString("IndianRed");
+                stateIndicator.Fill = new SolidColorBrush(Colors.IndianRed);
             }
+            else if (bar.Value <= (double)sensor.MinValue)
+                stateIndicator.Fill = new SolidColorBrush(Colors.DodgerBlue);
             else
-                gradient.Color= (Color)ColorConverter.ConvertFromString("#FF009F98"); 
+                stateIndicator.Fill = new SolidColorBrush(Colors.Transparent);
         }
     }
 }

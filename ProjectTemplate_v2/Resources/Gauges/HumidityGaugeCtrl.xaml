@@ -8,23 +8,40 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200">
     <Grid>
-        <telerik:RadRadialGauge x:Name="humidityGauge" telerik:StyleManager.Theme="Summer">
-            <telerik:RadialScale FontSize="16" LabelRotationMode="None"
-                                 FontWeight="Light">
+        <telerik:RadRadialGauge x:Name="humidityGauge" telerik:StyleManager.Theme="Office2013">
+            <telerik:RadialScale FontSize="14" LabelRotationMode="None"
+                                 LabelLocation="Outside"
+                                 FontWeight="Regular"
+                                 MajorTickBackground="{StaticResource PrimaryHueDarkBrush}"
+                                 MajorTickRelativeHeight="9">
                 <telerik:RadialScale.Indicators>
-                    <telerik:Marker x:Name="minMarker" BorderBrush="IndianRed" BorderThickness="4" Background="IndianRed"/>
-                    <telerik:Marker x:Name="maxMarker" BorderBrush="IndianRed" BorderThickness="4" Background="IndianRed"/>
-                    <telerik:Needle x:Name="Needle" Background="{StaticResource PrimaryHueLightBrush}" />
-                    <telerik:Pinpoint Background="{StaticResource PrimaryHueMidBrush}"/>
+                    <!--<telerik:Marker x:Name="minMarker" BorderBrush="IndianRed" BorderThickness="2" Background="Transparent"
+                                    telerik:ScaleObject.Location="Inside"
+                                    telerik:ScaleObject.RelativeHeight="17"
+                                    telerik:ScaleObject.RelativeWidth="17"/>
+                    <telerik:Marker x:Name="maxMarker" BorderBrush="IndianRed" BorderThickness="2" Background="Transparent"
+                                    telerik:ScaleObject.Location="Inside"
+                                    telerik:ScaleObject.RelativeHeight="17"
+                                    telerik:ScaleObject.RelativeWidth="17"/>-->
+                    <!--<telerik:Needle x:Name="Needle" Background="{StaticResource PrimaryHueLightBrush}" />
+                    <telerik:Pinpoint Background="{StaticResource PrimaryHueMidBrush}"/>-->
+                    <telerik:BarIndicator x:Name="Needle"
+                                          telerik:ScaleObject.Location="Inside"
+                                          Background="{StaticResource PrimaryHueLightBrush}"/>
                 </telerik:RadialScale.Indicators>
             </telerik:RadialScale>
         </telerik:RadRadialGauge>
-        <TextBlock Text="%" 
-                   FontSize="26"
-                   Margin="0 60 0 0"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Foreground="{StaticResource PrimaryHueDarkBrush}"
-                   Opacity=".70"
-                   FontWeight="Light"/>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Margin="5 0 0 0">
+            <TextBlock x:Name="label"
+                   FontSize="35"
+                   Foreground="{StaticResource PrimaryHueMidBrush}"
+                   FontWeight="Regular"/>
+            <TextBlock Text="%"
+                       FontSize="30"
+                       VerticalAlignment="Bottom"
+                       Foreground="{StaticResource PrimaryHueLightBrush}"/>
+        </WrapPanel>
+
     </Grid>
 </UserControl>
