@@ -1,5 +1,7 @@
 ﻿using ProjectTemplate_v2.Models;
 using System;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -12,36 +14,61 @@ namespace ProjectTemplate_v2.Resources.Gauges
     public partial class TempGaugeCtrl : UserControl
     {
         private TemperatureSensor sensor;
-        private string sensorId;
+        private SensorModel model;
 
-        public TempGaugeCtrl(TemperatureSensor sensor,SensorModel model)
+        public TempGaugeCtrl(TemperatureSensor sensor)
         {
             InitializeComponent();
-            this.ToolTip = sensor.Name;
-            sensorId = model.SensorId;
+            ToolTip = sensor.Name;
             this.sensor = sensor;
 
-            DispatcherTimer timer = new DispatcherTimer
+            try
             {
-                Interval = TimeSpan.FromSeconds(model.MinPollingIntervalInSeconds)
-            };
-            timer.Tick += Timer_Tick;
-            timer.Start();
-            Timer_Tick(new object(), new EventArgs());
+                model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
+
+                DispatcherTimer timer = new DispatcherTimer
+                {
+                    Interval = TimeSpan.FromSeconds(model.MinPollingIntervalInSeconds)
+                };
+                timer.Tick += Timer_Tick;
+                timer.Start();
+                Timer_Tick(new object(), new EventArgs());
+            }
+            catch
+            {
+                unit.Foreground = new SolidColorBrush(Colors.LightGray);
+                stateIndicator.Fill = new SolidColorBrush(Colors.LightGray);
+            }
         }
 
-         void Timer_Tick(object sender, EventArgs e)
+        void Timer_Tick(object sender, EventArgs e)
         {
-            bar.Value = HttpService.GetValueAsync(sensorId).Result;
-            numValue.Text = bar.Value.ToString();
-            if (bar.Value >= (double)sensor.MaxValue)
+            try
             {
-                stateIndicator.Fill = new SolidColorBrush(Colors.IndianRed);
+                bar.Value = HttpService.GetValueAsync(model.SensorId).Result;
+                numValue.Text = bar.Value.ToString();
+
+                unit.Foreground = (Brush)Application.Current.Resources["PrimaryHueLightBrush"];
+                if (bar.Value >= (double)sensor.MaxValue)
+                {
+                    stateIndicator.Fill = new SolidColorBrush(Colors.IndianRed);
+                }
+                else if (bar.Value <= (double)sensor.MinValue)
+                    stateIndicator.Fill = new SolidColorBrush(Colors.DodgerBlue);
+                else
+                {
+                    stateIndicator.Fill = new SolidColorBrush(Colors.Transparent);
+                }
             }
-            else if (bar.Value <= (double)sensor.MinValue)
-                stateIndicator.Fill = new SolidColorBrush(Colors.DodgerBlue);
-            else
-                stateIndicator.Fill = new SolidColorBrush(Colors.Transparent);
+            catch(Exception)
+            {
+                unit.Foreground = new SolidColorBrush(Colors.LightGray);
+                bar.Background = new SolidColorBrush(Colors.LightGray);
+                numValue.Foreground = new SolidColorBrush(Colors.LightGray);
+                stateIndicator.Fill = new SolidColorBrush(Colors.LightGray);
+                return;
+            }
+
         }
     }
 }

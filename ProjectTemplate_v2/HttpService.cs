@@ -15,6 +15,7 @@ namespace ProjectTemplate_v2
     {
         private static HttpClient _client;
         public static List<SensorModel> SensorList { get; set; }
+        public static bool IsInitialized { get; private set; }
 
         public static void InitializeClient()
         {
@@ -26,10 +27,12 @@ namespace ProjectTemplate_v2
             try
             {
                 SensorList = JsonConvert.DeserializeObject<List<SensorModel>>(GetList().Result);
+                IsInitialized = true;
             }
             catch
             {
                 SensorList = new List<SensorModel>();
+                IsInitialized = false;
             }
         }
 
@@ -50,7 +53,7 @@ namespace ProjectTemplate_v2
         public static async Task<double> GetValueAsync(string sensorId)
         {
             ValueModel vm = null;
-            string url = "http://telerikacademy.icb.bg/api/sensor/"+sensorId;
+            string url = "http://telerikacademy.icb.bg/api/sensor/" + sensorId;
 
             HttpResponseMessage response = await _client.GetAsync(url).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
@@ -60,6 +63,7 @@ namespace ProjectTemplate_v2
             }
 
             return Convert.ToDouble(vm.Value);
+
         }
     }
 }

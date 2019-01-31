@@ -18,9 +18,11 @@ namespace ProjectTemplate_v2.ViewModels
         public DashViewModel(Sensors sensors)
         {
             this.sensors = sensors;
-            GetFollowedList(sensors);          
+            GetFollowedList(sensors);
+            if (!HttpService.IsInitialized)
+                HttpService.InitializeClient();
             //AutoTileCommand = new DelegateCommand(AutoGenerateTile);
-        }     
+        }
 
         private void GetFollowedList(Sensors sensors)
         {
@@ -33,28 +35,22 @@ namespace ProjectTemplate_v2.ViewModels
         {
             Sensor sensor = e.Tile.Content as Sensor;
 
-            e.Tile.Background = (Brush)Application.Current.Resources["PrimaryHueDarkBrush"];
+            //e.Tile.Background = (Brush)Application.Current.Resources["PrimaryHueDarkBrush"];
+            //e.Tile.Background = new SolidColorBrush(Colors.White);
             e.Tile.TileType = TileType.Single;
 
             if (sensor is HumiditySensor)
             {
-                try
-                {
-                    var model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
-                    e.Tile.Content = new HumidityGaugeCtrl((HumiditySensor)sensor, model);
-
-                }
-                catch
-                {
-                    e.Tile.Background = new SolidColorBrush(Colors.LightGray);
-                    //TODO: sensor off view    
-                }
+                e.Tile.Content = new HumidityGaugeCtrl((HumiditySensor)sensor);
 
             }
             else if (sensor is TemperatureSensor)
             {
-                var model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
-                e.Tile.Content = new TempGaugeCtrl((TemperatureSensor)sensor, model);
+                e.Tile.Content = new TempGaugeCtrl((TemperatureSensor)sensor);
+            }
+            else if (sensor is PowerConsumptionSensor)
+            {
+                e.Tile.Content = new PowerGaugeCtrl((PowerConsumptionSensor)sensor);
             }
         }
     }

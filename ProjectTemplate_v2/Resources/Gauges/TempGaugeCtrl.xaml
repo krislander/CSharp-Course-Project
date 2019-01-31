@@ -38,6 +38,7 @@
                    FontWeight="Regular"
                   FontStretch="UltraCondensed"/>
             <TextBlock Text="°C"
+                       x:Name="unit"
                        FontSize="30"
                        FontWeight="Regular"
                        Foreground="{StaticResource PrimaryHueLightBrush}"/>

@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:ProjectTemplate_v2.Models.Gauges"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200">
-    <Grid>
+    <Grid Background="White">
         <telerik:RadRadialGauge x:Name="humidityGauge" telerik:StyleManager.Theme="Office2013">
             <telerik:RadialScale FontSize="14" LabelRotationMode="None"
                                  LabelLocation="Outside"
@@ -38,6 +38,7 @@
                    Foreground="{StaticResource PrimaryHueMidBrush}"
                    FontWeight="Regular"/>
             <TextBlock Text="%"
+                       x:Name="unit"
                        FontSize="30"
                        VerticalAlignment="Bottom"
                        Foreground="{StaticResource PrimaryHueLightBrush}"/>
