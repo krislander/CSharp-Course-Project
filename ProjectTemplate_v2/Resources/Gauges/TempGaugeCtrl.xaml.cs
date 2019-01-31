@@ -48,6 +48,8 @@ namespace ProjectTemplate_v2.Resources.Gauges
                 bar.Value = HttpService.GetValueAsync(model.SensorId).Result;
                 numValue.Text = bar.Value.ToString();
 
+                bar.Background= (Brush)Application.Current.Resources["PrimaryHueLightBrush"];
+                numValue.Foreground = (Brush)Application.Current.Resources["PrimaryHueMidBrush"];
                 unit.Foreground = (Brush)Application.Current.Resources["PrimaryHueLightBrush"];
                 if (bar.Value >= (double)sensor.MaxValue)
                 {
@@ -66,7 +68,6 @@ namespace ProjectTemplate_v2.Resources.Gauges
                 bar.Background = new SolidColorBrush(Colors.LightGray);
                 numValue.Foreground = new SolidColorBrush(Colors.LightGray);
                 stateIndicator.Fill = new SolidColorBrush(Colors.LightGray);
-                return;
             }
 
         }

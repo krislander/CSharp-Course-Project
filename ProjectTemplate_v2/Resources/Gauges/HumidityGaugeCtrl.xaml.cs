@@ -64,7 +64,6 @@ namespace ProjectTemplate_v2.Models.Gauges
                 label.Foreground = new SolidColorBrush(Colors.LightGray);
                 Needle.Background = new SolidColorBrush(Colors.LightGray);
                 unit.Foreground = new SolidColorBrush(Colors.LightGray);
-                return;
             }
         }
     }

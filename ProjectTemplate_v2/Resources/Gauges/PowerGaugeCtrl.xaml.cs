@@ -89,7 +89,6 @@ namespace ProjectTemplate_v2.Resources.Gauges
                 numIndicator.Foreground = new SolidColorBrush(Colors.LightGray);
                 label.Foreground = new SolidColorBrush(Colors.LightGray);
                 bar.Background = new SolidColorBrush(Colors.LightGray);
-                return;
             }
         }
     }
