@@ -121,6 +121,7 @@
     <Compile Include="Views\MapView.xaml.cs">
       <DependentUpon>MapView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Converters\ToIconConverter.cs" />
     <Compile Include="Views\ViewOnMap.xaml.cs">
       <DependentUpon>ViewOnMap.xaml</DependentUpon>
     </Compile>

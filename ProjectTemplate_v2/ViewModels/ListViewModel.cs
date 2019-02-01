@@ -29,7 +29,6 @@ namespace ProjectTemplate_v2.ViewModels
 
         private Sensor selected;
         private string followButtonContent;
-        private PackIconKind iconKind;
         private ObservableCollection<Sensor> list;
         private ICollectionView collectionView;
 
@@ -124,21 +123,6 @@ namespace ProjectTemplate_v2.ViewModels
                     if (Selected != null)
                     {
                         FollowButtonContent = !Selected.Followed ? "Follow" : "Unfollow";
-
-                        if (selected is HumiditySensor)
-                            IconKind = PackIconKind.Humidity;
-                        else if (selected is NoiseSensor)
-                            IconKind = PackIconKind.VolumeHigh;
-                        else if (selected is PowerConsumptionSensor)
-                            IconKind = PackIconKind.Electricity;
-                        else if (selected is TemperatureSensor)
-                            IconKind = PackIconKind.ThermometerLines;
-                        else
-                            IconKind = PackIconKind.DoorOpen;
-                    }
-                    else
-                    {
-                        IconKind = PackIconKind.AccessPoint;
                     }
                     RaisePropertyChanged("Selected");
                 }
@@ -154,19 +138,6 @@ namespace ProjectTemplate_v2.ViewModels
                 {
                     list = value;
                     RaisePropertyChanged("List");
-                }
-            }
-        }
-
-        public PackIconKind IconKind
-        {
-            get { return iconKind; }
-            set
-            {
-                if (iconKind != value)
-                {
-                    iconKind = value;
-                    RaisePropertyChanged("IconKind");
                 }
             }
         }
