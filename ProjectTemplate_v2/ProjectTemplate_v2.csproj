@@ -99,6 +99,7 @@
     <Compile Include="Resources\Gauges\TempGaugeCtrl.xaml.cs">
       <DependentUpon>TempGaugeCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\AddFormDialogViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\EditFormDialogViewModel.cs" />
@@ -106,6 +107,9 @@
     <Compile Include="ViewModels\DashViewModel.cs" />
     <Compile Include="ViewModels\MapViewModel.cs" />
     <Compile Include="ViewModels\ViewOnMapViewModel.cs" />
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddFormDialog.xaml.cs">
       <DependentUpon>AddFormDialog.xaml</DependentUpon>
     </Compile>
@@ -146,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Gauges\TempGaugeCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
