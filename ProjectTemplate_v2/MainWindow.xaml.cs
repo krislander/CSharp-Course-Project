@@ -5,6 +5,7 @@ using System.Windows.Data;
 using System.Xml.Serialization;
 using MaterialDesignThemes.Wpf;
 using ProjectTemplate_v2.ViewModels;
+using ProjectTemplate_v2.Views;
 
 namespace ProjectTemplate_v2
 {
@@ -72,7 +73,8 @@ namespace ProjectTemplate_v2
 
         private void BtnAbout_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            DataContext = new AboutView();
+            MenuToggleButton.IsChecked = false;
         }
     }
 }

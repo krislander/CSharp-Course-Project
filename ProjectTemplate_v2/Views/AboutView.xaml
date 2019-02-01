@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="ProjectTemplate_v2.Views.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="542" d:DesignWidth="1016"
+             Padding="20">
+
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+              Storyboard.TargetProperty="Opacity"
+              From="0.0" To="1.0" Duration="0:0:0.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <materialDesign:Card Padding="20" Height="424" Width="888">
+            <WrapPanel>
+                <StackPanel>
+                    <UniformGrid Columns="4">
+                        <UniformGrid.Resources>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignTabRadioButton}">
+                                <Setter Property="Padding" Value="0"/>
+                            </Style>
+                        </UniformGrid.Resources>
+                        <RadioButton Content="Creators" IsChecked="True"
+                                     Command="{Binding CreatorsPage}"/>
+                        <RadioButton Content="Dashboard page"
+                                     Command="{Binding DashBoardPage}"/>
+                        <RadioButton Content="Sensors Page"
+                                     Command="{Binding SensorsPage}"/>
+                        <RadioButton Content="Map Page"
+                                     Command="{Binding MapPage}"/>
+                    </UniformGrid>
+
+                    <Grid Height="350" Width="850">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="187*" />
+                            <ColumnDefinition Width="239*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="ImageBox"
+                                Grid.Column="0"
+                                Height="200" Width="296"
+                              Stretch="UniformToFill" Margin="25" />
+
+                        <StackPanel Grid.Column="1" Margin="8 24 8 0">
+                            <TextBlock x:Name="TextBlockHeader" FontWeight="Bold"/>
+                            <TextBlock x:Name="DownTextBlockText" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </WrapPanel>
+        </materialDesign:Card>
+    </WrapPanel>
+</UserControl>
