@@ -43,18 +43,34 @@
                          HorizontalContentAlignment="Center"
                          FontSize="16"
                          FontWeight="Normal">
-                        <ListBoxItem x:Name="btnToMain" 
+                        <WrapPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Height="35" Width="35"/>
+                            <ListBoxItem x:Name="btnToMain" 
+                                         HorizontalContentAlignment="Left"
                                  PreviewMouseLeftButtonUp="BtnToMain_PreviewMouseLeftButtonUp" 
                                  Content="Dashboard"/>
-                        <ListBoxItem x:Name="btnToSensorList" 
+                        </WrapPanel>
+                        <WrapPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon Kind="FormatListBulleted" Height="35" Width="35"/>
+                            <ListBoxItem x:Name="btnToSensorList" 
+                                         HorizontalContentAlignment="Left"
                                  PreviewMouseLeftButtonUp="BtnToSensorList_PreviewMouseLeftButtonUp" 
                                  Content="Sensors"/>
-                        <ListBoxItem x:Name="btnToMap" 
+                        </WrapPanel>
+                        <WrapPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon Kind="Bing" Height="35" Width="35"/>
+                            <ListBoxItem x:Name="btnToMap"
+                                         HorizontalContentAlignment="Left"
                                  PreviewMouseLeftButtonUp="BtnToMap_PreviewMouseLeftButtonUp" 
                                  Content="Map"/>
-                        <ListBoxItem x:Name="btnAbout"
+                        </WrapPanel>
+                        <WrapPanel Margin="10,0,0,0">
+                            <materialDesign:PackIcon Kind="About" Height="35" Width="35"/>
+                            <ListBoxItem x:Name="btnAbout"
+                                         HorizontalContentAlignment="Left"
                                      PreviewMouseLeftButtonUp="BtnAbout_PreviewMouseLeftButtonUp"
                                      Content="About"/>
+                        </WrapPanel>
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>

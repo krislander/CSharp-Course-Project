@@ -224,5 +224,10 @@
   <ItemGroup>
     <Resource Include="Resources\icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PicturesAboutPage\Dashboard.jpg" />
+    <Resource Include="Resources\PicturesAboutPage\MapPage.jpg" />
+    <Resource Include="Resources\PicturesAboutPage\SenzorPage.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

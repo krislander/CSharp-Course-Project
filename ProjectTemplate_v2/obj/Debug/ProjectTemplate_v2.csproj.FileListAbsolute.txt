@@ -50,6 +50,7 @@ D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.cs
 D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.csproj.CopyComplete
 D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.exe
 D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.pdb
+<<<<<<< Updated upstream
 C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\bin\Debug\ProjectTemplate_v2.exe.config
 C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\bin\Debug\ProjectTemplate_v2.exe
 C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\bin\Debug\ProjectTemplate_v2.pdb
@@ -107,3 +108,6 @@ C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTempl
 C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.pdb
 C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\Resources\Gauges\DoorWindowGaugeCtrl.g.cs
 C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\Resources\Gauges\DoorWindowGaugeCtrl.baml
+=======
+D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.csprojAssemblyReference.cache
+>>>>>>> Stashed changes

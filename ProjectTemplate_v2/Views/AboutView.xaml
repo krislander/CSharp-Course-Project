@@ -10,6 +10,13 @@
              Padding="20">
 
 
+    <UserControl.Resources>
+        <DataTemplate x:Key="gridcho1">
+            
+        </DataTemplate> 
+
+    </UserControl.Resources>
+    
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="Loaded">
             <BeginStoryboard>
@@ -22,44 +29,110 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <materialDesign:Card Padding="20" Height="424" Width="888">
-            <WrapPanel>
-                <StackPanel>
-                    <UniformGrid Columns="4">
-                        <UniformGrid.Resources>
-                            <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignTabRadioButton}">
-                                <Setter Property="Padding" Value="0"/>
-                            </Style>
-                        </UniformGrid.Resources>
-                        <RadioButton Content="Creators" IsChecked="True"
-                                     Command="{Binding CreatorsPage}"/>
-                        <RadioButton Content="Dashboard page"
-                                     Command="{Binding DashBoardPage}"/>
-                        <RadioButton Content="Sensors Page"
-                                     Command="{Binding SensorsPage}"/>
-                        <RadioButton Content="Map Page"
-                                     Command="{Binding MapPage}"/>
-                    </UniformGrid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="950" Height="450">
+        <UniformGrid Columns="4">
+            <UniformGrid.Resources>
+                <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignTabRadioButton}">
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </UniformGrid.Resources>
+            <RadioButton Content="Creators" IsChecked="True"
+                                     Checked="CreatorsPage_Checked"/>
+            <RadioButton Content="Dashboard page"
+                                     Checked="DashboardPage_Checked"/>
+            <RadioButton Content="Sensors Page"
+                                     Checked="SensorsPage_Checked"/>
+            <RadioButton Content="Map Page"
+                                     Checked="MapPage_Checked"/>
+        </UniformGrid>
 
-                    <Grid Height="350" Width="850">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="187*" />
-                            <ColumnDefinition Width="239*" />
-                        </Grid.ColumnDefinitions>
+        <Canvas>
+            <materialDesign:Card x:Name="card1" Visibility="Hidden"  Width="200" Canvas.Left="40" Canvas.Top="141">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="140" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                          Source="{Binding ImagePath1}"
+                          Height="140"
+                          Width="196"
+                          Stretch="UniformToFill" />
 
-                        <Image x:Name="ImageBox"
-                                Grid.Column="0"
-                                Height="200" Width="296"
-                              Stretch="UniformToFill" Margin="25" />
+                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
+                        <TextBlock x:Name="txtBlock1Header" Margin="10" FontWeight="Bold"/>
+                        <TextBlock x:Name="txtBlock1Text" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
+                    </StackPanel>
 
-                        <StackPanel Grid.Column="1" Margin="8 24 8 0">
-                            <TextBlock x:Name="TextBlockHeader" FontWeight="Bold"/>
-                            <TextBlock x:Name="DownTextBlockText" TextWrapping="Wrap" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-            </WrapPanel>
-        </materialDesign:Card>
-    </WrapPanel>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card x:Name="card2" Visibility="Hidden" Width="200" Canvas.Left="274" Canvas.Top="32">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="140" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                          Source="{Binding ImagePath2}"
+                          Height="140"
+                          Width="196"
+                          Stretch="UniformToFill" />
+
+                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
+                        <TextBlock Text="{Binding card2Header}" Margin="10" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding card2Text}" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card x:Name="card3" Visibility="Hidden" Width="200" Canvas.Left="504" Canvas.Top="141">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="140" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                          Source="{Binding ImagePath3}"
+                          Height="140"
+                          Width="196"
+                          Stretch="UniformToFill" />
+
+                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
+                        <TextBlock Text="{Binding card3Header}" Margin="10" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding card3Text}" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card x:Name="card4" Visibility="Hidden" Width="200" Canvas.Left="738" Canvas.Top="60">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="140" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                          Source="{Binding ImagePath4}"
+                          Height="140"
+                          Width="196"
+                          Stretch="UniformToFill" />
+
+                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
+                        <TextBlock Text="{Binding card4Header}" Margin="10" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding card4Text}" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+        </Canvas>
+
+
+        
+    </StackPanel>
 </UserControl>
