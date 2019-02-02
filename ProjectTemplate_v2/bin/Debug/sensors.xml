@@ -71,5 +71,32 @@
       <MaxValue>5</MaxValue>
       <MinValue>0</MinValue>
     </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>12</Longitude>
+      <Latitude>13</Latitude>
+      <Link>OccupancySensor2</Link>
+      <Description>asdd</Description>
+      <Name>door1</Name>
+      <Opened>false</Opened>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>32</Longitude>
+      <Latitude>23</Latitude>
+      <Link>OccupancySensor1</Link>
+      <Description>sadadd</Description>
+      <Name>door2</Name>
+      <Opened>true</Opened>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>DoorSensor1</Link>
+      <Description>DAWDA</Description>
+      <Name>window1</Name>
+      <Opened>false</Opened>
+    </Sensor>
   </Sensors>
 </Sensors>

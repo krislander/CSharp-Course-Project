@@ -36,7 +36,7 @@ namespace ProjectTemplate_v2.ViewModels
             Sensor sensor = e.Tile.Content as Sensor;
 
             //e.Tile.Background = (Brush)Application.Current.Resources["PrimaryHueDarkBrush"];
-            //e.Tile.Background = new SolidColorBrush(Colors.White);
+            e.Tile.Background = new SolidColorBrush(Colors.White);
             e.Tile.TileType = TileType.Single;
 
             if (sensor is HumiditySensor)
@@ -51,6 +51,10 @@ namespace ProjectTemplate_v2.ViewModels
             else if (sensor is PowerConsumptionSensor)
             {
                 e.Tile.Content = new PowerGaugeCtrl((PowerConsumptionSensor)sensor);
+            }
+            else if(sensor is WindowDoorSensor)
+            {
+                e.Tile.Content = new DoorWindowGaugeCtrl((WindowDoorSensor)sensor);
             }
         }
     }

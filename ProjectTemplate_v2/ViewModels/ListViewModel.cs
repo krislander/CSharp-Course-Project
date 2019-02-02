@@ -110,6 +110,7 @@ namespace ProjectTemplate_v2.ViewModels
 
             FollowButtonContent = !Selected.Followed ? "Follow" : "Unfollow";
             UpdateXml(sensors);
+            Snackbar.Enqueue(Selected.Followed?"Followed":"Unfollowed");
         }
 
         public Sensor Selected

@@ -41,11 +41,11 @@ namespace ProjectTemplate_v2.Resources.Gauges
             }
         }
 
-        void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             try
             {
-                bar.Value = HttpService.GetValueAsync(model.SensorId).Result;
+                bar.Value = Convert.ToDouble(HttpService.GetValueAsync(model.SensorId).Result.Value);
                 numValue.Text = bar.Value.ToString();
 
                 bar.Background= (Brush)Application.Current.Resources["PrimaryHueLightBrush"];

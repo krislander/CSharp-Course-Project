@@ -40,17 +40,22 @@ namespace ProjectTemplate_v2.Models.Gauges
             }
         }
 
-        void Timer_Tick(object sender,EventArgs e)
+        private void Timer_Tick(object sender,EventArgs e)
         {
             try
             {
-                Needle.Value = HttpService.GetValueAsync(model.SensorId).Result;
+                Needle.Value = Convert.ToDouble(HttpService.GetValueAsync(model.SensorId).Result.Value);
                 label.Text = Needle.Value.ToString();
                 if (Needle.Value > (double)sensor.MaxValue || Needle.Value < (double)sensor.MinValue)
                 {
-                    Needle.Background = new SolidColorBrush(Colors.IndianRed);
-                    unit.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    label.Foreground = new SolidColorBrush(Colors.IndianRed);
+                    //Needle.Background = new SolidColorBrush(Colors.IndianRed);
+                    //unit.Foreground = new SolidColorBrush(Colors.IndianRed);
+                    //label.Foreground = new SolidColorBrush(Colors.IndianRed);
+                    var converter = new BrushConverter();
+                    var brush = (Brush)converter.ConvertFromString("#B00020");
+                    Needle.Background = brush;
+                    unit.Foreground = brush;
+                    label.Foreground = brush;
                 }
                 else
                 {

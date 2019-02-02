@@ -50,7 +50,7 @@ namespace ProjectTemplate_v2
             return list;
         }
 
-        public static async Task<double> GetValueAsync(string sensorId)
+        public static async Task<ValueModel> GetValueAsync(string sensorId)
         {
             ValueModel vm = null;
             string url = "http://telerikacademy.icb.bg/api/sensor/" + sensorId;
@@ -62,7 +62,7 @@ namespace ProjectTemplate_v2
 
             }
 
-            return Convert.ToDouble(vm.Value);
+            return vm;
 
         }
     }

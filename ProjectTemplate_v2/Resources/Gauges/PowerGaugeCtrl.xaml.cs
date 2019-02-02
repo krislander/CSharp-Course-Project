@@ -51,26 +51,38 @@ namespace ProjectTemplate_v2.Resources.Gauges
         {
             try
             {
-                bar.Value = HttpService.GetValueAsync(model.SensorId).Result;
+                bar.Value = Convert.ToDouble(HttpService.GetValueAsync(model.SensorId).Result.Value);
                 numIndicator.Text = bar.Value.ToString();
 
                 if (bar.Value < (double)sensor.MinValue)
                 {
                     bar.Value = (double)sensor.MinValue;
 
-                    needle.Background = new SolidColorBrush(Colors.IndianRed);
-                    numIndicator.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    label.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    bar.Background = new SolidColorBrush(Colors.IndianRed);
+                    //needle.Background = new SolidColorBrush(Colors.IndianRed);
+                    //numIndicator.Foreground = new SolidColorBrush(Colors.IndianRed);
+                    //label.Foreground = new SolidColorBrush(Colors.IndianRed);
+                    //bar.Background = new SolidColorBrush(Colors.IndianRed);
+                    var converter = new BrushConverter();
+                    var brush = (Brush)converter.ConvertFromString("#B00020");
+                    needle.Background = brush;
+                    numIndicator.Foreground = brush;
+                    bar.Background = brush;
+                    label.Foreground = brush;
                 }
                 else if (bar.Value > (double)sensor.MaxValue)
                 {
                     bar.Value = (double)sensor.MaxValue;
 
-                    needle.Background = new SolidColorBrush(Colors.IndianRed);
-                    numIndicator.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    label.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    bar.Background = new SolidColorBrush(Colors.IndianRed);
+                    //needle.Background = new SolidColorBrush(Colors.IndianRed);
+                    //numIndicator.Foreground = new SolidColorBrush(Colors.IndianRed);
+                    //label.Foreground = new SolidColorBrush(Colors.IndianRed);
+                    //bar.Background = new SolidColorBrush(Colors.IndianRed);
+                    var converter = new BrushConverter();
+                    var brush = (Brush)converter.ConvertFromString("#B00020");
+                    needle.Background = brush;
+                    numIndicator.Foreground = brush;
+                    bar.Background = brush;
+                    label.Foreground = brush;
                 }
                 else
                 {
