@@ -3,6 +3,7 @@ using ProjectTemplate_v2.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -10,7 +11,7 @@ using Telerik.Windows.Controls;
 
 namespace ProjectTemplate_v2.ViewModels
 {
-    public class AddFormDialogViewModel : BaseViewModel
+    public class AddFormDialogViewModel : BaseViewModel, IDataErrorInfo
     {
         public List<string> Types { get; private set; } =
                new List<string>() { "Temperature", "Humidity", "Electricity Consumption", "Noise", "Window/Door" };
@@ -34,7 +35,7 @@ namespace ProjectTemplate_v2.ViewModels
         private Visibility visibility2 = Visibility.Collapsed;
         private bool isEnabled = false;
 
-        public AddFormDialogViewModel(Sensors sensors,SnackbarMessageQueue snackbar)
+        public AddFormDialogViewModel(Sensors sensors, SnackbarMessageQueue snackbar)
         {
             this.sensors = sensors;
             Snackbar = snackbar;
@@ -86,6 +87,8 @@ namespace ProjectTemplate_v2.ViewModels
                     break;
             }
 
+            //proverka dali ima greshki
+            //ako ima da ne pozvolqva submit
             sensors.List.Add(sensor);
             UpdateXml(sensors);
             Snackbar.Enqueue($"{sensor.Name} added");
@@ -183,6 +186,64 @@ namespace ProjectTemplate_v2.ViewModels
                     visibility1 = value;
                     RaisePropertyChanged("Visibility1");
                 }
+            }
+        }
+
+        public string Error { get { return null; } }
+
+
+        //IDataErrorInfo interface implementation
+        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+
+        public string this[string Fieldname]
+        {
+            get
+            {
+                string result = null;
+
+                switch (Fieldname)
+                {
+                    case "Name":
+                        if (string.IsNullOrEmpty(Name) || string.IsNullOrWhiteSpace(Name))
+                            result = "Name cannot be empty!";
+                        else if (Name.Length < 4)
+                            result = "Name's length must be at least 4";
+                        break;
+                    case "MinValue":
+                        if (string.IsNullOrEmpty(MinValue) || string.IsNullOrWhiteSpace(MinValue))
+                            result = "MinValue cannot be empty!";
+                        else if (Convert.ToDecimal(MinValue) >= Convert.ToDecimal(MaxValue))
+                            result = "MinValue is equal to or bigger than MaxValue";
+                        break;
+                    case "MaxValue":
+                        if (string.IsNullOrEmpty(MaxValue) || string.IsNullOrWhiteSpace(MaxValue))
+                            result = "MaxValue cannot be empty!";
+                        break;
+                    case "Latitude":
+                        if (string.IsNullOrWhiteSpace(Latitude) || string.IsNullOrEmpty(Latitude))
+                            result = "Latitude cannot be empty";
+                        else if (Convert.ToDouble(Latitude) < -90 || Convert.ToDouble(Latitude) > 90)
+                            result = "Invalid Latitude coordinates";
+                        break;
+                    case "Longitude":
+                        if (string.IsNullOrWhiteSpace(Longitude) || string.IsNullOrEmpty(Longitude))
+                            result = "Latitude cannot be empty";
+                        else if (Convert.ToDouble(Longitude) < -180 || Convert.ToDouble(Longitude) > 180)
+                            result = "Invalid Longtitude coordinates";
+                        break;
+                    case "Description":
+                        if (string.IsNullOrEmpty(Description) || string.IsNullOrWhiteSpace(Description))
+                            result = "Description field is empty!";
+                        break;
+                }
+
+                if (ErrorCollection.ContainsKey(Fieldname))
+                    ErrorCollection[Fieldname] = result;
+                else if (result != null)
+                    ErrorCollection.Add(Fieldname, result);
+
+                RaisePropertyChanged("ErrorCollection");
+                return result;
             }
         }
     }

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ProjectTemplate_v2.Views"             
+             xmlns:local="clr-namespace:ProjectTemplate_v2.Views"   
+             xmlns:Validator ="clr-namespace:ProjectTemplate_v2.ViewModels"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="400"
@@ -15,8 +16,10 @@
                 <Setter Property="FontSize" Value="18"/>
             </Style>
         </StackPanel.Resources>
-        
-        <TextBox Text="{Binding Selected.Name}" 
+
+        <TextBox Text="{Binding Selected.Name, ValidatesOnDataErrors=True,
+                UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Name]}"
                  materialDesign:HintAssist.Hint="Name"  Margin="0 0 0 10"/>
         <!--<TextBox Text="{Binding Selected.Url}"
                  materialDesign:HintAssist.Hint="URL"  Margin="0 0 0 10"/>-->
@@ -24,9 +27,13 @@
                   materialDesign:HintAssist.Hint="Type" 
                   FontSize="18" Margin="0 0 0 5"/>-->
         <WrapPanel Visibility="{Binding OtherVis}">
-            <TextBox Text="{Binding Selected.MinValue}"
+            <TextBox Text="{Binding Selected.MinValue, ValidatesOnDataErrors=True,
+                UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[MinValue]}"
                      materialDesign:HintAssist.Hint="Min" Width="50" Margin="0 0 15 0"/>
-            <TextBox Text="{Binding Selected.MaxValue}"
+            <TextBox Text="{Binding Selected.MaxValue, ValidatesOnDataErrors=True,
+                UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[MaxValue]}"
                      materialDesign:HintAssist.Hint="Max" Width="50"/>
         </WrapPanel>
         <ComboBox SelectedIndex="{Binding Selected.Opened}"  Visibility="{Binding DoorWindow}"

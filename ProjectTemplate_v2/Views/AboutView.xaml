@@ -11,12 +11,36 @@
 
 
     <UserControl.Resources>
-        <DataTemplate x:Key="gridcho1">
-            
-        </DataTemplate> 
+        <ControlTemplate x:Key="CardTemplate">
+            <materialDesign:Card Visibility="Hidden"  Width="200" Canvas.Left="40" Canvas.Top="141">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="140" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                          Source="{Binding ImagePath}"
+                          Height="140"
+                          Width="196"
+                          Stretch="UniformToFill"/>
 
+                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
+                        <TextBlock x:Name="txtBlockHeader" Text="{Binding HeaderText}" Margin="10" FontWeight="Bold"/>
+                        <TextBlock x:Name="txtBlockText" Text="{Binding MainText}" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+
+            <ControlTemplate.Triggers>
+                <!--TO-DO-->
+
+            </ControlTemplate.Triggers>
+
+        </ControlTemplate>
     </UserControl.Resources>
-    
+
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="Loaded">
             <BeginStoryboard>
@@ -47,92 +71,10 @@
         </UniformGrid>
 
         <Canvas>
-            <materialDesign:Card x:Name="card1" Visibility="Hidden"  Width="200" Canvas.Left="40" Canvas.Top="141">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="140" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Image
-                          Source="{Binding ImagePath1}"
-                          Height="140"
-                          Width="196"
-                          Stretch="UniformToFill" />
-
-                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
-                        <TextBlock x:Name="txtBlock1Header" Margin="10" FontWeight="Bold"/>
-                        <TextBlock x:Name="txtBlock1Text" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                </Grid>
-            </materialDesign:Card>
-
-            <materialDesign:Card x:Name="card2" Visibility="Hidden" Width="200" Canvas.Left="274" Canvas.Top="32">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="140" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Image
-                          Source="{Binding ImagePath2}"
-                          Height="140"
-                          Width="196"
-                          Stretch="UniformToFill" />
-
-                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
-                        <TextBlock Text="{Binding card2Header}" Margin="10" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding card2Text}" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                </Grid>
-            </materialDesign:Card>
-
-            <materialDesign:Card x:Name="card3" Visibility="Hidden" Width="200" Canvas.Left="504" Canvas.Top="141">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="140" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Image
-                          Source="{Binding ImagePath3}"
-                          Height="140"
-                          Width="196"
-                          Stretch="UniformToFill" />
-
-                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
-                        <TextBlock Text="{Binding card3Header}" Margin="10" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding card3Text}" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                </Grid>
-            </materialDesign:Card>
-
-            <materialDesign:Card x:Name="card4" Visibility="Hidden" Width="200" Canvas.Left="738" Canvas.Top="60">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="140" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Image
-                          Source="{Binding ImagePath4}"
-                          Height="140"
-                          Width="196"
-                          Stretch="UniformToFill" />
-
-                    <StackPanel Grid.Row="1" Margin="8 8 8 0">
-                        <TextBlock Text="{Binding card4Header}" Margin="10" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding card4Text}" TextWrapping="Wrap" Margin="10" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                </Grid>
-            </materialDesign:Card>
+            <materialDesign:Card Template="{StaticResource CardTemplate}" Canvas.Left="8" Canvas.Top="56"/>
+            <materialDesign:Card Template="{StaticResource CardTemplate}" Canvas.Left="233" Canvas.Top="168"/>
+            <materialDesign:Card Template="{StaticResource CardTemplate}" Canvas.Left="498" Canvas.Top="168"/>
+            <materialDesign:Card Template="{StaticResource CardTemplate}" Canvas.Left="740" Canvas.Top="56"/>
         </Canvas>
-
-
-        
     </StackPanel>
 </UserControl>
