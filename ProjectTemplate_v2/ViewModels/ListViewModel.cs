@@ -16,7 +16,7 @@ namespace ProjectTemplate_v2.ViewModels
         public ICommand FollowCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
         public ICommand MapViewCommand { get; private set; }
-        public ICommand AddCommand { get;  private set; }
+        public ICommand AddCommand { get; private set; }
         public ICommand AllCommand { get; private set; }
         public ICommand TempCommand { get; private set; }
         public ICommand HumCommand { get; private set; }
@@ -32,13 +32,13 @@ namespace ProjectTemplate_v2.ViewModels
         private string currentValue;
 
 
-        public ListViewModel(Sensors sensors,SnackbarMessageQueue snackbar)
+        public ListViewModel(Sensors sensors, SnackbarMessageQueue snackbar)
         {
             this.sensors = sensors;
             Snackbar = snackbar;
             List = sensors.List;
             collectionView = CollectionViewSource.GetDefaultView(List);
-            if (collectionView.Filter!=null)
+            if (collectionView.Filter != null)
                 collectionView.Filter = null;
 
             RemoveCommand = new DelegateCommand(RemoveSensor);
@@ -47,7 +47,7 @@ namespace ProjectTemplate_v2.ViewModels
             MapViewCommand = new DelegateCommand(ViewOnMap);
             AddCommand = new DelegateCommand(OpenAddForm);
 
-            AllCommand = new DelegateCommand((object obj)=>Filter(typeof(object)));
+            AllCommand = new DelegateCommand((object obj) => Filter(typeof(object)));
             TempCommand = new DelegateCommand((object obj) => Filter(typeof(TemperatureSensor)));
             HumCommand = new DelegateCommand((object obj) => Filter(typeof(HumiditySensor)));
             EleCommand = new DelegateCommand((object obj) => Filter(typeof(PowerConsumptionSensor)));
@@ -69,7 +69,7 @@ namespace ProjectTemplate_v2.ViewModels
         {
             var view = new AddFormDialog
             {
-                DataContext = new AddFormDialogViewModel(sensors,Snackbar)
+                DataContext = new AddFormDialogViewModel(sensors, Snackbar)
             };
             await DialogHost.Show(view);
         }
@@ -87,7 +87,7 @@ namespace ProjectTemplate_v2.ViewModels
         {
             var view = new EditFormDialog
             {
-                DataContext = new EditFormDialogViewModel(sensors, Selected,Snackbar)
+                DataContext = new EditFormDialogViewModel(sensors, Selected, Snackbar)
             };
             await DialogHost.Show(view);
         }
@@ -109,7 +109,7 @@ namespace ProjectTemplate_v2.ViewModels
 
             FollowButtonContent = !Selected.Followed ? "Follow" : "Unfollow";
             UpdateXml(sensors);
-            Snackbar.Enqueue(Selected.Followed?"Followed":"Unfollowed");
+            Snackbar.Enqueue(Selected.Followed ? "Followed" : "Unfollowed");
         }
 
         public Sensor Selected
@@ -125,6 +125,10 @@ namespace ProjectTemplate_v2.ViewModels
                         FollowButtonContent = !Selected.Followed ? "Follow" : "Unfollow";
                         ChangeCurrentValue();
                     }
+                    else
+                    {
+                        CurrentValue = "N/A";
+                    }
                     RaisePropertyChanged("Selected");
                 }
             }
@@ -135,7 +139,7 @@ namespace ProjectTemplate_v2.ViewModels
             try
             {
                 var model = HttpService.SensorList.First(item => item.Tag == selected.Link);
-                CurrentValue = HttpService.GetValueAsync(model.SensorId).Result.Value;
+                CurrentValue = HttpService.GetValueAsync(model.SensorId).Result.Value + " " + model.MeasureType;
             }
             catch
             {
@@ -147,10 +151,10 @@ namespace ProjectTemplate_v2.ViewModels
         {
             get
             {
-                if (currentValue == "true" || currentValue == "false")
-                {
-                    return currentValue == "true" ? "Open" : "Closed";
-                }
+                if (currentValue == "true (true/false)")
+                    return "Open";
+                else if (currentValue == "false (true/false)")
+                    return "Closed";
                 else
                     return currentValue;
             }
