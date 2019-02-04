@@ -5,10 +5,8 @@ using ProjectTemplate_v2.Views;
 using System.Windows.Input;
 using Telerik.Windows.Controls;
 using System;
-using System.Windows.Controls;
 using System.ComponentModel;
 using System.Windows.Data;
-using System.Windows;
 
 namespace ProjectTemplate_v2.ViewModels
 {
@@ -18,7 +16,7 @@ namespace ProjectTemplate_v2.ViewModels
         public ICommand FollowCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
         public ICommand MapViewCommand { get; private set; }
-        public ICommand AddCommand { get; set; }
+        public ICommand AddCommand { get;  private set; }
         public ICommand AllCommand { get; private set; }
         public ICommand TempCommand { get; private set; }
         public ICommand HumCommand { get; private set; }
@@ -31,6 +29,7 @@ namespace ProjectTemplate_v2.ViewModels
         private string followButtonContent;
         private ObservableCollection<Sensor> list;
         private ICollectionView collectionView;
+        private string currentValue;
 
 
         public ListViewModel(Sensors sensors,SnackbarMessageQueue snackbar)
@@ -124,11 +123,47 @@ namespace ProjectTemplate_v2.ViewModels
                     if (Selected != null)
                     {
                         FollowButtonContent = !Selected.Followed ? "Follow" : "Unfollow";
+                        ChangeCurrentValue();
                     }
                     RaisePropertyChanged("Selected");
                 }
             }
         }
+
+        private void ChangeCurrentValue()
+        {
+            try
+            {
+                var model = HttpService.SensorList.First(item => item.Tag == selected.Link);
+                CurrentValue = HttpService.GetValueAsync(model.SensorId).Result.Value;
+            }
+            catch
+            {
+                CurrentValue = "N/A";
+            }
+        }
+
+        public string CurrentValue
+        {
+            get
+            {
+                if (currentValue == "true" || currentValue == "false")
+                {
+                    return currentValue == "true" ? "Open" : "Closed";
+                }
+                else
+                    return currentValue;
+            }
+            set
+            {
+                if (currentValue != value)
+                {
+                    currentValue = value;
+                    RaisePropertyChanged("CurrentValue");
+                }
+            }
+        }
+
 
         public ObservableCollection<Sensor> List
         {

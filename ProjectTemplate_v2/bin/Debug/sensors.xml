@@ -98,5 +98,296 @@
       <Name>window1</Name>
       <Opened>false</Opened>
     </Sensor>
+<Sensor xsi:type="HumiditySensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>HumiditySensor2</Link>
+      <Description>weae</Description>
+      <Name>rser</Name>
+      <MaxValue>34</MaxValue>
+      <MinValue>2</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>123</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor1</Link>
+      <Description>qweq</Description>
+      <Name>temp</Name>
+      <MaxValue>33</MaxValue>
+      <MinValue>25</MinValue>
+    </Sensor>
+    <Sensor xsi:type="PowerConsumptionSensor">
+      <Followed>true</Followed>
+      <Longitude>22</Longitude>
+      <Latitude>3</Latitude>
+      <Link>ElectricPowerConsumtionSensor1</Link>
+      <Description>awe</Description>
+      <Name>wae</Name>
+      <MaxValue>1000</MaxValue>
+      <MinValue>3</MinValue>
+    </Sensor>
+    <Sensor xsi:type="PowerConsumptionSensor">
+      <Followed>true</Followed>
+      <Longitude>33</Longitude>
+      <Latitude>33</Latitude>
+      <Link>ElectricPowerConsumtionSensor2</Link>
+      <Description>ikouky</Description>
+      <Name>uilu</Name>
+      <MaxValue>5000</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="HumiditySensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>HumiditySensor1</Link>
+      <Description>ada</Description>
+      <Name>humidity3</Name>
+      <MaxValue>100</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>32</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor3</Link>
+      <Description>sad</Description>
+      <Name>  nnn</Name>
+      <MaxValue>33</MaxValue>
+      <MinValue>7</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor2</Link>
+      <Description>adsda</Description>
+      <Name>temp4</Name>
+      <MaxValue>5</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>12</Longitude>
+      <Latitude>13</Latitude>
+      <Link>OccupancySensor2</Link>
+      <Description>asdd</Description>
+      <Name>door1</Name>
+      <Opened>false</Opened>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>32</Longitude>
+      <Latitude>23</Latitude>
+      <Link>OccupancySensor1</Link>
+      <Description>sadadd</Description>
+      <Name>door2</Name>
+      <Opened>true</Opened>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>DoorSensor1</Link>
+      <Description>DAWDA</Description>
+      <Name>window1</Name>
+      <Opened>false</Opened>
+    </Sensor>
+<Sensor xsi:type="HumiditySensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>HumiditySensor2</Link>
+      <Description>weae</Description>
+      <Name>rser</Name>
+      <MaxValue>34</MaxValue>
+      <MinValue>2</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>123</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor1</Link>
+      <Description>qweq</Description>
+      <Name>temp</Name>
+      <MaxValue>33</MaxValue>
+      <MinValue>25</MinValue>
+    </Sensor>
+    <Sensor xsi:type="PowerConsumptionSensor">
+      <Followed>true</Followed>
+      <Longitude>22</Longitude>
+      <Latitude>3</Latitude>
+      <Link>ElectricPowerConsumtionSensor1</Link>
+      <Description>awe</Description>
+      <Name>wae</Name>
+      <MaxValue>1000</MaxValue>
+      <MinValue>3</MinValue>
+    </Sensor>
+    <Sensor xsi:type="PowerConsumptionSensor">
+      <Followed>true</Followed>
+      <Longitude>33</Longitude>
+      <Latitude>33</Latitude>
+      <Link>ElectricPowerConsumtionSensor2</Link>
+      <Description>ikouky</Description>
+      <Name>uilu</Name>
+      <MaxValue>5000</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="HumiditySensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>HumiditySensor1</Link>
+      <Description>ada</Description>
+      <Name>humidity3</Name>
+      <MaxValue>100</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>32</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor3</Link>
+      <Description>sad</Description>
+      <Name>  nnn</Name>
+      <MaxValue>33</MaxValue>
+      <MinValue>7</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor2</Link>
+      <Description>adsda</Description>
+      <Name>temp4</Name>
+      <MaxValue>5</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>12</Longitude>
+      <Latitude>13</Latitude>
+      <Link>OccupancySensor2</Link>
+      <Description>asdd</Description>
+      <Name>door1</Name>
+      <Opened>false</Opened>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>32</Longitude>
+      <Latitude>23</Latitude>
+      <Link>OccupancySensor1</Link>
+      <Description>sadadd</Description>
+      <Name>door2</Name>
+      <Opened>true</Opened>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>DoorSensor1</Link>
+      <Description>DAWDA</Description>
+      <Name>window1</Name>
+      <Opened>false</Opened>
+    </Sensor>
+<Sensor xsi:type="HumiditySensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>HumiditySensor2</Link>
+      <Description>weae</Description>
+      <Name>rser</Name>
+      <MaxValue>34</MaxValue>
+      <MinValue>2</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>123</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor1</Link>
+      <Description>qweq</Description>
+      <Name>temp</Name>
+      <MaxValue>33</MaxValue>
+      <MinValue>25</MinValue>
+    </Sensor>
+    <Sensor xsi:type="PowerConsumptionSensor">
+      <Followed>true</Followed>
+      <Longitude>22</Longitude>
+      <Latitude>3</Latitude>
+      <Link>ElectricPowerConsumtionSensor1</Link>
+      <Description>awe</Description>
+      <Name>wae</Name>
+      <MaxValue>1000</MaxValue>
+      <MinValue>3</MinValue>
+    </Sensor>
+    <Sensor xsi:type="PowerConsumptionSensor">
+      <Followed>true</Followed>
+      <Longitude>33</Longitude>
+      <Latitude>33</Latitude>
+      <Link>ElectricPowerConsumtionSensor2</Link>
+      <Description>ikouky</Description>
+      <Name>uilu</Name>
+      <MaxValue>5000</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="HumiditySensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>HumiditySensor1</Link>
+      <Description>ada</Description>
+      <Name>humidity3</Name>
+      <MaxValue>100</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>32</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor3</Link>
+      <Description>sad</Description>
+      <Name>  nnn</Name>
+      <MaxValue>33</MaxValue>
+      <MinValue>7</MinValue>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>TemperatureSensor2</Link>
+      <Description>adsda</Description>
+      <Name>temp4</Name>
+      <MaxValue>5</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>12</Longitude>
+      <Latitude>13</Latitude>
+      <Link>OccupancySensor2</Link>
+      <Description>asdd</Description>
+      <Name>door1</Name>
+      <Opened>false</Opened>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>32</Longitude>
+      <Latitude>23</Latitude>
+      <Link>OccupancySensor1</Link>
+      <Description>sadadd</Description>
+      <Name>door2</Name>
+      <Opened>true</Opened>
+    </Sensor>
+    <Sensor xsi:type="WindowDoorSensor">
+      <Followed>true</Followed>
+      <Longitude>23</Longitude>
+      <Latitude>23</Latitude>
+      <Link>DoorSensor1</Link>
+      <Description>DAWDA</Description>
+      <Name>window1</Name>
+      <Opened>false</Opened>
+    </Sensor>
   </Sensors>
 </Sensors>
