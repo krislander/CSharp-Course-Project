@@ -14,6 +14,7 @@ namespace ProjectTemplate_v2.Models.Gauges
     {
         private HumiditySensor sensor;
         private SensorModel model;
+        private DispatcherTimer timer;
 
         public HumidityGaugeCtrl(HumiditySensor sensor)
         {
@@ -25,19 +26,25 @@ namespace ProjectTemplate_v2.Models.Gauges
             {
                 model = HttpService.SensorList.First(item => item.Tag == sensor.Link); ;
 
-                DispatcherTimer timer = new DispatcherTimer
+                timer = new DispatcherTimer
                 {
                     Interval = TimeSpan.FromSeconds(model.MinPollingIntervalInSeconds)
                 };
                 timer.Tick += Timer_Tick;
                 timer.Start();
-                Timer_Tick(new object(), new EventArgs());
+                FirstTick();
             }
             catch
             {
                 label.Foreground = new SolidColorBrush(Colors.LightGray);
                 unit.Foreground = new SolidColorBrush(Colors.LightGray);
             }
+        }
+
+        private void FirstTick()
+        {
+            //Dispatcher.BeginInvoke(DispatcherPriority.Loaded,(Action)(() => Timer_Tick(new object(), new EventArgs())));
+            Timer_Tick(new object(), new EventArgs());
         }
 
         private void Timer_Tick(object sender,EventArgs e)
@@ -48,9 +55,6 @@ namespace ProjectTemplate_v2.Models.Gauges
                 label.Text = Needle.Value.ToString();
                 if (Needle.Value > (double)sensor.MaxValue || Needle.Value < (double)sensor.MinValue)
                 {
-                    //Needle.Background = new SolidColorBrush(Colors.IndianRed);
-                    //unit.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    //label.Foreground = new SolidColorBrush(Colors.IndianRed);
                     var converter = new BrushConverter();
                     var brush = (Brush)converter.ConvertFromString("#B00020");
                     Needle.Background = brush;
@@ -64,11 +68,20 @@ namespace ProjectTemplate_v2.Models.Gauges
                     Needle.Background = (Brush)Application.Current.Resources["PrimaryHueLightBrush"];
                 }
             }
-            catch(Exception)
+            catch
             {
                 label.Foreground = new SolidColorBrush(Colors.LightGray);
                 Needle.Background = new SolidColorBrush(Colors.LightGray);
                 unit.Foreground = new SolidColorBrush(Colors.LightGray);
+            }
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Tick -= Timer_Tick;
             }
         }
     }

@@ -12,24 +12,14 @@
              HorizontalAlignment="Center"
              VerticalAlignment="Center">
 
-    <UserControl.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation
-              Storyboard.TargetProperty="Opacity"
-              From="0.0" To="1.0" Duration="0:0:0.5"/>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </UserControl.Triggers>
-
     <Grid>
         <!--<WrapPanel Canvas.Top="-5" Canvas.Right="0">
             <TextBlock Text="C# Project 2018" Foreground="Teal" VerticalAlignment="Center" FontSize="30"/>
             <Image Height="125" Width="222" Source="/Resources/logo.png" Stretch="Fill" />
         </WrapPanel>-->
         <!--Height="410" Canvas.Left="22" Canvas.Top="90" Width="968"-->
+
+
         <telerik:RadTileList ItemsSource="{Binding FollowedList}"
 
                              telerik:StyleManager.Theme="Material"
@@ -38,12 +28,6 @@
                              TilePlaceHolderSide="200"
                              Background="Transparent"
                              AutoGeneratingTile="RadTileList_AutoGeneratingTile">
-
-            <!--<telerik:EventToCommandBehavior.EventBindings>
-                <telerik:EventBinding EventName="AutoGeneratingTile"
-                                      Command="{Binding AutoTileCommand}"
-                                      PassEventArgsToCommand="True"/>
-            </telerik:EventToCommandBehavior.EventBindings>-->
 
         </telerik:RadTileList>
     </Grid>

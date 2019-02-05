@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:ProjectTemplate_v2.Resources.Gauges"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="200">
+             d:DesignHeight="200" d:DesignWidth="200"
+             Unloaded="UserControl_Unloaded">
 
     <Grid Background="White" Width="170">
         <telerik:RadVerticalLinearGauge x:Name="tempGauge"

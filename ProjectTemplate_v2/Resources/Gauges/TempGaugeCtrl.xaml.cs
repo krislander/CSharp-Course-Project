@@ -15,6 +15,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
     {
         private TemperatureSensor sensor;
         private SensorModel model;
+        private DispatcherTimer timer;
 
         public TempGaugeCtrl(TemperatureSensor sensor)
         {
@@ -26,19 +27,25 @@ namespace ProjectTemplate_v2.Resources.Gauges
             {
                 model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
 
-                DispatcherTimer timer = new DispatcherTimer
+                timer = new DispatcherTimer
                 {
                     Interval = TimeSpan.FromSeconds(model.MinPollingIntervalInSeconds)
                 };
                 timer.Tick += Timer_Tick;
                 timer.Start();
-                Timer_Tick(new object(), new EventArgs());
+                FirstTick();
             }
             catch
             {
                 unit.Foreground = new SolidColorBrush(Colors.LightGray);
                 stateIndicator.Fill = new SolidColorBrush(Colors.LightGray);
             }
+        }
+
+        private void FirstTick()
+        {
+            //Dispatcher.BeginInvoke(DispatcherPriority.Loaded,(Action)(() => Timer_Tick(new object(), new EventArgs())));
+            Timer_Tick(new object(), new EventArgs());
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -62,7 +69,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
                     stateIndicator.Fill = new SolidColorBrush(Colors.Transparent);
                 }
             }
-            catch(Exception)
+            catch
             {
                 unit.Foreground = new SolidColorBrush(Colors.LightGray);
                 bar.Background = new SolidColorBrush(Colors.LightGray);
@@ -70,6 +77,15 @@ namespace ProjectTemplate_v2.Resources.Gauges
                 stateIndicator.Fill = new SolidColorBrush(Colors.LightGray);
             }
 
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Tick -= Timer_Tick;
+            }
         }
     }
 }

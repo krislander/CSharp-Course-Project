@@ -15,6 +15,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
     {
         private PowerConsumptionSensor sensor;
         private SensorModel model;
+        private DispatcherTimer timer;
 
         public PowerGaugeCtrl(PowerConsumptionSensor sensor)
         {
@@ -28,13 +29,13 @@ namespace ProjectTemplate_v2.Resources.Gauges
             {
                 model = HttpService.SensorList.First(item => item.Tag == sensor.Link);
 
-                DispatcherTimer timer = new DispatcherTimer
+                timer = new DispatcherTimer
                 {
                     Interval = TimeSpan.FromSeconds(model.MinPollingIntervalInSeconds)
                 };
                 timer.Tick += Timer_Tick;
                 timer.Start();
-                Timer_Tick(new object(), new EventArgs());
+                FirstTick();
             }
             catch
             {
@@ -47,7 +48,13 @@ namespace ProjectTemplate_v2.Resources.Gauges
 
         }
 
-        private void Timer_Tick(object sender,EventArgs e)
+        private void FirstTick()
+        {
+            //Dispatcher.BeginInvoke(DispatcherPriority.Loaded, (Action)(() => Timer_Tick(new object(), new EventArgs())));
+            Timer_Tick(new object(), new EventArgs());
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
         {
             try
             {
@@ -57,11 +64,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
                 if (bar.Value < (double)sensor.MinValue)
                 {
                     bar.Value = (double)sensor.MinValue;
-
-                    //needle.Background = new SolidColorBrush(Colors.IndianRed);
-                    //numIndicator.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    //label.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    //bar.Background = new SolidColorBrush(Colors.IndianRed);
+                    
                     var converter = new BrushConverter();
                     var brush = (Brush)converter.ConvertFromString("#B00020");
                     needle.Background = brush;
@@ -72,11 +75,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
                 else if (bar.Value > (double)sensor.MaxValue)
                 {
                     bar.Value = (double)sensor.MaxValue;
-
-                    //needle.Background = new SolidColorBrush(Colors.IndianRed);
-                    //numIndicator.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    //label.Foreground = new SolidColorBrush(Colors.IndianRed);
-                    //bar.Background = new SolidColorBrush(Colors.IndianRed);
+                    
                     var converter = new BrushConverter();
                     var brush = (Brush)converter.ConvertFromString("#B00020");
                     needle.Background = brush;
@@ -95,12 +94,21 @@ namespace ProjectTemplate_v2.Resources.Gauges
 
                 needle.Value = bar.Value;
             }
-            catch (Exception)
+            catch
             {
                 needle.Background = new SolidColorBrush(Colors.LightGray);
                 numIndicator.Foreground = new SolidColorBrush(Colors.LightGray);
                 label.Foreground = new SolidColorBrush(Colors.LightGray);
                 bar.Background = new SolidColorBrush(Colors.LightGray);
+            }
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Tick -= Timer_Tick;
             }
         }
     }

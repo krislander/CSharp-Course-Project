@@ -678,6 +678,11 @@
             Represents the CurrentSize attached property.
             </summary>
         </member>
+        <member name="M:Telerik.Windows.Controls.Animation.ResizeAnimation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Controls.Animation.ResizeAnimation"/> class.
+            </summary>
+        </member>
         <member name="M:Telerik.Windows.Controls.Animation.ResizeAnimation.GetOldSize(System.Windows.DependencyObject)">
             <summary>
             Gets the OldSize for the given DependencyObject, normally a UIElement.
@@ -739,6 +744,11 @@
             the global <strong>AnimationSpeedRatio</strong> if the local SpeedRatio is null.
             If the local SpeedRatio value is set, it will be used.
             </remarks>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Animation.ResizeAnimation.ResizeMode">
+            <summary>
+            Gets or sets a value indicating the resizing mode (horizontal, vertical, both) of the animation.
+            </summary>
         </member>
         <member name="T:Telerik.Windows.Controls.Animation.ScaleAnimation">
             <summary>
@@ -968,6 +978,26 @@
             Gets or sets the end value of the animated property.
             </summary>
             <value>To.</value>
+        </member>
+        <member name="T:Telerik.Windows.Controls.Animation.ResizeAnimationResizeMode">
+            <summary>
+            ResizeMode determines how resizing is performed in <see cref="T:Telerik.Windows.Controls.Animation.ResizeAnimation"/>. 
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.Animation.ResizeAnimationResizeMode.Horizontal">
+            <summary>
+            Resizing is performed horizontally only.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.Animation.ResizeAnimationResizeMode.Vertical">
+            <summary>
+            Resizing is performed vertically only.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.Animation.ResizeAnimationResizeMode.Both">
+            <summary>
+            Resizing is performed both horizontally and vertically.
+            </summary>
         </member>
         <member name="T:Telerik.Windows.Controls.Animation.ScaleMode">
             <summary>
@@ -1587,9 +1617,9 @@
             Gets or sets the <see cref="P:Telerik.Windows.Controls.RadBusyIndicator.ProgressBarStyle"/> property. This is a dependency property.
             </summary>
         </member>
-        <member name="T:Telerik.Windows.Automation.Peers.RadPathButtonAutomationPeer">
+        <member name="T:Telerik.Windows.Automation.Peers.RadHyperlinkButtonAutomationPeer">
             <summary>
-            
+            An AutomationPeer type for the RadHyperlinkButton type.
             </summary>
         </member>
         <member name="T:Telerik.Windows.Automation.Peers.RadButtonAutomationPeer">
@@ -1659,6 +1689,42 @@
         </member>
         <member name="M:Telerik.Windows.Automation.Peers.RadButtonAutomationPeer.GetItemStatusCore">
             <inheritdoc />
+        </member>
+        <member name="M:Telerik.Windows.Automation.Peers.RadHyperlinkButtonAutomationPeer.#ctor(Telerik.Windows.Controls.RadHyperlinkButton)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Automation.Peers.RadHyperlinkButtonAutomationPeer"/> class.
+            </summary>
+            <param name="owner">The owner.</param>
+        </member>
+        <member name="M:Telerik.Windows.Automation.Peers.RadHyperlinkButtonAutomationPeer.GetClassNameCore">
+            <summary>
+            Returns the name of the <see cref="T:System.Windows.UIElement"/> that is associated with this <see cref="T:System.Windows.Automation.Peers.FrameworkElementAutomationPeer"/>. This method is called by <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetClassName"/>.
+            </summary>
+            <returns>
+            The name of the owner type that is associated with this <see cref="T:System.Windows.Automation.Peers.FrameworkElementAutomationPeer"/>. See Remarks.
+            </returns>
+        </member>
+        <member name="M:Telerik.Windows.Automation.Peers.RadHyperlinkButtonAutomationPeer.GetHelpTextCore">
+            <summary>
+            Returns the string that describes the functionality of the <see cref="T:System.Windows.FrameworkElement"/> that is associated with this <see cref="T:System.Windows.Automation.Peers.FrameworkElementAutomationPeer"/>. This method is called by <see cref="M:System.Windows.Automation.Peers.AutomationPeer.GetHelpText"/>.
+            </summary>
+            <returns>
+            The help text, or <see cref="F:System.String.Empty"/> if there is no help text.
+            </returns>
+        </member>
+        <member name="M:Telerik.Windows.Automation.Peers.RadHyperlinkButtonAutomationPeer.GetProperties">
+            <summary>
+            Gets the CUI properties.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.Windows.Automation.Peers.RadHyperlinkButtonAutomationPeer.GetItemStatusCore">
+            <inheritdoc />
+        </member>
+        <member name="T:Telerik.Windows.Automation.Peers.RadPathButtonAutomationPeer">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:Telerik.Windows.Automation.Peers.RadPathButtonAutomationPeer.#ctor(Telerik.Windows.Controls.RadPathButton)">
             <summary>
@@ -2287,6 +2353,16 @@
             Identifies the PopupHeight property.
             </summary>
         </member>
+        <member name="F:Telerik.Windows.Controls.RadDropDownButton.DropDownMinWidthProperty">
+            <summary>
+            Identifies the DropDownMinWidth property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadDropDownButton.DropDownMinHeightProperty">
+            <summary>
+            Identifies the DropDownMinHeight property.
+            </summary>
+        </member>
         <member name="F:Telerik.Windows.Controls.RadDropDownButton.DropDownMaxWidthProperty">
             <summary>
             Identifies the PopupMaxWidth property.
@@ -2579,6 +2655,18 @@
             This is a dependency property.
             </summary>
         </member>
+        <member name="P:Telerik.Windows.Controls.RadDropDownButton.DropDownMinWidth">
+            <summary>
+            Gets or sets the MinWidth of the drop-down area.
+            This is a dependency property.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadDropDownButton.DropDownMinHeight">
+            <summary>
+            Gets or sets the MinHeight of the drop-down area.
+            This is a dependency property.
+            </summary>
+        </member>
         <member name="P:Telerik.Windows.Controls.RadDropDownButton.DropDownMaxWidth">
             <summary>
             Gets or sets the MaxWidth of the drop-down area.
@@ -2606,6 +2694,65 @@
         <member name="P:Telerik.Windows.Controls.RadDropDownButton.PopupAnimation">
             <summary>
             Gets or sets the animation that will be used for the popup element.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.RadHyperlinkButton">
+            <summary>
+            A HyperlinkButton control.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadHyperlinkButton.NavigateUriProperty">
+            <summary>
+            Identifies the NavigateUri property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadHyperlinkButton.TargetNameProperty">
+            <summary>
+            Identifies the TargetName property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadHyperlinkButton.IsVisitedProperty">
+            <summary>
+            Identifies the IsVisited property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadHyperlinkButton.VisitedForegroundProperty">
+            <summary>
+            Identifies the VisitedForeground property.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadHyperlinkButton.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code or internal processes (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadHyperlinkButton.OnCreateAutomationPeer">
+            <inheritdoc /> 
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadHyperlinkButton.OnInitialized(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.FrameworkElement.Initialized"/> event. This method is invoked whenever <see cref="P:System.Windows.FrameworkElement.IsInitialized"/> is set to true internally.
+            </summary>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadHyperlinkButton.NavigateUri">
+            <summary>
+            Gets or sets the URI to navigate to when the HyperlinkButton is clicked.		
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadHyperlinkButton.TargetName">
+            <summary>
+            Gets or sets the name of the target window or frame that the Web page should open in.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadHyperlinkButton.IsVisited">
+            <summary>
+            Gets or sets a value that indicates whether the hyperlink has been clicked.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadHyperlinkButton.VisitedForeground">
+            <summary>
+            Gets or sets the foreground of the hyperlink after it has been clicked. 
             </summary>
         </member>
         <member name="T:Telerik.Windows.Controls.RadPathButton">
@@ -7216,6 +7363,31 @@
             The Visibility value.
             </returns>
         </member>
+        <member name="T:Telerik.Windows.Controls.StringToGlyphConverter">
+            <summary>
+            Represents converter that converts a glyph string value to a glyph number that can be data bound.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.StringToGlyphConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a glyph string value to a glyph number that can be data bound.
+            </summary>
+            <param name="value">The glyph string value that will be used for conversion.</param>
+            <param name="targetType">This parameter is not used.</param>
+            <param name="parameter">This parameter is not used.</param>
+            <param name="culture">This parameter is not used.</param>
+            <returns> A glyph number presentation of the object. </returns>
+        </member>
+        <member name="M:Telerik.Windows.Controls.StringToGlyphConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value that is produced by the binding target.</param>
+            <param name="targetType">The type to convert to.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A null value. The method is not implemented.</returns>        
+        </member>
         <member name="T:Telerik.Windows.Controls.VisualToVisualBrushConverter">
             <summary>
              Represents converter, which converts Visual value to VisualBrush and sets the value as Visual of the brush.
@@ -9320,6 +9492,11 @@
         <member name="P:Telerik.Windows.DragDrop.DragDropManager.DefaultDragDropEffects">
             <summary>
             Gets or sets the AllowedEffect for a drag-and-drop operation if such are not specified in DragInitialize event arguments.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.DragDrop.DragDropManager.UseAdornerLayer">
+            <summary>
+            Gets or sets a value that indicates whether drag visual will be displayed in the adorner layer or in separate window.
             </summary>
         </member>
         <member name="P:Telerik.Windows.DragDrop.DragDropManager.LastQueryContinueAction">
@@ -13478,6 +13655,9 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Windows.Controls.RadTileList.OnItemContainerStyleSelectorChanged(System.Windows.Controls.StyleSelector,System.Windows.Controls.StyleSelector)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadTileList.OnItemContainerStyleChanged(System.Windows.Style,System.Windows.Style)">
             <inheritdoc />
         </member>
         <member name="M:Telerik.Windows.Controls.RadTileList.OnItemsChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
@@ -31594,6 +31774,16 @@
             Identifies the WatermarkBehavior property.
             </summary>
         </member>
+        <member name="F:Telerik.Windows.Controls.RadWatermarkTextBox.ReadOnlyBackgroundProperty">
+            <summary>
+            Identifies the ReadOnlyBackground property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadWatermarkTextBox.DisabledBackgroundProperty">
+            <summary>
+            Identifies the DisabledBackground property.
+            </summary>
+        </member>
         <member name="F:Telerik.Windows.Controls.RadWatermarkTextBox.IsWatermarkVisibleProperty">
             <summary>
             Identifies the IsWatermarkVisible dependency property.
@@ -31658,6 +31848,16 @@
         <member name="P:Telerik.Windows.Controls.RadWatermarkTextBox.WatermarkBehavior">
             <summary>
             Gets a value that specifies when the watermark content of control will be hidden.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadWatermarkTextBox.ReadOnlyBackground">
+            <summary>
+            Gets a value that specifies the background of the control when in readonly state.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadWatermarkTextBox.DisabledBackground">
+            <summary>
+            Gets a value that specifies the background of the control when in disabled state.
             </summary>
         </member>
         <member name="P:Telerik.Windows.Controls.RadWatermarkTextBox.SelectionOnFocus">
@@ -32868,6 +33068,601 @@
         <member name="P:Telerik.Windows.Controls.Strings.Diagram_Rotate">
             <summary>
               Looks up a localized string similar to Rotate.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Align">
+            <summary>
+              Looks up a localized string similar to Align.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AlignBottom">
+            <summary>
+              Looks up a localized string similar to Align Bottom.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AlignCenter">
+            <summary>
+              Looks up a localized string similar to Align Center.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AlignLeft">
+            <summary>
+              Looks up a localized string similar to Align Left.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AlignMiddle">
+            <summary>
+              Looks up a localized string similar to Align Middle.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AlignRight">
+            <summary>
+              Looks up a localized string similar to Align Right.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AlignTop">
+            <summary>
+              Looks up a localized string similar to Align Top.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Arrange">
+            <summary>
+              Looks up a localized string similar to Arrange.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AStarRouter">
+            <summary>
+              Looks up a localized string similar to AStarRouter.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AvoidConnectionOverlap">
+            <summary>
+              Looks up a localized string similar to Avoid Connection Overlap.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_AvoidShapes">
+            <summary>
+              Looks up a localized string similar to Avoid Shapes.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_BackgroundColor">
+            <summary>
+              Looks up a localized string similar to Background Color.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Bridges">
+            <summary>
+              Looks up a localized string similar to Bridges:.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_BringForward">
+            <summary>
+              Looks up a localized string similar to Bring Forward.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_BringToFront">
+            <summary>
+              Looks up a localized string similar to Bring to Front.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_CellHeight">
+            <summary>
+              Looks up a localized string similar to Cell Height.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_CellWidth">
+            <summary>
+              Looks up a localized string similar to Cell Width.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Clipboard">
+            <summary>
+              Looks up a localized string similar to Clipboard.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ClipboardDescription">
+            <summary>
+              Looks up a localized string similar to Show the Clipboard Task options..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Connections">
+            <summary>
+              Looks up a localized string similar to Connections.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectionType">
+            <summary>
+              Looks up a localized string similar to Type.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectionTypeBezier">
+            <summary>
+              Looks up a localized string similar to Bezier.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectionTypeDescription">
+            <summary>
+              Looks up a localized string similar to Automatically organizes the diagram..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectionTypePolyline">
+            <summary>
+              Looks up a localized string similar to Polyline.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectionTypeSpline">
+            <summary>
+              Looks up a localized string similar to Spline.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectionTypeStraight">
+            <summary>
+              Looks up a localized string similar to Straight.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectionTypeTitle">
+            <summary>
+              Looks up a localized string similar to Connection Type.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectorTool">
+            <summary>
+              Looks up a localized string similar to Connector.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectorToolDescription">
+            <summary>
+              Looks up a localized string similar to Changes the main tool to Connector Tool..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ConnectorToolScreenTip">
+            <summary>
+              Looks up a localized string similar to Connector Tool.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Copy">
+            <summary>
+              Looks up a localized string similar to Copy.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_CopyDescription">
+            <summary>
+              Looks up a localized string similar to Copy the selection and put it on the Clipboard..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Cut">
+            <summary>
+              Looks up a localized string similar to Cut.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_CutDescription">
+            <summary>
+              Looks up a localized string similar to Cut the selection from the document and put it on the Clipboard..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Delete">
+            <summary>
+              Looks up a localized string similar to Delete.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_DeleteDescription">
+            <summary>
+              Looks up a localized string similar to Deletes the selected items..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Design">
+            <summary>
+              Looks up a localized string similar to Design.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Dragging">
+            <summary>
+              Looks up a localized string similar to Dragging.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_EllipseShape">
+            <summary>
+              Looks up a localized string similar to Ellipse.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_EnableRouting">
+            <summary>
+              Looks up a localized string similar to Enable Routing.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Export">
+            <summary>
+              Looks up a localized string similar to Export.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ExportToHtml">
+            <summary>
+              Looks up a localized string similar to Export to Html.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ExportToImage">
+            <summary>
+              Looks up a localized string similar to Export to Image.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_FitToWindow">
+            <summary>
+              Looks up a localized string similar to Fit to Window.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_General">
+            <summary>
+              Looks up a localized string similar to General.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_GeneralDescription">
+            <summary>
+              Looks up a localized string similar to Generic actions..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Grid">
+            <summary>
+              Looks up a localized string similar to Grid.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_GridColor">
+            <summary>
+              Looks up a localized string similar to Grid Color.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Group">
+            <summary>
+              Looks up a localized string similar to Group.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_GroupDescription">
+            <summary>
+              Looks up a localized string similar to Groups the selected items..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_HomeTab">
+            <summary>
+              Looks up a localized string similar to Home.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_HorizontalRuler">
+            <summary>
+              Looks up a localized string similar to Horizontal Ruler.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_IgnoreContainers">
+            <summary>
+              Looks up a localized string similar to Ignore Containers.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Layout">
+            <summary>
+              Looks up a localized string similar to Layout.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_LayoutContainerChildren">
+            <summary>
+              Looks up a localized string similar to Layout Container Children.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_LayoutDescription">
+            <summary>
+              Looks up a localized string similar to Automatically organizes the diagram..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_MainPaletteHeaderText">
+            <summary>
+              Looks up a localized string similar to Metro Palette.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_MindMap">
+            <summary>
+              Looks up a localized string similar to Mind Map.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_MindMapHorizontal">
+            <summary>
+              Looks up a localized string similar to Mind Map Horizontal.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_MindMapVertical">
+            <summary>
+              Looks up a localized string similar to Mind Map Vertical.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_NavigationPane">
+            <summary>
+              Looks up a localized string similar to Navigation Pane.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_New">
+            <summary>
+              Looks up a localized string similar to New.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Open">
+            <summary>
+              Looks up a localized string similar to Open.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Page">
+            <summary>
+              Looks up a localized string similar to Page.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Paste">
+            <summary>
+              Looks up a localized string similar to Paste.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PasteDescription">
+            <summary>
+              Looks up a localized string similar to Paste the contents of the Clipboard..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PathTool">
+            <summary>
+              Looks up a localized string similar to Path.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PathToolDescription">
+            <summary>
+              Looks up a localized string similar to Changes the main tool to Path Tool..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PathToolScreenTip">
+            <summary>
+              Looks up a localized string similar to Path Tool.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PencilTool">
+            <summary>
+              Looks up a localized string similar to Pencil.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PencilToolDescription">
+            <summary>
+              Looks up a localized string similar to Changes the main tool to Pencil Tool..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PencilToolScreenTip">
+            <summary>
+              Looks up a localized string similar to Pencil Tool.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PointerTool">
+            <summary>
+              Looks up a localized string similar to Pointer.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PointerToolDescription">
+            <summary>
+              Looks up a localized string similar to Changes the main tool to Pointer Tool..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_PointerToolScreenTip">
+            <summary>
+              Looks up a localized string similar to Pointer Tool.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Print">
+            <summary>
+              Looks up a localized string similar to Print.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Properties">
+            <summary>
+              Looks up a localized string similar to Properties.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Radial">
+            <summary>
+              Looks up a localized string similar to Radial.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_RadialTree">
+            <summary>
+              Looks up a localized string similar to Radial Tree.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_RectangleShape">
+            <summary>
+              Looks up a localized string similar to Rectangle.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Redo">
+            <summary>
+              Looks up a localized string similar to Redo.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ReLayout">
+            <summary>
+              Looks up a localized string similar to Re-Layout.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Resizing">
+            <summary>
+              Looks up a localized string similar to Resizing.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Rotation">
+            <summary>
+              Looks up a localized string similar to Rotation.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_RouteAll">
+            <summary>
+              Looks up a localized string similar to Route All.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Save">
+            <summary>
+              Looks up a localized string similar to Save.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_SelectionMode">
+            <summary>
+              Looks up a localized string similar to Selection Mode.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_SendBackward">
+            <summary>
+              Looks up a localized string similar to Send Backward.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_SendToBack">
+            <summary>
+              Looks up a localized string similar to Send to Back.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_SettingsTab">
+            <summary>
+              Looks up a localized string similar to Settings.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ShapeToolDescription">
+            <summary>
+              Looks up a localized string similar to Can be used to create rectangle, ellipse or triangle shape..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ShapeToolScreenTip">
+            <summary>
+              Looks up a localized string similar to Shape Tool.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ShowGrid">
+            <summary>
+              Looks up a localized string similar to Show Grid.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_SnapToGrid">
+            <summary>
+              Looks up a localized string similar to Snap to Grid.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_SnapToItems">
+            <summary>
+              Looks up a localized string similar to Snap to Items.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_SnapX">
+            <summary>
+              Looks up a localized string similar to Snap X.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_SnapY">
+            <summary>
+              Looks up a localized string similar to Snap Y.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Sugiyama">
+            <summary>
+              Looks up a localized string similar to Sugiyama.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TextTool">
+            <summary>
+              Looks up a localized string similar to Text.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TextToolDescription">
+            <summary>
+              Looks up a localized string similar to Changes the main tool to Text Tool..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TextToolScreenTip">
+            <summary>
+              Looks up a localized string similar to Text Tool.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TipOver">
+            <summary>
+              Looks up a localized string similar to Tip Over.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TipOverTree">
+            <summary>
+              Looks up a localized string similar to Tip Over Tree.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Toolbox">
+            <summary>
+              Looks up a localized string similar to Toolbox.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Tools">
+            <summary>
+              Looks up a localized string similar to Tools.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_ToolsDescription">
+            <summary>
+              Looks up a localized string similar to Show the Tools options..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Tree">
+            <summary>
+              Looks up a localized string similar to Tree.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TreeDown">
+            <summary>
+              Looks up a localized string similar to Tree Down.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TreeLeft">
+            <summary>
+              Looks up a localized string similar to Tree Left.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TreeRight">
+            <summary>
+              Looks up a localized string similar to Tree Right.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TreeUp">
+            <summary>
+              Looks up a localized string similar to Tree Up.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_TriangleShape">
+            <summary>
+              Looks up a localized string similar to Triangle.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Undo">
+            <summary>
+              Looks up a localized string similar to Undo.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Ungroup">
+            <summary>
+              Looks up a localized string similar to Ungroup.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_UngroupDescription">
+            <summary>
+              Looks up a localized string similar to Ungroups the selected groups..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_UseFreeConnectors">
+            <summary>
+              Looks up a localized string similar to Use Free Connectors.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_VerticalRuler">
+            <summary>
+              Looks up a localized string similar to Vertical Ruler.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_View">
+            <summary>
+              Looks up a localized string similar to View.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.DiagramRibbon_Zoom">
+            <summary>
+              Looks up a localized string similar to Zoom.
             </summary>
         </member>
         <member name="P:Telerik.Windows.Controls.Strings.Dockable">
@@ -37447,6 +38242,11 @@
               Looks up a localized string similar to Other.
             </summary>
         </member>
+        <member name="P:Telerik.Windows.Controls.Strings.ExpressionEditor_Text">
+            <summary>
+              Looks up a localized string similar to Text.
+            </summary>
+        </member>
         <member name="P:Telerik.Windows.Controls.Strings.ExtendSelectionToCurrentUnit">
             <summary>
               Looks up a localized string similar to Extends selection to current unit.
@@ -38417,9 +39217,19 @@
               Looks up a localized string similar to Flip Vertical.
             </summary>
         </member>
+        <member name="P:Telerik.Windows.Controls.Strings.ImageEditor_FontFamily">
+            <summary>
+              Looks up a localized string similar to Font Family.
+            </summary>
+        </member>
         <member name="P:Telerik.Windows.Controls.Strings.ImageEditor_FontSize">
             <summary>
               Looks up a localized string similar to Font Size.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.ImageEditor_FontStyle">
+            <summary>
+              Looks up a localized string similar to Font Style.
             </summary>
         </member>
         <member name="P:Telerik.Windows.Controls.Strings.ImageEditor_Height">
@@ -46223,6 +47033,116 @@
         <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertCellsDialog_ShiftCellsRight">
             <summary>
               Looks up a localized string similar to Shift cells right.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Area_SubType">
+            <summary>
+              Looks up a localized string similar to Area.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Area_Type">
+            <summary>
+              Looks up a localized string similar to Area.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Bar_Type">
+            <summary>
+              Looks up a localized string similar to Bar.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_ClusteredBar_SubType">
+            <summary>
+              Looks up a localized string similar to Clustered Bar.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_ClusteredColumn_SubType">
+            <summary>
+              Looks up a localized string similar to Clustered Column.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Column_Type">
+            <summary>
+              Looks up a localized string similar to Column.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Doughnut_SubType">
+            <summary>
+              Looks up a localized string similar to Doughnut.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Header">
+            <summary>
+              Looks up a localized string similar to Insert Chart.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Line_SubType">
+            <summary>
+              Looks up a localized string similar to Line.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Line_Type">
+            <summary>
+              Looks up a localized string similar to Line.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Pie_SubType">
+            <summary>
+              Looks up a localized string similar to Pie.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Pie_Type">
+            <summary>
+              Looks up a localized string similar to Pie.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_SelectionNotEnough">
+            <summary>
+              Looks up a localized string similar to To create chart, please select at least a 2 consecutive cells..
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Stacked100Area_SubType">
+            <summary>
+              Looks up a localized string similar to 100% Stacked Area.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Stacked100Bar_SubType">
+            <summary>
+              Looks up a localized string similar to 100% Stacked Bar.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Stacked100Column_SubType">
+            <summary>
+              Looks up a localized string similar to 100% Stacked Column.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_Stacked100Line_SubType">
+            <summary>
+              Looks up a localized string similar to 100% Stacked Line.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_StackedArea_SubType">
+            <summary>
+              Looks up a localized string similar to Stacked Area.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_StackedBar_SubType">
+            <summary>
+              Looks up a localized string similar to Stacked Bar.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_StackedColumn_SubType">
+            <summary>
+              Looks up a localized string similar to Stacked Column.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_StackedLine_SubType">
+            <summary>
+              Looks up a localized string similar to Stacked Line.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertChartDialog_SubHeader">
+            <summary>
+              Looks up a localized string similar to All Charts.
             </summary>
         </member>
         <member name="P:Telerik.Windows.Controls.Strings.Spreadsheet_InsertFunctionDialog_All">

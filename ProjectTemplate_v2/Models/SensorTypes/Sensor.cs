@@ -124,7 +124,7 @@ namespace ProjectTemplate_v2
 
         public override string ToString()
         {
-            return string.Format($"{Name}");
+            return string.Format("");
         }
 
     }

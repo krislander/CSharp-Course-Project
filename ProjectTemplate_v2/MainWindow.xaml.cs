@@ -1,7 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Data;
 using System.Xml.Serialization;
 using MaterialDesignThemes.Wpf;
 using ProjectTemplate_v2.ViewModels;
@@ -20,15 +18,10 @@ namespace ProjectTemplate_v2
         public MainWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeList();
             HttpService.InitializeClient();
             DataContext = new DashViewModel(sensors);
-            //Binding binding = new Binding
-            //{
-            //    Path = new PropertyPath("Snackbar"),
-            //    Source=this
-            //};
-            //BindingOperations.SetBinding(dialogHost, DialogHost.SnackbarMessageQueueProperty, binding);
         }
 
         private void InitializeList()

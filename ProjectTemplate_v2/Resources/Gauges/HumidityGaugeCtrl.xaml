@@ -6,7 +6,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectTemplate_v2.Models.Gauges"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="200">
+             d:DesignHeight="200" d:DesignWidth="200"
+             Unloaded="UserControl_Unloaded">
     <Grid Background="White">
         <telerik:RadRadialGauge x:Name="humidityGauge" telerik:StyleManager.Theme="Office2013">
             <telerik:RadialScale FontSize="14" LabelRotationMode="None"
@@ -15,16 +16,6 @@
                                  MajorTickBackground="{StaticResource PrimaryHueDarkBrush}"
                                  MajorTickRelativeHeight="9">
                 <telerik:RadialScale.Indicators>
-                    <!--<telerik:Marker x:Name="minMarker" BorderBrush="IndianRed" BorderThickness="2" Background="Transparent"
-                                    telerik:ScaleObject.Location="Inside"
-                                    telerik:ScaleObject.RelativeHeight="17"
-                                    telerik:ScaleObject.RelativeWidth="17"/>
-                    <telerik:Marker x:Name="maxMarker" BorderBrush="IndianRed" BorderThickness="2" Background="Transparent"
-                                    telerik:ScaleObject.Location="Inside"
-                                    telerik:ScaleObject.RelativeHeight="17"
-                                    telerik:ScaleObject.RelativeWidth="17"/>-->
-                    <!--<telerik:Needle x:Name="Needle" Background="{StaticResource PrimaryHueLightBrush}" />
-                    <telerik:Pinpoint Background="{StaticResource PrimaryHueMidBrush}"/>-->
                     <telerik:BarIndicator x:Name="Needle"
                                           telerik:ScaleObject.Location="Inside"
                                           Background="{StaticResource PrimaryHueLightBrush}"/>

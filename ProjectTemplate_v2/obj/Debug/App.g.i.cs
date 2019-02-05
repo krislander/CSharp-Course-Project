@@ -74,6 +74,8 @@ namespace ProjectTemplate_v2 {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
+            SplashScreen splashScreen = new SplashScreen("resources/logo.png");
+            splashScreen.Show(true);
             ProjectTemplate_v2.App app = new ProjectTemplate_v2.App();
             app.InitializeComponent();
             app.Run();

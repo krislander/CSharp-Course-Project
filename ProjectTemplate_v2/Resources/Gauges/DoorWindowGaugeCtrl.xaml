@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectTemplate_v2.Resources.Gauges"
              mc:Ignorable="d" 
-             d:DesignHeight="180" d:DesignWidth="180">
+             d:DesignHeight="180" d:DesignWidth="180"
+             Unloaded="UserControl_Unloaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
