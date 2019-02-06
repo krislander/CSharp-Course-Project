@@ -31,5 +31,24 @@ namespace ProjectTemplate_v2.Views
             ((ListBoxItem)sender).IsSelected = true;
         }
 
+        private void LbListBox_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (VisualTreeHelper.GetChild(lbListBox, 0) is Decorator border)
+            {
+                ScrollViewer scrollViewer = border.Child as ScrollViewer;
+                if (scrollViewer.VerticalOffset == 0)
+                {
+                    lbListBox.BorderThickness = new Thickness(0, 1, 0, 0);
+                }
+                else if (scrollViewer.VerticalOffset == scrollViewer.ScrollableHeight)
+                {
+                    lbListBox.BorderThickness = new Thickness(0, 0, 0, 1);
+                }
+                else
+                {
+                    lbListBox.BorderThickness = new Thickness(0, 0, 0, 0);
+                }
+            }
+        }
     }
 }

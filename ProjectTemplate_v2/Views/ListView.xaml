@@ -30,100 +30,105 @@
         <WrapPanel>
             <StackPanel Margin="0 0 20 0">
                 <!--Filter buttons-->
-                    <UniformGrid Columns="7">
-                        <UniformGrid.Resources>
-                            <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignTabRadioButton}">
-                                <Setter Property="Padding" Value="0"/>
-                            </Style>
-                        </UniformGrid.Resources>
-                        <RadioButton Content="All" IsChecked="True"
+                <UniformGrid Columns="7">
+                    <UniformGrid.Resources>
+                        <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignTabRadioButton}">
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </UniformGrid.Resources>
+                    <RadioButton Content="All" IsChecked="True"
                                      Command="{Binding AllCommand}"/>
-                        <RadioButton Content="Temperature"
+                    <RadioButton Content="Temperature"
                                      Command="{Binding TempCommand}"/>
-                        <RadioButton Content="Noise"
+                    <RadioButton Content="Noise"
                                      Command="{Binding NoiseCommand}"/>
-                        <RadioButton Content="Humidity"
+                    <RadioButton Content="Humidity"
                                      Command="{Binding HumCommand}"/>
-                        <RadioButton Content="Electricity"
+                    <RadioButton Content="Electricity"
                                      Command="{Binding EleCommand}"/>
-                        <RadioButton Content="Door/Window"
+                    <RadioButton Content="Door/Window"
                                      Command="{Binding WDCommand}"/>
-                    </UniformGrid>
+                </UniformGrid>
 
-                    <!--Sensor list-->
-                    <ListBox x:Name="lbListBox" ItemsSource="{Binding List}" SelectedItem="{Binding Selected}" ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                     Width="600" Height="450"
-                     FontSize="18"
-                 Margin="0 0 0 5">
+                <!--Sensor list-->
+                <ListBox x:Name="lbListBox" ItemsSource="{Binding List}" SelectedItem="{Binding Selected,IsAsync=True}" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                             Width="600" Height="450"
+                             FontSize="18"
+                             ScrollViewer.ScrollChanged="LbListBox_ScrollChanged"
+                             BorderBrush="{StaticResource PrimaryHueLightBrush}"
+                             Margin="0 0 0 5">
 
-                        <ListBox.Resources>
-                            <DataTemplate x:Key="ListItem">
-                                <WrapPanel>
-                                    <materialDesign:PackIcon Width="35" Height="35"
+                    <ListBox.Resources>
+                        <DataTemplate x:Key="ListItem">
+                            <WrapPanel>
+                                <materialDesign:PackIcon Width="35" Height="35"
                                                              Kind="{Binding Converter={StaticResource ToIconConverter}}"
                                                              Opacity=".7"/>
-                                    <Label x:Name="lblLabel" Content="{Binding Name}" Width="505" Foreground="#484848"/>
-                                    <TextBlock Width="40"/>
-                                </WrapPanel>
-                            </DataTemplate>
-                            <DataTemplate x:Key="SelectedItem">
-                                <WrapPanel>
-                                    <materialDesign:PackIcon Width="35" Height="35"
+                                <Label x:Name="lblLabel" Content="{Binding Name}" Width="505" Foreground="#484848"/>
+                                <TextBlock Width="40"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                        <DataTemplate x:Key="SelectedItem">
+                            <WrapPanel>
+                                <materialDesign:PackIcon Width="35" Height="35"
                                                              Opacity=".7"
                                                              Kind="{Binding Converter={StaticResource ToIconConverter}}"/>
-                                    <Label x:Name="lblLabel" Content="{Binding Name}" Width="505" Foreground="#212121"/>
+                                <Label x:Name="lblLabel" Content="{Binding Name}" Width="505" Foreground="#212121"/>
 
-                                    <materialDesign:PopupBox Width="40">
-                                        <StackPanel>
-                                            <!--View On Map Button-->
-                                            <Button Content="View On Map">
-                                                <telerik:EventToCommandBehavior.EventBindings>
-                                                    <telerik:EventBinding EventName="Click"
-                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.MapViewCommand}"/>
-                                                </telerik:EventToCommandBehavior.EventBindings>
-                                            </Button>
-                                            <!--Follow Button-->
-                                            <Button x:Name="btnFollow"
-                                        Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.FollowButtonContent}">
-                                                <telerik:EventToCommandBehavior.EventBindings>
-                                                    <telerik:EventBinding EventName="Click"
-                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.FollowCommand}"/>
-                                                </telerik:EventToCommandBehavior.EventBindings>
-                                            </Button>
-                                            <!--Edit Button-->
-                                            <Button Content="Edit">
-                                                <telerik:EventToCommandBehavior.EventBindings>
-                                                    <telerik:EventBinding EventName="Click"
-                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.EditCommand}"/>
-                                                </telerik:EventToCommandBehavior.EventBindings>
-                                            </Button>
-                                            <!--Remove Button-->
-                                            <Button x:Name="btnRemove" Content="Remove">
-                                                <telerik:EventToCommandBehavior.EventBindings>
-                                                    <telerik:EventBinding EventName="Click"
-                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.RemoveCommand}"/>
-                                                </telerik:EventToCommandBehavior.EventBindings>
-                                            </Button>
-                                        </StackPanel>
-                                    </materialDesign:PopupBox>
-                                </WrapPanel>
-                            </DataTemplate>
-
-                            <Style TargetType="{x:Type ListBoxItem}"
+                                <materialDesign:PopupBox Width="40">
+                                    <StackPanel>
+                                        <!--View On Map Button-->
+                                        <Button Content="View On Map">
+                                            <telerik:EventToCommandBehavior.EventBindings>
+                                                <telerik:EventBinding EventName="Click"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ListBox}},Path=DataContext.MapViewCommand}"/>
+                                            </telerik:EventToCommandBehavior.EventBindings>
+                                        </Button>
+                                        <!--Follow Button-->
+                                        <Button x:Name="btnFollow"
+                                        Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ListBox}},Path=DataContext.FollowButtonContent}">
+                                            <telerik:EventToCommandBehavior.EventBindings>
+                                                <telerik:EventBinding EventName="Click"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ListBox}},Path=DataContext.FollowCommand}"/>
+                                            </telerik:EventToCommandBehavior.EventBindings>
+                                        </Button>
+                                        <!--Edit Button-->
+                                        <Button Content="Edit">
+                                            <telerik:EventToCommandBehavior.EventBindings>
+                                                <telerik:EventBinding EventName="Click"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ListBox}},Path=DataContext.EditCommand}"/>
+                                            </telerik:EventToCommandBehavior.EventBindings>
+                                        </Button>
+                                        <!--Remove Button-->
+                                        <Button x:Name="btnRemove" Content="Remove">
+                                            <telerik:EventToCommandBehavior.EventBindings>
+                                                <telerik:EventBinding EventName="Click"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ListBox}},Path=DataContext.RemoveCommand}"/>
+                                            </telerik:EventToCommandBehavior.EventBindings>
+                                        </Button>
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListBox.Resources>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}"
                            BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                                <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown"/>
-                                <Setter Property="ContentTemplate" Value="{StaticResource ListItem}"/>
-                                <Style.Triggers>
-                                    <Trigger Property="ListBoxItem.IsMouseOver" Value="True">
-                                        <Setter Property="ContentTemplate" Value="{StaticResource SelectedItem}"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ListBox.Resources>
-                    </ListBox>
+                            <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ContentTemplate" Value="{StaticResource ListItem}"/>
+                            <Style.Triggers>
+                                <Trigger Property="ListBoxItem.IsMouseOver" Value="True">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource SelectedItem}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
 
-                </StackPanel>
-                
+            </StackPanel>
+
             <!-- Sensor info -->
             <DockPanel Width="300" Height="400" >
                 <materialDesign:Card Padding="10"
@@ -144,18 +149,18 @@
                                    FontSize="18"/>
                     </StackPanel>
                 </materialDesign:Card>
-                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
                             ToolTip="Add Sensor"
                             DockPanel.Dock="Bottom"
                             HorizontalAlignment="Left"
                             Margin="0 0 5 0"
-                            Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}},Path=DataContext.AddCommand}">
-                        <materialDesign:PackIcon Kind="Plus"
+                            Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type DockPanel}},Path=DataContext.AddCommand}">
+                    <materialDesign:PackIcon Kind="Plus"
                                                  Height="25"
                                                  Width="25"/>
-                    </Button>
-                </DockPanel>
+                </Button>
+            </DockPanel>
 
-            </WrapPanel>
+        </WrapPanel>
     </WrapPanel>
 </UserControl>
