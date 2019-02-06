@@ -40,37 +40,46 @@
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked,Mode=TwoWay}"/>
 
                     <ListBox x:Name="MenuItemsListbox" Margin="0 16 0 16" SelectedIndex="0"
-                         HorizontalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
                          FontSize="16"
                          FontWeight="Normal">
-                        <WrapPanel Margin="10,0,0,0">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Height="35" Width="35"/>
-                            <ListBoxItem x:Name="btnToMain" 
+
+                        <ListBoxItem x:Name="btnToMain" 
                                          HorizontalContentAlignment="Left"
-                                 PreviewMouseLeftButtonUp="BtnToMain_PreviewMouseLeftButtonUp" 
-                                 Content="Dashboard"/>
-                        </WrapPanel>
-                        <WrapPanel Margin="10,0,0,0">
-                            <materialDesign:PackIcon Kind="FormatListBulleted" Height="35" Width="35"/>
-                            <ListBoxItem x:Name="btnToSensorList" 
+                                 PreviewMouseLeftButtonUp="BtnToMain_PreviewMouseLeftButtonUp">
+                            <WrapPanel Margin="10,0,0,0">
+                                <materialDesign:PackIcon Kind="ViewDashboard" Height="35" Width="35"/>
+                                <TextBlock Text="Dashboard" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </WrapPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem x:Name="btnToSensorList" 
                                          HorizontalContentAlignment="Left"
-                                 PreviewMouseLeftButtonUp="BtnToSensorList_PreviewMouseLeftButtonUp" 
-                                 Content="Sensors"/>
-                        </WrapPanel>
-                        <WrapPanel Margin="10,0,0,0">
-                            <materialDesign:PackIcon Kind="Bing" Height="35" Width="35"/>
-                            <ListBoxItem x:Name="btnToMap"
+                                 PreviewMouseLeftButtonUp="BtnToSensorList_PreviewMouseLeftButtonUp" >
+                            <WrapPanel Margin="10,0,0,0">
+                                <materialDesign:PackIcon Kind="FormatListBulleted" Height="35" Width="35"/>
+                                <TextBlock Text="Sensors" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </WrapPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem x:Name="btnToMap"
                                          HorizontalContentAlignment="Left"
-                                 PreviewMouseLeftButtonUp="BtnToMap_PreviewMouseLeftButtonUp" 
-                                 Content="Map"/>
-                        </WrapPanel>
-                        <WrapPanel Margin="10,0,0,0">
-                            <materialDesign:PackIcon Kind="About" Height="35" Width="35"/>
-                            <ListBoxItem x:Name="btnAbout"
-                                         HorizontalContentAlignment="Left"
-                                     PreviewMouseLeftButtonUp="BtnAbout_PreviewMouseLeftButtonUp"
-                                     Content="About"/>
-                        </WrapPanel>
+                                 PreviewMouseLeftButtonUp="BtnToMap_PreviewMouseLeftButtonUp">
+                            <WrapPanel Margin="10,0,0,0">
+                                <materialDesign:PackIcon Kind="Bing" Height="35" Width="35"/>
+                                <TextBlock Text="Map" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </WrapPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem x:Name="btnAbout"
+                                         HorizontalContentAlignment="Left"     
+                                         PreviewMouseLeftButtonUp="BtnAbout_PreviewMouseLeftButtonUp">
+                            <WrapPanel Margin="10,0,0,0">
+                                <materialDesign:PackIcon Kind="About" Height="35" Width="35"/>
+                                <TextBlock Text="About" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </WrapPanel>
+                        </ListBoxItem>
+                        
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>

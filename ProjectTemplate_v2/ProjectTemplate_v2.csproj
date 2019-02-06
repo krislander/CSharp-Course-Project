@@ -129,7 +129,6 @@
     <Compile Include="Views\AddFormDialog.xaml.cs">
       <DependentUpon>AddFormDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Converters\ToGaugeConverter.cs" />
     <Compile Include="Views\EditFormDialog.xaml.cs">
       <DependentUpon>EditFormDialog.xaml</DependentUpon>
     </Compile>
@@ -143,6 +142,7 @@
       <DependentUpon>MapView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Converters\ToIconConverter.cs" />
+    <Compile Include="Views\FormValidator.cs" />
     <Compile Include="Views\ViewOnMap.xaml.cs">
       <DependentUpon>ViewOnMap.xaml</DependentUpon>
     </Compile>

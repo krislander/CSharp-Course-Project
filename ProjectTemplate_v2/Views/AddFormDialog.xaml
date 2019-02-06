@@ -4,11 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectTemplate_v2.Views"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"             
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="400"
              Width="400" Height="540"
              Padding="20">
+
+    <!--TOVA ZASHTO NE TRAGVA BE GAZE-->
+    <!--<UserControl.Resources>
+        <views:FormValidator x:Key="FormValidator"/>
+    </UserControl.Resources>-->
+    
     <StackPanel>
         <StackPanel.Resources>
             <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
@@ -18,9 +24,8 @@
 
         <!--Validations for Name value-->
         <TextBox materialDesign:HintAssist.Hint="Name"  Margin="0 0 0 10"
-                 Text="{Binding Name, ValidatesOnDataErrors=True, 
-            UpdateSourceTrigger=PropertyChanged}"
-                 ToolTip="{Binding ErrorCollection[Name]}"/>
+            Text="{Binding Name, ValidatesOnDataErrors=True}"/>
+                     <!--ToolTip="{Binding ErrorCollection[Name]}"-->
         <!--Validations for Name value-->
 
         <ComboBox ItemsSource="{Binding Types}" 
@@ -32,13 +37,9 @@
         <!--Validations for Min and Max value-->
         <WrapPanel Visibility="{Binding Visibility1}">
             <TextBox materialDesign:HintAssist.Hint="Min" Width="50" Margin="0 0 15 0"
-                     Text="{Binding MinValue,ValidatesOnDataErrors=True, 
-                UpdateSourceTrigger=PropertyChanged}"
-                     ToolTip="{Binding ErrorCollection[MinValue]}"/>
+                     Text="{Binding MinValue,ValidatesOnDataErrors=True}"/>
             <TextBox materialDesign:HintAssist.Hint="Max" Width="50"
-                     Text="{Binding MaxValue,ValidatesOnDataErrors=True, 
-                UpdateSourceTrigger=PropertyChanged}"
-                     ToolTip="{Binding ErrorCollection[MaxValue]}"/>
+                     Text="{Binding MaxValue,ValidatesOnDataErrors=True}"/>
         </WrapPanel>
         <!--Validations for Min and Max value-->
 
@@ -54,13 +55,9 @@
         <!--Validation for Latitude and Longtitude-->
         <WrapPanel Margin="0 0 0 10">
             <TextBox materialDesign:HintAssist.Hint="Latitude" Margin="0 0 15 0" Width="100"
-                     Text="{Binding Latitude, ValidatesOnDataErrors=True,
-                UpdateSourceTrigger=PropertyChanged}"
-                     ToolTip="{Binding ErrorCollection[Latitude]}"/>
+                     Text="{Binding Latitude, ValidatesOnDataErrors=True}"/>
             <TextBox materialDesign:HintAssist.Hint="Longitude" Width="100"
-                     Text="{Binding Longitude, ValidatesOnDataErrors=True,
-                UpdateSourceTrigger=PropertyChanged}"
-                     ToolTip="{Binding ErrorCollection[Latitude]}"/>
+                     Text="{Binding Longitude, ValidatesOnDataErrors=True}"/>
         </WrapPanel>
         <!--Validation for Latitude and Longtitude-->
 
@@ -93,9 +90,9 @@
                  FontSize="18"
                  materialDesign:HintAssist.Hint="Description"
                  VerticalContentAlignment="Top"
-                 Text="{Binding Description, ValidatesOnDataErrors=True,
-                UpdateSourceTrigger=PropertyChanged}"
-                     ToolTip="{Binding ErrorCollection[Description]}"/>
+                 Text="{Binding Description, ValidatesOnDataErrors=True}"/>
+                <!--UpdateSourceTrigger=LostFocus}"
+                     ToolTip="{Binding ErrorCollection[Description]-->
         <WrapPanel>
             <Button Content="Cancel"
                     Style="{StaticResource MaterialDesignFlatButton}"
