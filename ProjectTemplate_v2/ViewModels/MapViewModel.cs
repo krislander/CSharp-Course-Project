@@ -1,4 +1,5 @@
-﻿using Microsoft.Maps.MapControl.WPF;
+﻿using MaterialDesignThemes.Wpf;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,62 +11,57 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Telerik.Windows.Controls;
 
 namespace ProjectTemplate_v2.ViewModels
 {
     public partial class PushpinModel : Pushpin
     {
-        //public Location Location { get; set; }
+        public double Longtitude { get; set; }
+        public double Latitude { get; set; }
         public string Title { get; set; }
+        public string Type { get; set; }
         public string Description { get; set; }
-    }
-    public class MapLocation
-    {
-        public Location Location { get; set; }
-        public string Name { get; set; }
+        public string CurrentValue { get; set; }
     }
 
     public class MapViewModel : BaseViewModel
     {
-        private ObservableCollection<PushpinModel> pushpins;
         public Map MapWithMarkers { get; set; }
-        public Border Infobox = new Border();
-        //static int counter = 0;
+        public ICommand OpenPopupBox { get; private set; }
+        private PushpinModel selectedPushpin;
+        private ObservableCollection<PushpinModel> pushpins;
+        private bool isChecked;
 
         public MapViewModel(ref Sensors sensors)
         {
             this.sensors = sensors;
             MapLayer dataLayer = new MapLayer();
-            ObservableCollection<PushpinModel> Pushpins = new ObservableCollection<PushpinModel>();
-
-            //Interlocked.Increment(ref counter);
-            //MessageBox.Show($"{counter}");
+            OpenPopupBox = new DelegateCommand(PushPinClicked);
+            Pushpins = new ObservableCollection<PushpinModel>();
 
             InitMap();
         }
 
-        //~MapViewModel()
-        //{
-        //    Interlocked.Decrement(ref counter);
-        //}
+        private void PushPinClicked(object obj)
+        {
+            SelectedPushpin = (PushpinModel)obj;
+            //tuk ima nqkvi neshta
+        }
 
         private void InitMap()
         {
-            MapWithMarkers = new Map
-            {
-                Center = new Location(42.698334, 23.319941),
-                ZoomLevel = 10,
-                Margin = new Thickness(0, 1, 0, 0),
-                Mode = new AerialMode(true),
-                CredentialsProvider = new ApplicationIdCredentialsProvider("Arlj7m-YopkSpqjw8gdI2PHqnd8tulYdY91G_h8qZ42jmUOPjjqFRnO7iMpk9TuS")
-            };
-
             foreach (var sensor in sensors.List)
             {
                 PushpinModel pin = new PushpinModel
                 {
+                    //Location is the field of Pushpin class
                     Location = new Location(sensor.Latitude, sensor.Longitude),
+                    //currentvalue??
+                    Latitude = sensor.Latitude,
+                    Longtitude = sensor.Longitude,
                     Title = sensor.Name.ToString(),
+                    Type = sensor.GetType().ToString(),
                     Description = sensor.Description
                 };
 
@@ -74,10 +70,9 @@ namespace ProjectTemplate_v2.ViewModels
                     DataContext = pin,
                     Style = Application.Current.Resources["CustomInfoboxStyle"] as Style
                 });
-                //Infobox logic
-                //pin.MouseLeftButtonDown += PinClicked;
 
-                MapWithMarkers.Children.Add(pin);
+                Pushpins.Add(pin);
+                //MapWithMarkers.Children.Add(pin);
             }
         }
 
@@ -92,25 +87,30 @@ namespace ProjectTemplate_v2.ViewModels
             }
         }
 
-        private void PinClicked(object sender, MouseButtonEventArgs e)
+        public PushpinModel SelectedPushpin
         {
-            Pushpin temp = sender as Pushpin;
-            PushpinModel pushpins = (PushpinModel)temp.Tag;
-            if (!String.IsNullOrEmpty(pushpins.Title) || !String.IsNullOrEmpty(pushpins.Description))
+            get { return selectedPushpin; }
+            set
             {
-                Infobox.DataContext = pushpins;
-
-                Infobox.Visibility = Visibility.Visible;
-
-                MapLayer.SetPosition(Infobox, MapLayer.GetPosition(temp));
+                if (selectedPushpin != value)
+                {
+                    selectedPushpin = value;
+                    RaisePropertyChanged("SelectedPushpin");
+                }
             }
-            else
-                Infobox.Visibility = Visibility.Collapsed;
         }
 
-        private void CloseInfobox_Clicked(object sender, RoutedEventArgs e)
+        public bool IsChecked
         {
-            Infobox.Visibility = Visibility.Collapsed;
+            get { return isChecked; }
+            set
+            {
+                if(isChecked !=  value)
+                {
+                    isChecked = value;
+                    RaisePropertyChanged("IsChecked");
+                }
+            }
         }
     }
 }

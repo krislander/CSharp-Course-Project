@@ -129,6 +129,7 @@
     <Compile Include="Views\AddFormDialog.xaml.cs">
       <DependentUpon>AddFormDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Converters\DoubleConverter.cs" />
     <Compile Include="Views\EditFormDialog.xaml.cs">
       <DependentUpon>EditFormDialog.xaml</DependentUpon>
     </Compile>

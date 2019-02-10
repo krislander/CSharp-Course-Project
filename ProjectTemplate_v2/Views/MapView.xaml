@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Maps="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              xmlns:local="clr-namespace:ProjectTemplate_v2.Views"
              mc:Ignorable="d" 
              d:DesignHeight="542" d:DesignWidth="1016"
@@ -21,8 +23,57 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid>
-        <ContentControl Content="{Binding MapWithMarkers}"/>
-        <!--<ContentControl Content="{Binding Infobox}" Width="1016" Height="542"/>-->
-    </Grid>
+    <UserControl.Resources>
+        <DataTemplate x:Key="PushpinTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Maps:Pushpin x:Name="PushpinName" Background="#FFB6DE2E">
+
+                    <Maps:MapLayer.Position>
+                        <Maps:Location Latitude="{Binding PushpinModel.Latitude}" Longitude="{Binding PushpinModel.Longtitude}" />
+                    </Maps:MapLayer.Position>
+
+                    <telerik:EventToCommandBehavior.EventBindings>
+                        <telerik:EventBinding EventName="Preview"
+                                        Command="{Binding OpenPopupBox, UpdateSourceTrigger=PropertyChanged}"/>
+                    </telerik:EventToCommandBehavior.EventBindings>
+
+                    <materialDesign:PopupBox Margin="16,0,16,0" IsEnabled="{Binding IsChecked}" StaysOpen="True">
+                        <Grid Width="300" Margin="8,8,8,8" HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Style="{StaticResource MaterialDesignTitleTextBlock}" 
+                                   Margin="8,8,8,16" Text="{Binding Selected.Title}"/>
+                            <TextBlock Grid.Row="1" Margin="8,8,8,8" Text="{Binding Selected.Type}"/>
+                            <TextBlock Grid.Row="2" Margin="8,8,8,8" Text="{Binding Selected.Location}"/>
+                            <TextBlock Grid.Row="3" Margin="8,8,8,8" Text="{Binding Selected.CurrentValue}"/>
+                            <Button Content="Back" Grid.Row="4" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </materialDesign:PopupBox>
+                </Maps:Pushpin>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <!--<Grid>
+        <ContentControl Content="{Binding MapWithMarkers}">
+            <ContentControl.Resources> 
+            </ContentControl.Resources>
+        </ContentControl>
+    </Grid>-->
+    <Maps:Map Name="MapWithMarkers" ZoomLevel="10" 
+              CredentialsProvider="Arlj7m-YopkSpqjw8gdI2PHqnd8tulYdY91G_h8qZ42jmUOPjjqFRnO7iMpk9TuS" 
+              Mode="AerialWithLabels"
+              Center="42.698334, 23.319941">
+        <Maps:Map.Children>
+            <Maps:MapItemsControl 
+                ItemTemplate="{StaticResource PushpinTemplate}" 
+                ItemsSource="{Binding Pushpins}" >
+            </Maps:MapItemsControl>
+        </Maps:Map.Children>
+    </Maps:Map>
 </UserControl>

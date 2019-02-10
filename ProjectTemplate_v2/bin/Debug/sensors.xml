@@ -34,7 +34,7 @@
     <Sensor xsi:type="HumiditySensor">
       <Followed>true</Followed>
       <Longitude>23</Longitude>
-      <Latitude>23</Latitude>
+      <Latitude>26</Latitude>
       <Link>HumiditySensor1</Link>
       <Description>ada</Description>
       <Name>humidity3</Name>
@@ -65,7 +65,7 @@
       <Longitude>32</Longitude>
       <Latitude>23</Latitude>
       <Link>OccupancySensor1</Link>
-      <Description>sadadd</Description>
+      <Description>алабала</Description>
       <Name>door2</Name>
       <Opened>true</Opened>
     </Sensor>
@@ -308,6 +308,16 @@
       <Description>DAWDA</Description>
       <Name>window1</Name>
       <Opened>false</Opened>
+    </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>23.31</Longitude>
+      <Latitude>42.69</Latitude>
+      <Link>TemperatureSensor2</Link>
+      <Description>Temperature Sensor in Sofia</Description>
+      <Name>Sofia1</Name>
+      <MaxValue>25</MaxValue>
+      <MinValue>10</MinValue>
     </Sensor>
   </Sensors>
 </Sensors>
