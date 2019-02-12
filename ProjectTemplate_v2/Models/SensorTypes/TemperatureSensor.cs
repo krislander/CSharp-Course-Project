@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProjectTemplate_v2.Models.SensorTypes;
 
 namespace ProjectTemplate_v2
 {
-    public class TemperatureSensor : Sensor
+    public class TemperatureSensor : Sensor,IHasRangeValue
     {
         private decimal minValue;
         private decimal maxValue;

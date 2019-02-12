@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProjectTemplate_v2.Views"
              xmlns:views="clr-namespace:ProjectTemplate_v2.Views.Converters" 
-             xmlns:Validator ="clr-namespace:ProjectTemplate_v2.ViewModels"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="400"
@@ -22,20 +21,15 @@
             </Style>
         </StackPanel.Resources>
 
-        <TextBox Text="{Binding Selected.Name, ValidatesOnDataErrors=True}"
+        <TextBox Text="{Binding Name, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"
                  materialDesign:HintAssist.Hint="Name"  Margin="0 0 0 10"/>
-        <!--<TextBox Text="{Binding Selected.Url}"
-                 materialDesign:HintAssist.Hint="URL"  Margin="0 0 0 10"/>-->
-        <!--<ComboBox ItemsSource="{Binding Types}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                  materialDesign:HintAssist.Hint="Type" 
-                  FontSize="18" Margin="0 0 0 5"/>-->
         <WrapPanel Visibility="{Binding OtherVis}">
-            <TextBox Text="{Binding Selected.MinValue, ValidatesOnDataErrors=True}"
+            <TextBox Text="{Binding MinValue, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"
                      materialDesign:HintAssist.Hint="Min" Width="50" Margin="0 0 15 0"/>
-            <TextBox Text="{Binding Selected.MaxValue, ValidatesOnDataErrors=True}"
+            <TextBox Text="{Binding MaxValue, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"
                      materialDesign:HintAssist.Hint="Max" Width="50"/>
         </WrapPanel>
-        <ComboBox SelectedIndex="{Binding Selected.Opened}"  Visibility="{Binding DoorWindow}"
+        <ComboBox SelectedIndex="{Binding Open}"  Visibility="{Binding DoorWindow}"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   materialDesign:HintAssist.Hint="Value"
                   Width="100" FontSize="18">
@@ -43,12 +37,12 @@
             <ComboBoxItem Content="Open"/>
         </ComboBox>
         <WrapPanel Margin="0 0 0 10">
-            <TextBox Text="{Binding Selected.Latitude, ValidatesOnDataErrors=True}"
+            <TextBox Text="{Binding Latitude, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"
                      materialDesign:HintAssist.Hint="Latitude" Margin="0 0 15 0" Width="100"/>
-            <TextBox Text="{Binding Selected.Longitude, ValidatesOnDataErrors=True}"
+            <TextBox Text="{Binding Longitude, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"
                      materialDesign:HintAssist.Hint="Longitude" Width="100"/>
         </WrapPanel>
-        <TextBox Text="{Binding Selected.Description, ValidatesOnDataErrors=True}"
+        <TextBox Text="{Binding Description, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"
                  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                  Height="200" Margin="0 5 0 15"
                  TextWrapping="Wrap" 

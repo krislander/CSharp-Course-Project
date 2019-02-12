@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using ProjectTemplate_v2.Models.SensorTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,19 +13,24 @@ namespace ProjectTemplate_v2.ViewModels
 {
     public class EditFormDialogViewModel : BaseViewModel, IDataErrorInfo
     {
-        private Sensor selected;
+        private string name;
+        private string latitude;
+        private string longitude;
+        private string description;
+        private string minValue;
+        private string maxValue;
 
-        public Sensor Selected
-        {
-            get { return selected; }
-            set { selected = value; }
-        }
-
+        public Sensor Selected { get; set; }
         public Visibility DoorWindow { get; set; }
         public Visibility OtherVis { get; set; }
         public ICommand EditCommand { get; private set; }
         public SnackbarMessageQueue Snackbar { get; set; }
+        public bool Open { get; set; }
         private int Index { get; set; }
+        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+
+        private string oldName;
+
 
         public EditFormDialogViewModel(Sensors sensors, Sensor selected, SnackbarMessageQueue snackbar)
         {
@@ -33,15 +39,24 @@ namespace ProjectTemplate_v2.ViewModels
             EditCommand = new DelegateCommand(SubmitEdit);
             Index = sensors.List
                     .IndexOf(sensors.List.Where(sensor => sensor == selected).FirstOrDefault());
-            CreateCopy(selected, ref this.selected);
+            Selected = selected;
+
+            oldName = Selected.Name;
+            Name = Selected.Name;
+            Latitude = selected.Latitude.ToString();
+            Longitude = selected.Longitude.ToString();
+            Description = selected.Description;
 
             if (Selected is WindowDoorSensor)
             {
+                Open = ((WindowDoorSensor)selected).Opened;
                 OtherVis = Visibility.Collapsed;
                 DoorWindow = Visibility.Visible;
             }
             else
             {
+                MinValue = ((IHasRangeValue)selected).MinValue.ToString();
+                MaxValue = ((IHasRangeValue)selected).MaxValue.ToString();
                 DoorWindow = Visibility.Collapsed;
                 OtherVis = Visibility.Visible;
             }
@@ -49,10 +64,25 @@ namespace ProjectTemplate_v2.ViewModels
 
         private void SubmitEdit(object obj)
         {
-            Validate();
+            //Validate();
 
             if (ErrorCollection.Count == 0)
             {
+                Selected.Name = Name;
+                Selected.Description = Description;
+                Selected.Latitude = Convert.ToDouble(Latitude);
+                Selected.Longitude = Convert.ToDouble(Longitude);
+
+                if (Selected is WindowDoorSensor windowDoorSensor)
+                {
+                    windowDoorSensor.Opened = Open;
+                }
+                else
+                {
+                    ((IHasRangeValue)Selected).MinValue = Convert.ToDecimal(MinValue);
+                    ((IHasRangeValue)Selected).MaxValue = Convert.ToDecimal(MaxValue);
+                }
+
                 sensors.List[Index] = Selected;
                 UpdateXml(sensors);
                 Snackbar.Enqueue("Changes saved");
@@ -60,19 +90,6 @@ namespace ProjectTemplate_v2.ViewModels
             }
         }
 
-        private void CreateCopy(Sensor sensor1, ref Sensor sensor2)
-        {
-            if (sensor1 is HumiditySensor)
-                sensor2 = new HumiditySensor((HumiditySensor)sensor1);
-            else if (sensor1 is NoiseSensor)
-                sensor2 = new NoiseSensor((NoiseSensor)sensor1);
-            else if (sensor1 is PowerConsumptionSensor)
-                sensor2 = new PowerConsumptionSensor((PowerConsumptionSensor)sensor1);
-            else if (sensor1 is TemperatureSensor)
-                sensor2 = new TemperatureSensor((TemperatureSensor)sensor1);
-            else
-                sensor2 = new WindowDoorSensor((WindowDoorSensor)sensor1);
-        }
 
 
         //IDataErrorInfo implementation
@@ -88,80 +105,6 @@ namespace ProjectTemplate_v2.ViewModels
             }
         }
 
-        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
-
-        void Validate()
-        {
-            ErrorCollection.Clear();
-            
-            if(Selected is TemperatureSensor)
-            {
-                TemperatureSensor temp = Selected as TemperatureSensor;
-
-                if (string.IsNullOrEmpty(temp.MinValue.ToString()) || string.IsNullOrWhiteSpace(temp.MinValue.ToString()))
-                    ErrorCollection.Add("MinValue", "MinValue is empty");
-                else if (Convert.ToDecimal(temp.MinValue) >= Convert.ToDecimal(temp.MaxValue))
-                    ErrorCollection.Add("MinValue", "MinValue >= MaxValue");
-                if (string.IsNullOrEmpty(temp.MaxValue.ToString()) || string.IsNullOrWhiteSpace(temp.MaxValue.ToString()))
-                    ErrorCollection.Add("MaxValue", "MaxValue is empty");
-            }
-            else if(Selected is NoiseSensor)
-            {
-                NoiseSensor temp = Selected as NoiseSensor;
-
-                if (string.IsNullOrEmpty(temp.MinValue.ToString()) || string.IsNullOrWhiteSpace(temp.MinValue.ToString()))
-                    ErrorCollection.Add("MinValue", "MinValue is empty");
-                else if (Convert.ToDecimal(temp.MinValue) >= Convert.ToDecimal(temp.MaxValue))
-                    ErrorCollection.Add("MinValue", "MinValue >= MaxValue");
-                if (string.IsNullOrEmpty(temp.MaxValue.ToString()) || string.IsNullOrWhiteSpace(temp.MaxValue.ToString()))
-                    ErrorCollection.Add("MaxValue", "MaxValue is empty");
-            }
-            else if(Selected is HumiditySensor)
-            {
-                HumiditySensor temp = Selected as HumiditySensor;
-
-                if (string.IsNullOrEmpty(temp.MinValue.ToString()) || string.IsNullOrWhiteSpace(temp.MinValue.ToString()))
-                    ErrorCollection.Add("MinValue", "MinValue is empty");
-                else if (Convert.ToDecimal(temp.MinValue) >= Convert.ToDecimal(temp.MaxValue))
-                    ErrorCollection.Add("MinValue", "MinValue >= MaxValue");
-                if (string.IsNullOrEmpty(temp.MaxValue.ToString()) || string.IsNullOrWhiteSpace(temp.MaxValue.ToString()))
-                    ErrorCollection.Add("MaxValue", "MaxValue is empty");
-            }
-            else if(Selected is PowerConsumptionSensor)
-            {
-                PowerConsumptionSensor temp = Selected as PowerConsumptionSensor;
-
-                if (string.IsNullOrEmpty(temp.MinValue.ToString()) || string.IsNullOrWhiteSpace(temp.MinValue.ToString()))
-                    ErrorCollection.Add("MinValue", "MinValue is empty");
-                else if (Convert.ToDecimal(temp.MinValue) >= Convert.ToDecimal(temp.MaxValue))
-                    ErrorCollection.Add("MinValue", "MinValue >= MaxValue");
-                if (string.IsNullOrEmpty(temp.MaxValue.ToString()) || string.IsNullOrWhiteSpace(temp.MaxValue.ToString()))
-                    ErrorCollection.Add("MaxValue", "MaxValue is empty");
-            }
-
-            //Name
-            if (string.IsNullOrEmpty(Selected.Name))
-                ErrorCollection.Add("Name", "Name is empty");
-            else if (Selected.Name.Length < 4)
-                ErrorCollection.Add("Name", "Name's length must be at least 4");
-
-            //Latitude and Longtitude
-            if (string.IsNullOrWhiteSpace(Selected.Latitude.ToString()) || string.IsNullOrEmpty(Selected.Latitude.ToString()))
-                ErrorCollection.Add("Latitude", "Latitude is empty");
-            else if (Convert.ToDouble(Selected.Latitude) < -90 || Convert.ToDouble(Selected.Latitude) > 90)
-                ErrorCollection.Add("Latitude", "Invalid Latitude coordinates");
-
-            if (string.IsNullOrWhiteSpace(Selected.Longitude.ToString()) || string.IsNullOrEmpty(Selected.Longitude.ToString()))
-                ErrorCollection.Add("Longitude", "Longtitude is empty");
-            else if (Convert.ToDouble(Selected.Longitude) < -180 || Convert.ToDouble(Selected.Longitude) > 180)
-                ErrorCollection.Add("Longitude", "Invalid Longtitude coordinates");
-
-            //Description
-            if (string.IsNullOrEmpty(Selected.Description) || string.IsNullOrWhiteSpace(Selected.Description))
-                ErrorCollection.Add("Description", "Description is empty");
-
-            RaisePropertyChanged(null);
-        }
 
         public string this[string columnName]
         {
@@ -172,6 +115,154 @@ namespace ProjectTemplate_v2.ViewModels
                     return ErrorCollection[columnName];
                 }
                 return null;
+            }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (name != value)
+                {
+                    ErrorCollection.Remove("Name");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("Name", "Field is empty");
+                    else if (value.Length < 3)
+                        ErrorCollection.Add("Name", "Name must be at least 3 characters");
+                    else if (value != oldName && sensors.List.FirstOrDefault(item => item.Name == value) != null)
+                        ErrorCollection.Add("Name", "This name is already in use");
+
+                    name = value;
+                    RaisePropertyChanged("Name");
+
+                }
+            }
+        }
+
+        public string Latitude
+        {
+            get { return latitude; }
+            set
+            {
+                if (latitude != value)
+                {
+                    ErrorCollection.Remove("Latitude");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("Latitude", "Field is empty");
+                    else if (double.TryParse(value, out var d))
+                    {
+                        if (d > 90 || d < -90)
+                            ErrorCollection.Add("Latitude", "Invalid coordinate");
+                    }
+                    else
+                        ErrorCollection.Add("Latitude", "NaN");
+
+                    latitude = value;
+                    RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+
+        public string Longitude
+        {
+            get { return longitude; }
+            set
+            {
+                if (longitude != value)
+                {
+                    ErrorCollection.Remove("Longitude");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("Longitude", "Field is empty");
+                    else if (double.TryParse(value, out var d))
+                    {
+                        if (d > 180 || d < -180)
+                            ErrorCollection.Add("Longitude", "Invalid coordinate");
+                    }
+                    else
+                        ErrorCollection.Add("Longitude", "NaN");
+
+                    longitude = value;
+                    RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+
+        public string MinValue
+        {
+            get { return minValue; }
+            set
+            {
+                if (minValue != value)
+                {
+                    ErrorCollection.Remove("MinValue");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("MinValue", "Field is empty");
+                    else if (decimal.TryParse(value, out var d))
+                    {
+                        if (decimal.TryParse(MaxValue, out var d1))
+                        {
+                            if (d > d1)
+                                ErrorCollection.Add("MinValue", "Greater than Max");
+                        }
+                    }
+                    else
+                        ErrorCollection.Add("MinValue", "NaN");
+
+                    minValue = value;
+                    RaisePropertyChanged("MinValue");
+                }
+            }
+        }
+
+        public string MaxValue
+        {
+            get { return maxValue; }
+            set
+            {
+                if (maxValue != value)
+                {
+                    ErrorCollection.Remove("MaxValue");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("MaxValue", "Field is empty");
+                    else if (decimal.TryParse(value, out var d))
+                    {
+                        if (decimal.TryParse(MinValue, out var d1))
+                        {
+                            if (d < d1)
+                                ErrorCollection.Add("MaxValue", "Lesser than Min");
+                        }
+                    }
+
+                    else
+                        ErrorCollection.Add("MaxValue", "NaN");
+
+                    maxValue = value;
+                    RaisePropertyChanged("MaxValue");
+                }
+            }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                if (description != value)
+                {
+                    ErrorCollection.Remove("Description");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("Description", "Field is empty");
+
+                    description = value;
+                    RaisePropertyChanged("Description");
+                }
             }
         }
     }
