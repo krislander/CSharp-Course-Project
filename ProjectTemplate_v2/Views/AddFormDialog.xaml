@@ -6,15 +6,15 @@
              xmlns:local="clr-namespace:ProjectTemplate_v2.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"             
              mc:Ignorable="d" 
-             d:DesignHeight="540" d:DesignWidth="400"
-             Width="400" Height="540"
+             d:DesignHeight="564" d:DesignWidth="400"
+             Width="400" Height="564"
              Padding="20">
 
     <!--TOVA ZASHTO NE TRAGVA BE GAZE-->
     <!--<UserControl.Resources>
         <views:FormValidator x:Key="FormValidator"/>
     </UserControl.Resources>-->
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <ControlTemplate x:Key="ValidationErrorTemplate">
             <DockPanel >
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
@@ -29,7 +29,7 @@
                 <AdornedElementPlaceholder x:Name="ErrorAdorner" />
             </DockPanel>
         </ControlTemplate>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
 
     <StackPanel>
         <StackPanel.Resources>
@@ -38,34 +38,27 @@
             </Style>
         </StackPanel.Resources>
 
-        <!--Validations for Name value-->
-        <!--<TextBox materialDesign:HintAssist.Hint="Name"  Margin="0 0 0 10"
-            Text="{Binding Name, ValidatesOnDataErrors=True}"/>-->
-        <TextBox materialDesign:HintAssist.Hint="Name"  Margin="0 0 0 10">
-            <TextBox.Text>
-                <Binding Path="Name" UpdateSourceTrigger="LostFocus">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule ValidatesOnTargetUpdated="True"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <!--Name-->
+        <TextBox materialDesign:HintAssist.Hint="Name"  Margin="0 0 0 13"
+            Text="{Binding Name, ValidatesOnDataErrors=True}"/>
 
+        <!--Types-->
         <ComboBox ItemsSource="{Binding Types}" 
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                  SelectedItem="{Binding SelectedItem}"
+                  SelectedItem="{Binding SelectedItem,ValidatesOnDataErrors=True}"
                   materialDesign:HintAssist.Hint="Type" 
-                  FontSize="18" Margin="0 0 0 5"/>
+                  FontSize="18" Margin="0 0 0 13"/>
 
-        <!--Validations for Min and Max value-->
-        <WrapPanel Visibility="{Binding Visibility1}">
+        <!--Min and Max values-->
+        <WrapPanel Visibility="{Binding Visibility1}"
+                   Margin="0 0 0 13">
             <TextBox materialDesign:HintAssist.Hint="Min" Width="70" Margin="0 0 80 0"
                      Text="{Binding MinValue,ValidatesOnDataErrors=True}"/>
             <TextBox materialDesign:HintAssist.Hint="Max" Width="70"
                      Text="{Binding MaxValue,ValidatesOnDataErrors=True}"/>
         </WrapPanel>
-        <!--Validations for Min and Max value-->
 
+        <!--Door/window value selector-->
         <ComboBox Visibility="{Binding Visibility2}"
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   materialDesign:HintAssist.Hint="Value"
@@ -75,27 +68,30 @@
             <ComboBoxItem Content="Closed"/>
             <ComboBoxItem Content="Open"/>
         </ComboBox>
-        <!--Validation for Latitude and Longtitude-->
-        <WrapPanel Margin="0 0 0 10">
+        
+        <!--Latitude and Longtitude-->
+        <WrapPanel Margin="0 0 0 13">
             <TextBox materialDesign:HintAssist.Hint="Latitude" Margin="0 0 15 0" Width="100"
-                     Text="{Binding Latitude, ValidatesOnDataErrors=True}"/>
+                     Text="{Binding Latitude, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"/>
             <TextBox materialDesign:HintAssist.Hint="Longitude" Width="100"
-                     Text="{Binding Longitude, ValidatesOnDataErrors=True}"/>
+                     Text="{Binding Longitude, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"/>
         </WrapPanel>
-        <!--Validation for Latitude and Longtitude-->
 
+        <!--Link combobox-->
         <ComboBox ItemsSource="{Binding Models}" 
                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                   materialDesign:HintAssist.Hint="Link with sensor" 
                   FontSize="18" Margin="0 0 0 5"
                   IsEnabled="{Binding IsEnabled}"
-                  SelectedItem="{Binding ToLinkWith}">
+                  SelectedItem="{Binding ToLinkWith,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Tag}" ToolTip="{Binding Description}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+        
+        <!--Follow toggle-->
         <ToggleButton Style="{StaticResource MaterialDesignActionToggleButton}"
                       ToolTip="Track Sensor"
                       Margin="0 10 0 5"
@@ -107,15 +103,17 @@
                 <materialDesign:PackIcon Kind="Tick"/>
             </materialDesign:ToggleButtonAssist.OnContent>
         </ToggleButton>
+        
+        <!--Description-->
         <TextBox Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
                  Height="150" Margin="0 5 0 15"
                  TextWrapping="Wrap" 
                  FontSize="18"
                  materialDesign:HintAssist.Hint="Description"
                  VerticalContentAlignment="Top"
-                 Text="{Binding Description, ValidatesOnDataErrors=True}"/>
-        <!--UpdateSourceTrigger=LostFocus}"
-                     ToolTip="{Binding ErrorCollection[Description]-->
+                 Text="{Binding Description, ValidatesOnDataErrors=True,UpdateSourceTrigger=LostFocus}"/>
+        
+        <!--Buttons-->
         <WrapPanel>
             <Button Content="Cancel"
                     Style="{StaticResource MaterialDesignFlatButton}"

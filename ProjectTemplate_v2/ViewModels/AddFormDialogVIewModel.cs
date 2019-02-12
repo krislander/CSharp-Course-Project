@@ -18,18 +18,19 @@ namespace ProjectTemplate_v2.ViewModels
         public List<SensorModel> Models { get; set; }
         public ICommand SubmitCommand { get; private set; }
         public SnackbarMessageQueue Snackbar { get; set; }
-
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public SensorModel ToLinkWith { get; set; }
-        public string Latitude { get; set; }
-        public string Longitude { get; set; }
-        public string MinValue { get; set; }
-        public string MaxValue { get; set; }
+        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+        
         public bool Open { get; set; }
         public bool Tracking { get; set; } = true;
 
+        private string name;
+        private string latitude;
+        private string longitude;
+        private string description;
+        private string minValue;
+        private string maxValue;
         private string selectedItem;
+        private SensorModel toLinkWith;
         private string unit = " ";
         private Visibility visibility1 = Visibility.Visible;
         private Visibility visibility2 = Visibility.Collapsed;
@@ -50,12 +51,11 @@ namespace ProjectTemplate_v2.ViewModels
             source.Filter = item => Unit == ((SensorModel)item).MeasureType;
         }
 
-
         private void Submit(object param)
         {
             Sensor sensor;
 
-            Validate();
+            CheckForBlanks();
             //check for errors
             if (ErrorCollection.Count == 0)
             {
@@ -129,11 +129,17 @@ namespace ProjectTemplate_v2.ViewModels
                             break;
                         case "Window/Door":
                             Unit = "(true/false)";
+                            MinValue = "";
+                            MaxValue = "";
+                            ErrorCollection.Remove("MinValue");
+                            ErrorCollection.Remove("MaxValue");
                             Visibility2 = Visibility.Visible;
                             Visibility1 = Visibility.Collapsed;
                             break;
                     }
+
                     Filter();
+                    ErrorCollection.Remove("SelectedItem");
                     selectedItem = value;
                     RaisePropertyChanged("SelectedItem");
                 }
@@ -147,6 +153,7 @@ namespace ProjectTemplate_v2.ViewModels
             {
                 if (unit != value)
                 {
+                    ErrorCollection.Remove("ToLinkWith");
                     unit = value;
                     RaisePropertyChanged("Unit");
                 }
@@ -192,6 +199,167 @@ namespace ProjectTemplate_v2.ViewModels
             }
         }
 
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (name != value)
+                {
+                    ErrorCollection.Remove("Name");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("Name", "Field is empty");
+                    else if (value.Length < 3)
+                        ErrorCollection.Add("Name", "Name must be at least 3 characters");
+                    else if (sensors.List.FirstOrDefault(item => item.Name == value) != null)
+                        ErrorCollection.Add("Name", "This name is already in use");
+
+                    name = value;
+                    RaisePropertyChanged("Name");
+
+                }
+            }
+        }
+
+        public string Latitude
+        {
+            get { return latitude; }
+            set
+            {
+                if (latitude != value)
+                {
+                    ErrorCollection.Remove("Latitude");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("Latitude", "Field is empty");
+                    else if (double.TryParse(value, out var d))
+                    {
+                        if (d > 90 || d < -90)
+                            ErrorCollection.Add("Latitude", "Invalid coordinate");
+                    }
+                    else
+                        ErrorCollection.Add("Latitude", "NaN");
+
+                    latitude = value;
+                    RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+
+        public string Longitude
+        {
+            get { return longitude; }
+            set
+            {
+                if (longitude != value)
+                {
+                    ErrorCollection.Remove("Longitude");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("Longitude", "Field is empty");
+                    else if (double.TryParse(value, out var d))
+                    {
+                        if (d > 180 || d < -180)
+                            ErrorCollection.Add("Longitude", "Invalid coordinate");
+                    }
+                    else
+                        ErrorCollection.Add("Longitude", "NaN");
+
+                    longitude = value;
+                    RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+
+        public string MinValue
+        {
+            get { return minValue; }
+            set
+            {
+                if (minValue != value)
+                {
+                    ErrorCollection.Remove("MinValue");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("MinValue", "Field is empty");
+                    else if (decimal.TryParse(value, out var d))
+                    {
+                        if (decimal.TryParse(MaxValue, out var d1))
+                        {
+                            if (d > d1)
+                                ErrorCollection.Add("MinValue", "Greater than Max");
+                        }
+                    }
+                    else
+                        ErrorCollection.Add("MinValue", "NaN");
+
+                    minValue = value;
+                    RaisePropertyChanged("MinValue");
+                }
+            }
+        }
+
+        public string MaxValue
+        {
+            get { return maxValue; }
+            set
+            {
+                if (maxValue != value)
+                {
+                    ErrorCollection.Remove("MaxValue");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("MaxValue", "Field is empty");
+                    else if (decimal.TryParse(value, out var d))
+                    {
+                        if (decimal.TryParse(MinValue, out var d1))
+                        {
+                            if (d < d1)
+                                ErrorCollection.Add("MaxValue", "Lesser than Min");
+                        }
+                    }
+
+                    else
+                        ErrorCollection.Add("MaxValue", "NaN");
+
+                    maxValue = value;
+                    RaisePropertyChanged("MaxValue");
+                }
+            }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                if (description != value)
+                {
+                    ErrorCollection.Remove("Description");
+
+                    if (string.IsNullOrEmpty(value))
+                        ErrorCollection.Add("Description", "Field is empty");
+
+                    description = value;
+                    RaisePropertyChanged("Description");
+                }
+            }
+        }
+
+        public SensorModel ToLinkWith
+        {
+            get { return toLinkWith; }
+            set
+            {
+                if (toLinkWith != value)
+                {
+                    toLinkWith = value;
+                    RaisePropertyChanged("ToLinkWith");
+                }
+            }
+        }
+
         public string Error
         {
             get
@@ -204,40 +372,37 @@ namespace ProjectTemplate_v2.ViewModels
             }
         }
 
-        public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
 
-        void Validate()
+        private void CheckForBlanks()
         {
-            ErrorCollection.Clear();
             //Name
-            if (string.IsNullOrEmpty(Name))
-                ErrorCollection.Add("Name", "Name is empty");
-            else if (Name.Length < 4)
-                ErrorCollection.Add("Name", "Name's length must be at least 4");
+            if (string.IsNullOrEmpty(Name) && !ErrorCollection.ContainsKey("Name"))
+                ErrorCollection.Add("Name", "Field is empty");
             //Min and Max Value
-            if (string.IsNullOrEmpty(MinValue) || string.IsNullOrWhiteSpace(MinValue))
-                ErrorCollection.Add("MinValue", "MinValue is empty");
-            else if (Convert.ToDecimal(MinValue) >= Convert.ToDecimal(MaxValue))
-                ErrorCollection.Add("MinValue", "MinValue >= MaxValue");
+            if (string.IsNullOrEmpty(MinValue) && !ErrorCollection.ContainsKey("MinValue") && Visibility2 != Visibility.Visible)
+                ErrorCollection.Add("MinValue", "Field is empty");
 
-            if (string.IsNullOrEmpty(MaxValue) || string.IsNullOrWhiteSpace(MaxValue))
-                ErrorCollection.Add("MaxValue", "MaxValue is empty");
+            if (string.IsNullOrEmpty(MaxValue) && !ErrorCollection.ContainsKey("MaxValue") && Visibility2 != Visibility.Visible)
+                ErrorCollection.Add("MaxValue", "Field is empty");
 
             //Latitude and Longtitude
-            if (string.IsNullOrWhiteSpace(Latitude) || string.IsNullOrEmpty(Latitude))
-                ErrorCollection.Add("Latitude", "Latitude is empty");
-            else if (Convert.ToDouble(Latitude) < -90 || Convert.ToDouble(Latitude) > 90)
-                ErrorCollection.Add("Latitude", "Invalid Latitude coordinates");
+            if (string.IsNullOrEmpty(Latitude) && !ErrorCollection.ContainsKey("Latitude"))
+                ErrorCollection.Add("Latitude", "Field is empty");
 
-            if (string.IsNullOrWhiteSpace(Longitude) || string.IsNullOrEmpty(Longitude))
-                ErrorCollection.Add("Longitude", "Longtitude is empty");
-            else if (Convert.ToDouble(Longitude) < -180 || Convert.ToDouble(Longitude) > 180)
-                ErrorCollection.Add("Longitude", "Invalid Longtitude coordinates");
+            if (string.IsNullOrEmpty(Longitude) && !ErrorCollection.ContainsKey("Longitude"))
+                ErrorCollection.Add("Longitude", "Field is empty");
 
             //Description
-            if (string.IsNullOrEmpty(Description) || string.IsNullOrWhiteSpace(Description))
-                ErrorCollection.Add("Description", "Description is empty");
+            if (string.IsNullOrEmpty(Description) && !ErrorCollection.ContainsKey("Description"))
+                ErrorCollection.Add("Description", "Field is empty");
 
+            //Sensor type
+            if (SelectedItem == null && !ErrorCollection.ContainsKey("SelectedItem"))
+                ErrorCollection.Add("SelectedItem", "Please choose sensor type");
+
+            //Link
+            if (ToLinkWith == null && !ErrorCollection.ContainsKey("ToLinkWith"))
+                ErrorCollection.Add("ToLinkWith", "Please select a sensor");
             RaisePropertyChanged(null);
         }
 
