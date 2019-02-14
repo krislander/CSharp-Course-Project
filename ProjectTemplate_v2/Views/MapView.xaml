@@ -32,12 +32,12 @@
                         <Maps:Location Latitude="{Binding PushpinModel.Latitude}" Longitude="{Binding PushpinModel.Longtitude}" />
                     </Maps:MapLayer.Position>
 
-                    <telerik:EventToCommandBehavior.EventBindings>
+                    <!--<telerik:EventToCommandBehavior.EventBindings>
                         <telerik:EventBinding EventName="Preview"
                                         Command="{Binding OpenPopupBox, UpdateSourceTrigger=PropertyChanged}"/>
-                    </telerik:EventToCommandBehavior.EventBindings>
+                    </telerik:EventToCommandBehavior.EventBindings>-->
 
-                    <materialDesign:PopupBox Margin="16,0,16,0" IsEnabled="{Binding IsChecked}" StaysOpen="True">
+                    <!--<materialDesign:PopupBox Margin="16,0,16,0" IsEnabled="{Binding IsChecked}" StaysOpen="True">
                         <Grid Width="300" Margin="8,8,8,8" HorizontalAlignment="Left">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
@@ -53,7 +53,7 @@
                             <TextBlock Grid.Row="3" Margin="8,8,8,8" Text="{Binding Selected.CurrentValue}"/>
                             <Button Content="Back" Grid.Row="4" HorizontalAlignment="Right"/>
                         </Grid>
-                    </materialDesign:PopupBox>
+                    </materialDesign:PopupBox>-->
                 </Maps:Pushpin>
             </StackPanel>
         </DataTemplate>

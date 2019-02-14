@@ -94,6 +94,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="HttpService.cs" />
+    <Compile Include="Models\SensorTypes\IHasRangeValue.cs" />
     <Compile Include="Models\ValueModel.cs" />
     <Compile Include="Resources\Gauges\DoorWindowGaugeCtrl.xaml.cs">
       <DependentUpon>DoorWindowGaugeCtrl.xaml</DependentUpon>
@@ -115,7 +116,6 @@
     <Compile Include="Resources\Gauges\TempGaugeCtrl.xaml.cs">
       <DependentUpon>TempGaugeCtrl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\AddFormDialogViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\EditFormDialogViewModel.cs" />
@@ -143,7 +143,6 @@
       <DependentUpon>MapView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Converters\ToIconConverter.cs" />
-    <Compile Include="Views\FormValidator.cs" />
     <Compile Include="Views\ViewOnMap.xaml.cs">
       <DependentUpon>ViewOnMap.xaml</DependentUpon>
     </Compile>
@@ -242,7 +241,15 @@
   <ItemGroup>
     <Resource Include="Resources\PicturesAboutPage\Dashboard.jpg" />
     <Resource Include="Resources\PicturesAboutPage\MapPage.jpg" />
-    <Resource Include="Resources\PicturesAboutPage\SenzorPage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PicturesAboutPage\smartDormitory.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PicturesAboutPage\player1.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PicturesAboutPage\player2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,14 +21,12 @@
 
 
         <telerik:RadTileList ItemsSource="{Binding FollowedList}"
-
                              telerik:StyleManager.Theme="Material"
                              ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                              CanUserSelect="False"
-                             TilePlaceHolderSide="200"
+                             TilePlaceHolderSide="230"
                              Background="Transparent"
                              AutoGeneratingTile="RadTileList_AutoGeneratingTile">
-
         </telerik:RadTileList>
     </Grid>
 </UserControl>

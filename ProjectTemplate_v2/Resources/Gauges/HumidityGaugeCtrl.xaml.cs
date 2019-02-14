@@ -16,10 +16,12 @@ namespace ProjectTemplate_v2.Models.Gauges
         private SensorModel model;
         private DispatcherTimer timer;
 
+
         public HumidityGaugeCtrl(HumiditySensor sensor)
         {
             InitializeComponent();
             ToolTip = sensor.Name;
+            lbl_Name.Content = sensor.Name;
             this.sensor = sensor;
 
             try

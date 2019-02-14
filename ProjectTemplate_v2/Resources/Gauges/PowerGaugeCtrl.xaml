@@ -44,5 +44,7 @@
                        VerticalAlignment="Bottom"
                        Margin="5 0 0 0"/>
         </WrapPanel>
+        <Label x:Name="lbl_Name" Foreground="{StaticResource PrimaryHueMidBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
     </Grid>
 </UserControl>

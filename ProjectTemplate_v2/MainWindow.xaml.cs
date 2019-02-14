@@ -66,7 +66,7 @@ namespace ProjectTemplate_v2
 
         private void BtnAbout_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            DataContext = new AboutViewModel();
+            DataContext = new AboutView();
             MenuToggleButton.IsChecked = false;
         }
     }

@@ -24,6 +24,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
         {
             InitializeComponent();
             ToolTip = sensor.Name;
+            lbl_Name.Content = sensor.Name;
             this.sensor = sensor;
 
             try
@@ -94,7 +95,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
             if (value && !state)
             {
                 animation.From = new Thickness(0, 0, 0, 0);
-                animation.To = new Thickness(-160, 30, 0, 0);
+                animation.To = new Thickness(-190, 30, 0, 0);
                 state = true;
                 storyboard.Begin(this);
             }

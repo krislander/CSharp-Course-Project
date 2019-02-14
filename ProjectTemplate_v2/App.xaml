@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Teal.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Teal.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <!--Template for pushpin infobox in Map page-->
             <Style x:Key="CustomInfoboxStyle" TargetType="ToolTip">
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="BorderBrush" Value="Transparent" />
@@ -24,9 +26,17 @@
                                 </Border.Background>
                                 <ContentPresenter Margin="5">
                                     <ContentPresenter.Content>
-                                        <StackPanel Margin="5" MaxWidth="200">
-                                            <TextBlock Text="{Binding Title}" Foreground="White" FontSize="16" Width="250" TextWrapping="Wrap" HorizontalAlignment="Left" />
-                                            <TextBlock Text="{Binding Description}" Foreground="White" FontSize="12" Width="290" TextWrapping="Wrap" Height="Auto"/>
+                                        <StackPanel Margin="5" MaxWidth="350">
+                                            <TextBlock Text="{Binding Title}" Foreground="White" FontSize="16" Width="250" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                            <TextBlock Text="{Binding Type, StringFormat='Type: {0}'}" Foreground="White" FontSize="12" Width="290" TextWrapping="Wrap" Height="Auto"/>
+                                            <TextBlock Text="{Binding Description, StringFormat='Info: {0}'}" Foreground="White" FontSize="12" Width="290" TextWrapping="Wrap" Height="Auto"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Coords: " Foreground="White" FontSize="12" Width="70" TextWrapping="Wrap" Height="Auto"/>
+                                                <TextBlock Text="{Binding Longtitude, StringFormat=N6}" Foreground="White" FontSize="12" Width="60" TextWrapping="Wrap" Height="Auto"/>
+                                                <TextBlock Text=", " Foreground="White" FontSize="12" TextWrapping="Wrap" Height="Auto"/>
+                                                <TextBlock Text="{Binding Latitude, StringFormat=N6}" Foreground="White" FontSize="12" Width="60" TextWrapping="Wrap" Height="Auto"/>
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding CurrentValue, StringFormat='Current Value: {0}', IsAsync=True}" Foreground="White" FontSize="12" Width="290" TextWrapping="Wrap" Height="Auto"/>
                                         </StackPanel>
                                     </ContentPresenter.Content>
                                 </ContentPresenter>

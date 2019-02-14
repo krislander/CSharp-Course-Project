@@ -12,17 +12,26 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
 
         <TextBlock Text="Closed" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                   FontSize="23"/>
+                   FontSize="23"
+                   Grid.Row="1"/>
         <TextBlock Text="Open"
                    Grid.Column="1"
+                   Grid.Row="1"
                    HorizontalAlignment="Center" VerticalAlignment="Center"
                    FontSize="23"/>
 
         <Rectangle Grid.Column="1"
+                   Grid.Row="1"
                    x:Name="rectangle"
                    Width="80"/>
+        <Label x:Name="lbl_Name" Foreground="{StaticResource PrimaryHueMidBrush}" HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Top"/>
+
     </Grid>
 </UserControl>

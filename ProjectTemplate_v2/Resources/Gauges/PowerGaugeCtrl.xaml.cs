@@ -21,6 +21,7 @@ namespace ProjectTemplate_v2.Resources.Gauges
         {
             InitializeComponent();
             ToolTip = sensor.Name;
+            lbl_Name.Content = sensor.Name;
             this.sensor = sensor;
             scale.Min = (double)sensor.MinValue;
             scale.Max = (double)sensor.MaxValue;

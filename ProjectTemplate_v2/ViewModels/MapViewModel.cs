@@ -1,17 +1,11 @@
-﻿using MaterialDesignThemes.Wpf;
-using Microsoft.Maps.MapControl.WPF;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.Maps.MapControl.WPF;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using Telerik.Windows.Controls;
+using ProjectTemplate_v2.ViewModels;
+using System.Linq;
 
 namespace ProjectTemplate_v2.ViewModels
 {
@@ -22,22 +16,20 @@ namespace ProjectTemplate_v2.ViewModels
         public string Title { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
-        public string CurrentValue { get; set; }
+        
     }
 
     public class MapViewModel : BaseViewModel
     {
         public Map MapWithMarkers { get; set; }
-        public ICommand OpenPopupBox { get; private set; }
         private PushpinModel selectedPushpin;
         private ObservableCollection<PushpinModel> pushpins;
-        private bool isChecked;
+        private string currentValue;
 
         public MapViewModel(ref Sensors sensors)
         {
             this.sensors = sensors;
             MapLayer dataLayer = new MapLayer();
-            OpenPopupBox = new DelegateCommand(PushPinClicked);
             Pushpins = new ObservableCollection<PushpinModel>();
 
             InitMap();
@@ -61,8 +53,8 @@ namespace ProjectTemplate_v2.ViewModels
                     Latitude = sensor.Latitude,
                     Longtitude = sensor.Longitude,
                     Title = sensor.Name.ToString(),
-                    Type = sensor.GetType().ToString(),
-                    Description = sensor.Description
+                    Type = sensor.GetType().Name,
+                    Description = sensor.Description 
                 };
 
                 ToolTipService.SetToolTip(pin, new ToolTip()
@@ -73,6 +65,19 @@ namespace ProjectTemplate_v2.ViewModels
 
                 Pushpins.Add(pin);
                 //MapWithMarkers.Children.Add(pin);
+            }
+        }
+
+
+        private void ChangeCurrentValue()
+        {
+            try
+            {
+                //tuk tarsq current value
+            }
+            catch
+            {
+                CurrentValue = "N/A";
             }
         }
 
@@ -100,15 +105,23 @@ namespace ProjectTemplate_v2.ViewModels
             }
         }
 
-        public bool IsChecked
+        public string CurrentValue
         {
-            get { return isChecked; }
+            get
+            {
+                if (currentValue == "true (true/false)")
+                    return "Open";
+                else if (currentValue == "false (true/false)")
+                    return "Closed";
+                else
+                    return currentValue;
+            }
             set
             {
-                if(isChecked !=  value)
+                if (currentValue != value)
                 {
-                    isChecked = value;
-                    RaisePropertyChanged("IsChecked");
+                    currentValue = value;
+                    RaisePropertyChanged("CurrentValue");
                 }
             }
         }
