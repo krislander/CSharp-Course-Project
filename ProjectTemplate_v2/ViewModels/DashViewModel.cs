@@ -2,11 +2,9 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
-using System.Linq;
 using System.Windows.Media;
 using Telerik.Windows.Controls;
 using ProjectTemplate_v2.Resources.Gauges;
-using System.Windows;
 
 namespace ProjectTemplate_v2.ViewModels
 {

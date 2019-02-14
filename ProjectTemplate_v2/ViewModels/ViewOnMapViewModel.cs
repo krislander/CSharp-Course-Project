@@ -44,12 +44,11 @@ namespace ProjectTemplate_v2.ViewModels
                 Mode = new AerialMode(true),
                 CredentialsProvider = new ApplicationIdCredentialsProvider("Arlj7m-YopkSpqjw8gdI2PHqnd8tulYdY91G_h8qZ42jmUOPjjqFRnO7iMpk9TuS")
             };
-            //create the selected Sensor pin and give an infobox
+
             PushpinModel pin = new PushpinModel
             {
                 //Location is the field of Pushpin class
                 Location = new Location(Selected.Latitude, Selected.Longitude),
-                //currentvalue??
                 Latitude = Selected.Latitude,
                 Longtitude = Selected.Longitude,
                 Title = Selected.Name.ToString(),

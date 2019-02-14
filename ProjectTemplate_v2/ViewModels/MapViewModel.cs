@@ -2,10 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using Telerik.Windows.Controls;
-using ProjectTemplate_v2.ViewModels;
-using System.Linq;
 
 namespace ProjectTemplate_v2.ViewModels
 {
@@ -15,8 +11,7 @@ namespace ProjectTemplate_v2.ViewModels
         public double Latitude { get; set; }
         public string Title { get; set; }
         public string Type { get; set; }
-        public string Description { get; set; }
-        
+        public string Description { get; set; }       
     }
 
     public class MapViewModel : BaseViewModel
@@ -24,7 +19,6 @@ namespace ProjectTemplate_v2.ViewModels
         public Map MapWithMarkers { get; set; }
         private PushpinModel selectedPushpin;
         private ObservableCollection<PushpinModel> pushpins;
-        private string currentValue;
 
         public MapViewModel(ref Sensors sensors)
         {
@@ -35,12 +29,6 @@ namespace ProjectTemplate_v2.ViewModels
             InitMap();
         }
 
-        private void PushPinClicked(object obj)
-        {
-            SelectedPushpin = (PushpinModel)obj;
-            //tuk ima nqkvi neshta
-        }
-
         private void InitMap()
         {
             foreach (var sensor in sensors.List)
@@ -49,7 +37,6 @@ namespace ProjectTemplate_v2.ViewModels
                 {
                     //Location is the field of Pushpin class
                     Location = new Location(sensor.Latitude, sensor.Longitude),
-                    //currentvalue??
                     Latitude = sensor.Latitude,
                     Longtitude = sensor.Longitude,
                     Title = sensor.Name.ToString(),
@@ -65,19 +52,6 @@ namespace ProjectTemplate_v2.ViewModels
 
                 Pushpins.Add(pin);
                 //MapWithMarkers.Children.Add(pin);
-            }
-        }
-
-
-        private void ChangeCurrentValue()
-        {
-            try
-            {
-                //tuk tarsq current value
-            }
-            catch
-            {
-                CurrentValue = "N/A";
             }
         }
 
@@ -101,27 +75,6 @@ namespace ProjectTemplate_v2.ViewModels
                 {
                     selectedPushpin = value;
                     RaisePropertyChanged("SelectedPushpin");
-                }
-            }
-        }
-
-        public string CurrentValue
-        {
-            get
-            {
-                if (currentValue == "true (true/false)")
-                    return "Open";
-                else if (currentValue == "false (true/false)")
-                    return "Closed";
-                else
-                    return currentValue;
-            }
-            set
-            {
-                if (currentValue != value)
-                {
-                    currentValue = value;
-                    RaisePropertyChanged("CurrentValue");
                 }
             }
         }

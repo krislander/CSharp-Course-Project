@@ -36,7 +36,6 @@
                                                 <TextBlock Text=", " Foreground="White" FontSize="12" TextWrapping="Wrap" Height="Auto"/>
                                                 <TextBlock Text="{Binding Latitude, StringFormat=N6}" Foreground="White" FontSize="12" Width="70" TextWrapping="Wrap" Height="Auto"/>
                                             </StackPanel>
-                                            <TextBlock Text="{Binding CurrentValue, StringFormat='Current Value: {0}', IsAsync=True}" Foreground="White" FontSize="12" Width="290" TextWrapping="Wrap" Height="Auto"/>
                                         </StackPanel>
                                     </ContentPresenter.Content>
                                 </ContentPresenter>
