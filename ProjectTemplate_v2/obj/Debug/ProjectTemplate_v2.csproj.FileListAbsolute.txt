@@ -43,3 +43,5 @@ D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.cs
 D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.exe
 D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.pdb
 D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\ProjectTemplate_v2.csprojAssemblyReference.cache
+D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\Resources\Gauges\NoiseGaugeCtrl.g.cs
+D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\Resources\Gauges\NoiseGaugeCtrl.baml

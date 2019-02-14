@@ -98,5 +98,15 @@
       <Name>BuenosAires1</Name>
       <Opened>true</Opened>
     </Sensor>
+    <Sensor xsi:type="TemperatureSensor">
+      <Followed>true</Followed>
+      <Longitude>23.330665312</Longitude>
+      <Latitude>42.643164098</Latitude>
+      <Link>NoiseSensor1</Link>
+      <Description>Noise Sensor in a Student City disco.</Description>
+      <Name>NoiseSensorPlazza</Name>
+      <MaxValue>100</MaxValue>
+      <MinValue>10</MinValue>
+    </Sensor>
   </Sensors>
 </Sensors>
