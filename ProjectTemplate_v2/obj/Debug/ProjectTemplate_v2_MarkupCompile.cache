@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\
+C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\obj\Debug\
 ProjectTemplate_v2
 none
 false
 DEBUG;TRACE
-D:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\App.xaml
-12858074795
+C:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\App.xaml
+13-1678365727
 
-36-1107301427
-27747269599
-MainWindow.xaml;Resources\Gauges\DoorWindowGaugeCtrl.xaml;Resources\Gauges\HumidityGaugeCtrl.xaml;Resources\Gauges\PowerGaugeCtrl.xaml;Resources\Gauges\TempGaugeCtrl.xaml;Views\AboutView.xaml;Views\AddFormDialog.xaml;Views\EditFormDialog.xaml;Views\ListView.xaml;Views\DashVIew.xaml;Views\MapView.xaml;Views\ViewOnMap.xaml;
+361837327736
+28-450388475
+MainWindow.xaml;Resources\Gauges\DoorWindowGaugeCtrl.xaml;Resources\Gauges\HumidityGaugeCtrl.xaml;Resources\Gauges\NoiseGaugeCtrl.xaml;Resources\Gauges\PowerGaugeCtrl.xaml;Resources\Gauges\TempGaugeCtrl.xaml;Views\AboutView.xaml;Views\AddFormDialog.xaml;Views\EditFormDialog.xaml;Views\ListView.xaml;Views\DashVIew.xaml;Views\MapView.xaml;Views\ViewOnMap.xaml;
 resources\logo.png
 False
 

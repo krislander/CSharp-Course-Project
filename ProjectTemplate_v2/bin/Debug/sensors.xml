@@ -98,5 +98,15 @@
       <Name>BuenosAires1</Name>
       <Opened>true</Opened>
     </Sensor>
+    <Sensor xsi:type="NoiseSensor">
+      <Followed>true</Followed>
+      <Longitude>0</Longitude>
+      <Latitude>0</Latitude>
+      <Link>NoiseSensor1</Link>
+      <Description>V okeana</Description>
+      <Name>Shuma na vulnite</Name>
+      <MaxValue>77</MaxValue>
+      <MinValue>0</MinValue>
+    </Sensor>
   </Sensors>
 </Sensors>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ProjectTemplate_v2.Resources.Gauges.NoiseGaugeCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectTemplate_v2.Resources.Gauges"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200"
+             Unloaded="UserControl_Unloaded"
+             Width="200">
+    <Grid Background="White">
+        <telerik:RadQuadrantNWGauge HorizontalAlignment="Center"
+                                         Width="120"
+                                         telerik:StyleManager.Theme="Office2016"
+                                         Margin="10,55,60,0"
+                                    Background="Transparent">
+            <telerik:QuadrantSWScale LabelFormat=""
+                                          LabelLocation="Inside"
+                                          x:Name="scale"
+                                          MajorTickRelativeHeight="0"
+                                          MiddleTickRelativeHeight="0">
+                <telerik:QuadrantSWScale.Indicators>
+                    <telerik:BarIndicator Value="80"
+                                          StartWidth="0.02"
+                                          EndWidth="0.14"
+                                          telerik:ScaleObject.Location="CenterOutside"
+                                          x:Name="bar"/>
+                </telerik:QuadrantSWScale.Indicators>
+            </telerik:QuadrantSWScale>
+        </telerik:RadQuadrantNWGauge>
+
+        <StackPanel HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                    Margin="0 0 0 20">
+            <TextBlock x:Name="numIndicator"
+                   FontWeight="Regular"
+                   FontSize="45"/>
+            <TextBlock Text="dB"
+                       x:Name="label"
+                       FontWeight="Regular"
+                       FontSize="39"
+                       VerticalAlignment="Bottom"
+                       Margin="10 0 0 5"/>
+        </StackPanel>
+        <Label x:Name="lbl_Name" Foreground="{StaticResource PrimaryHueMidBrush}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+    </Grid>
+</UserControl>

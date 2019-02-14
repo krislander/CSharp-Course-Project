@@ -77,7 +77,7 @@ namespace ProjectTemplate_v2.ViewModels
                             Convert.ToDecimal(MinValue), Convert.ToDecimal(MaxValue));
                         break;
                     case "Noise":
-                        sensor = new TemperatureSensor(Name, ToLinkWith.Tag, Description, Convert.ToDouble(Latitude),
+                        sensor = new NoiseSensor(Name, ToLinkWith.Tag, Description, Convert.ToDouble(Latitude),
                             Convert.ToDouble(Longitude), Tracking,
                             Convert.ToDecimal(MinValue), Convert.ToDecimal(MaxValue));
                         break;

@@ -1,14 +1,15 @@
 ﻿
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\App.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\MainWindow.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\DoorWindowGaugeCtrl.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\HumidityGaugeCtrl.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\PowerGaugeCtrl.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\TempGaugeCtrl.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Views\AddFormDialog.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Views\EditFormDialog.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Views\ListView.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Views\DashVIew.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Views\MapView.xaml;;
-FD:\Uni\Github\Smart-Dormitory\ProjectTemplate_v2\Views\ViewOnMap.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\App.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\MainWindow.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\DoorWindowGaugeCtrl.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\HumidityGaugeCtrl.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\NoiseGaugeCtrl.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\PowerGaugeCtrl.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Resources\Gauges\TempGaugeCtrl.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Views\AddFormDialog.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Views\EditFormDialog.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Views\ListView.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Views\DashVIew.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Views\MapView.xaml;;
+FC:\Users\Lenovo\source\Smart-Dormitory\ProjectTemplate_v2\Views\ViewOnMap.xaml;;
 

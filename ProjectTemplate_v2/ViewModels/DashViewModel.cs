@@ -54,6 +54,10 @@ namespace ProjectTemplate_v2.ViewModels
             {
                 e.Tile.Content = new DoorWindowGaugeCtrl((WindowDoorSensor)sensor);
             }
+            else if(sensor is NoiseSensor)
+            {
+                e.Tile.Content = new NoiseGaugeCtrl((NoiseSensor)sensor);
+            }
         }
     }
 }

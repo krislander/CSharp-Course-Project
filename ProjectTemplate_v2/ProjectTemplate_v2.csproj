@@ -110,6 +110,9 @@
     <Compile Include="Models\Sensors.cs" />
     <Compile Include="Models\SensorTypes\TemperatureSensor.cs" />
     <Compile Include="Models\SensorTypes\WindowDoorSensor.cs" />
+    <Compile Include="Resources\Gauges\NoiseGaugeCtrl.xaml.cs">
+      <DependentUpon>NoiseGaugeCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Gauges\PowerGaugeCtrl.xaml.cs">
       <DependentUpon>PowerGaugeCtrl.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
     <Page Include="Resources\Gauges\HumidityGaugeCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Gauges\NoiseGaugeCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Gauges\PowerGaugeCtrl.xaml">
       <SubType>Designer</SubType>
