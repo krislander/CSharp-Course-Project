@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.IO;
+using System.Windows;
 using System.Xml.Serialization;
 
 namespace ProjectTemplate_v2.ViewModels
@@ -17,11 +19,18 @@ namespace ProjectTemplate_v2.ViewModels
 
         protected void UpdateXml(Sensors sensors)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Sensors));
-            TextWriter writer = new StreamWriter("sensors.xml");
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Sensors));
+                TextWriter writer = new StreamWriter("sensors.xml");
 
-            serializer.Serialize(writer, sensors);
-            writer.Close();
+                serializer.Serialize(writer, sensors);
+                writer.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
     }
 }
