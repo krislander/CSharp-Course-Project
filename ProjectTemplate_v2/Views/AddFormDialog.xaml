@@ -10,27 +10,6 @@
              Width="400" Height="564"
              Padding="20">
 
-    <!--TOVA ZASHTO NE TRAGVA BE GAZE-->
-    <!--<UserControl.Resources>
-        <views:FormValidator x:Key="FormValidator"/>
-    </UserControl.Resources>-->
-    <!--<UserControl.Resources>
-        <ControlTemplate x:Key="ValidationErrorTemplate">
-            <DockPanel >
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                    <Grid Width="20" Height="20">
-                        <Ellipse Width="20" Height="20" Fill="Tomato" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        <TextBlock Foreground="White" FontWeight="Heavy" FontSize="8" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
-                   ToolTip="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">X</TextBlock>
-                    </Grid>
-                    <TextBlock Foreground="Tomato" Margin="2,0,0,0" FontSize="20"
-                       Text="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
-                </StackPanel>
-                <AdornedElementPlaceholder x:Name="ErrorAdorner" />
-            </DockPanel>
-        </ControlTemplate>
-    </UserControl.Resources>-->
-
     <StackPanel>
         <StackPanel.Resources>
             <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">

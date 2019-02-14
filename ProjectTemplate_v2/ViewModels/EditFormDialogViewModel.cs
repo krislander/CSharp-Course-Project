@@ -1,10 +1,12 @@
 ﻿using MaterialDesignThemes.Wpf;
+using ProjectTemplate_v2.Models;
 using ProjectTemplate_v2.Models.SensorTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using Telerik.Windows.Controls;
 
@@ -19,6 +21,8 @@ namespace ProjectTemplate_v2.ViewModels
         private string description;
         private string minValue;
         private string maxValue;
+        private SensorModel toLinkWith;
+
 
         public Sensor Selected { get; set; }
         public Visibility DoorWindow { get; set; }
@@ -28,6 +32,7 @@ namespace ProjectTemplate_v2.ViewModels
         public bool Open { get; set; }
         private int Index { get; set; }
         public Dictionary<string, string> ErrorCollection { get; private set; } = new Dictionary<string, string>();
+        public List<SensorModel> Models { get; set; }
 
         private string oldName;
 
@@ -47,6 +52,10 @@ namespace ProjectTemplate_v2.ViewModels
             Longitude = selected.Longitude.ToString();
             Description = selected.Description;
 
+            Models = HttpService.SensorList;
+            ToLinkWith = Models.Where(item => Selected.Link == item.Tag).First();
+            Filter();
+
             if (Selected is WindowDoorSensor)
             {
                 Open = ((WindowDoorSensor)selected).Opened;
@@ -64,14 +73,13 @@ namespace ProjectTemplate_v2.ViewModels
 
         private void SubmitEdit(object obj)
         {
-            //Validate();
-
             if (ErrorCollection.Count == 0)
             {
                 Selected.Name = Name;
                 Selected.Description = Description;
                 Selected.Latitude = Convert.ToDouble(Latitude);
                 Selected.Longitude = Convert.ToDouble(Longitude);
+                Selected.Link = ToLinkWith.Tag;
 
                 if (Selected is WindowDoorSensor windowDoorSensor)
                 {
@@ -90,6 +98,26 @@ namespace ProjectTemplate_v2.ViewModels
             }
         }
 
+
+        private void Filter()
+        {
+            string unit;
+
+            if (Selected is HumiditySensor)
+                unit = "%";
+            else if (Selected is TemperatureSensor)
+                unit = "°C";
+            else if (Selected is PowerConsumptionSensor)
+                unit = "W";
+            else if (Selected is NoiseSensor)
+                unit = "dB";
+            else
+                unit = "(true/false)";
+
+            ICollectionView source = CollectionViewSource.GetDefaultView(Models);
+            source.Filter = item => unit == ((SensorModel)item).MeasureType;
+
+        }
 
 
         //IDataErrorInfo implementation
@@ -262,6 +290,19 @@ namespace ProjectTemplate_v2.ViewModels
 
                     description = value;
                     RaisePropertyChanged("Description");
+                }
+            }
+        }
+
+        public SensorModel ToLinkWith
+        {
+            get { return toLinkWith; }
+            set
+            {
+                if (toLinkWith != value)
+                {
+                    toLinkWith = value;
+                    RaisePropertyChanged("ToLinkWith");
                 }
             }
         }
