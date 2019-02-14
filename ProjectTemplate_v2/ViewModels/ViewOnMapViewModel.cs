@@ -11,7 +11,6 @@ namespace ProjectTemplate_v2.ViewModels
     {
         private Sensor selected;
         public Map MapForSensorList { get; set; }
-        public Border Infobox { get; set; }
         public ICommand MapViewCommand { get; private set; }
 
         public ViewOnMapViewModel(Sensors sensors, Sensor selected)
@@ -48,9 +47,14 @@ namespace ProjectTemplate_v2.ViewModels
             //create the selected Sensor pin and give an infobox
             PushpinModel pin = new PushpinModel
             {
-                Location = new Location(selected.Latitude, selected.Longitude),
-                Title = selected.Name.ToString(),
-                Description = selected.Description
+                //Location is the field of Pushpin class
+                Location = new Location(Selected.Latitude, Selected.Longitude),
+                //currentvalue??
+                Latitude = Selected.Latitude,
+                Longtitude = Selected.Longitude,
+                Title = Selected.Name.ToString(),
+                Type = Selected.GetType().Name,
+                Description = Selected.Description
             };
 
             ToolTipService.SetToolTip(pin, new ToolTip()

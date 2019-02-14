@@ -32,9 +32,9 @@
                                             <TextBlock Text="{Binding Description, StringFormat='Info: {0}'}" Foreground="White" FontSize="12" Width="290" TextWrapping="Wrap" Height="Auto"/>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="Coords: " Foreground="White" FontSize="12" Width="70" TextWrapping="Wrap" Height="Auto"/>
-                                                <TextBlock Text="{Binding Longtitude, StringFormat=N6}" Foreground="White" FontSize="12" Width="60" TextWrapping="Wrap" Height="Auto"/>
+                                                <TextBlock Text="{Binding Longtitude, StringFormat=N6}" Foreground="White" FontSize="12" Width="70" TextWrapping="Wrap" Height="Auto"/>
                                                 <TextBlock Text=", " Foreground="White" FontSize="12" TextWrapping="Wrap" Height="Auto"/>
-                                                <TextBlock Text="{Binding Latitude, StringFormat=N6}" Foreground="White" FontSize="12" Width="60" TextWrapping="Wrap" Height="Auto"/>
+                                                <TextBlock Text="{Binding Latitude, StringFormat=N6}" Foreground="White" FontSize="12" Width="70" TextWrapping="Wrap" Height="Auto"/>
                                             </StackPanel>
                                             <TextBlock Text="{Binding CurrentValue, StringFormat='Current Value: {0}', IsAsync=True}" Foreground="White" FontSize="12" Width="290" TextWrapping="Wrap" Height="Auto"/>
                                         </StackPanel>

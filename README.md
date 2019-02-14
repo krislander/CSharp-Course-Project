@@ -1,81 +1,121 @@
-# CSharp-Course-Project
-Course Project
-Обектно Ориентирано Програмиране
-(OOP with C#.NET)
-Име на Проекта: ИНФОРМАЦИОННА СИСТЕМА ЗА МОНИТОРИНГ И АНАЛИЗ УСЛОВИЯТА ЗА
-ЖИВОТ В СТУДЕНТСКИ ОБЩЕЖИТИЯ
-Acceptable Programming Languages: C#.NET
-Deadline: Февруари, 2018(on the final exam date)
-Instructor Dr. Evgeny Krustev
-Problem Statement:
-1 Project description
-ICB received a request form a client to develop an information system that collects data from various
-sensors located in college dormitories all over the world. Data will be analyzed by independent research
-organization to evaluate the living conditions and map them to the performance of the students.
-Participants should have installed specific sensor equipment supplied by the organization and register to
-smartDormitory.
-2 Sensor types
-The following sensor types should be supported:
-● Temperature, measured in °C
-● Humidity sensor, measured in percent
-● Electric power consumption sensor, measured in Watts
-● Window /door sensor. Allowed values: true/false(True – when the window/door is open; False –
-when the window door is closed)
-● Noise sensor, measured in Decibels
-Note: ICB will provide web API to fetch sensors data.
-3 Client GUI
-The Graphical User Interface should support the following functionality:
-3.1 Landing page
-Provide relevant information about the system, its purpose and features. This page should also include a
-map with all sensors (see 3.6) and access to register new sensor (3.2), modify existing sensor (3.3), View
-all sensors (3.4), Graphical representation of the sensors (3.5) forms.
-3.2 Register new sensor
-The newly created sensor should have:
-● Name
-● Description
-● Sensor Type
-● Polling interval which specifies the amount of time to refresh sensor data (Optional)
-● Latitude and longitude
-● Range of acceptable values (e.g. -40 °C to +100 °C)
-● Tick-off option for receiving sensor alarm (Out of acceptable range)
-3.3 Modify existing sensor
-The user should be able to edit sensors.
-3.4 View list of all sensors
-The user should see a list of registered sensors. For each sensor the list should include:
-● Name
-● Description
-● Current value
-● Link to graphical representation of the sensor
-This page should contain a link to “View sensors on a map” (see 3.6).
-3.5 Graphical representation of sensor
-The user should have a detailed sensor’s view which includes a graphical representation of data
-collected from sensor.
-Note: The system should handle when the sensor is offline and show this to the users
-State indicator – examples
-3.6 View sensors on a map
-This page should provide a map view with sensor markers according to their lat/long. You can use
-Google Maps API and Marker clustering library.
-On the landing page display all sensors for the users.
-3.7 Reports
-On this view, the user should be able to define:
-- time period (start, end) (Max time period 1 day)
-- one or more sensors from the list of all Sensors
-- sensor Alarm (out of acceptable range) or all data (mark the out of range values – Optional)
-The user should be able to trigger generation of the report based on the selected criteria
-The report should be a csv format contents follow information
-Timestamp, sensor-name, sensor-description, value, unit of measure, state
-Example:
-23/11/2018 10:00:01, SST-51-temp, sofia-student-town-bl.51-temperature, 20 deg.
-Note the comma in the sensor name, sensor description should be escaped/replaced with “_”
-4 General requirements
-Use the following technologies, frameworks and development techniques:
-1. Use WPF for the GUI
-2. Data storage
-a. Use XML file format to store sensors definition
-3. Graphical representation of sensor data
-a. Use Telerik WPF (https://demos.telerik.com/wpf/)
-https://www.telerik.com/login/v2/downloadb?ReturnUrl=https%3a%2f%2fwww.telerik.com%2fdownload-trial-file%2fv2-b%2fui-forwpf%3futm_medium%3dtelerik%26utm_source%3dqsf%26utm_campaign%3dwpftrial#register
-4. Apply error handling and client data validation to avoid crashes when invalid data is entered
-5. Documentation of the project and project architecture (including screenshots)
-6. Use caching of data where it makes sense (e.g. landing page) (optional)
+#Smart Dormitory
+
+##User Guide
+
+Курсов проект изготвен от:
+1. Кристиан Кирилов, ФМИ, Информационни системи, ф.н.71818
+2. Николай Захаров, ФМИ, Софтуерно инженерство, ф.н. 62149                                                 
+ 
+ 
+ 
+##Introduction
+
+Smart Dormitory is an information system that collects data from various sensors located in 
+college dormitories all over the world. Data will be analyzed by independent research organization 
+to evaluate the living conditions and map them to the performance of the students.
+
+The Smart Dormitory application lets you create and conveniently visualize data from sensors for it to be further analyzed.
+With the Smart Dormitory app you can also:
+•	Create sensors
+•	Edit sensors
+•	Visualize the sensors on the world map using Bing Maps
+•	Track the current value of every sensor and observe all the sensors at once from the dashboard
+•	Observe a lot of sensors at once and be informed if some of them have data out of the bounds of the sensor values. 
+
+ 
+##Getting Started
+##System Requirements
+
+OS: Windows XP SP3 or newer with
+.NET 4.0 or newer installed
+Stable Internet Connection
+
+ 
+##Launching the Application
+
+On application startup the user will be greeted by the Smart Dormitory logo:
+
+After fully loading, the logo will disappear presenting the user with the Dashboard. 
+This is where all sensors along with their data is visualized. Each sensor type is 
+portrayed with a different gauge which displays the current value of the sensor and 
+alerts the user with a contrasting color shift on abnormal values.
+
+
+ 
+##Using the Menu
+
+Navigation between views of the application is contained within a 
+drawer which can be opened by the hamburger icon located in the top left corner of the screen.
+
+Its contents:
+1.	Dashboard – this is the main page of the app where you can view all the followed sensors via animated gauges.
+2.	Sensors – in this page you can add or edit sensors. Also, you can follow/unfollow them (toggle their visibility on the dashboard) or view a chosen sensor on the world map.
+3.	Map – a world map made which shows the location of all sensors.
+4.	About – a page about the creators and the people who helped throughout the development of this project.
+
+
+##Application functionalities
+
+Creating new sensors can be achieved from the Sensors page.
+Upon pressing the circular green button in this view an input form will pop up.
+
+
+##Creating a Sensor
+
+To add a new sensor, all fields in the form need to be filled out:
+
+1.	Choose a proper Name for the sensor. Name must be at least 3 symbols.
+2.	Choose a sensor Type from the Combo Box.
+3.	Set Min and Max acceptable values for the sensor.
+4.	Set Latitude and Longitude geocoordinates in decimal format for the sensor for its 
+	location to be displayed on the map.
+5.	Link the sensor with a sensor from the Smart Dormitory API.
+6.	Choose whether you want to track the sensor by tapping on the green button between the 
+	“Link with sensor” and “Description” fields.
+7.	Add an informative and succinct Description of the sensor.
+
+
+Once your desired and valid sensor information has been entered, choose Submit. 
+If you wish to abort the creation of the sensor, press Cancel and all information entered will be discarded.
+ 
+##Edit a Sensor
+
+You can choose to edit any sensor from the list you have provided in the Sensors page. 
+Each sensor has a pop-up box menu where you can choose the command “Edit”.
+
+Once your desired sensor information has been edited, 
+choose Confirm. Or Cancel to discard changes.
+
+
+##Using the Map
+
+If you choose “Map” from the menu you will be navigated to the page which shows the locations of the sensors.
+
+Each marker on the map has a tooltip providing brief information and current value of its assigned sensor.  
+
+
+
+
+##View on Map
+
+You can access the View on Map command from the pop-up box menu of every Sensor from the Sensors page.
+
+
+##Deleting a Sensor
+
+
+You can choose to Remove a Sensor from the pop-up box menu of the sensor you wish to delete from the Sensors page. That will remove it from the Dashboard, Sensors and Map Page.
+This action cannot be undone.
+
+
+ 
+##Software and resources used during development
+
+1.	Visual Studio 2017
+2.	Telerik UI for WPF 
+3.	MaterialDesignThemes.2.5.0.1205
+4.	MaterialDesignColors.1.1.3
+5.	Bing Maps control for WPF
+6.	GitHub
+
 
