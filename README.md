@@ -22,15 +22,15 @@ With the Smart Dormitory app you can also:
 •	Observe a lot of sensors at once and be informed if some of them have data out of the bounds of the sensor values. 
 
  
-##Getting Started
-##System Requirements
+# Using the application
+## System Requirements
 
 OS: Windows XP SP3 or newer with
 .NET 4.0 or newer installed
 Stable Internet Connection
 
  
-##Launching the Application
+## Launching the Application
 
 On application startup the user will be greeted by the Smart Dormitory logo:
 
@@ -40,7 +40,7 @@ portrayed with a different gauge which displays the current value of the sensor 
 alerts the user with a contrasting color shift on abnormal values.
 
 
-##Using the Menu
+## Using the Menu
 
 Navigation between views of the application is contained within a 
 drawer which can be opened by the hamburger icon located in the top left corner of the screen.
@@ -52,13 +52,13 @@ Its contents:
 4.	About – a page about the creators and the people who helped throughout the development of this project.
 
 
-##Application functionalities
+## Application functionalities
 
 Creating new sensors can be achieved from the Sensors page.
 Upon pressing the circular green button in this view an input form will pop up.
 
 
-##Creating a Sensor
+## Creating a Sensor
 
 To add a new sensor, all fields in the form need to be filled out:
 
@@ -76,7 +76,7 @@ To add a new sensor, all fields in the form need to be filled out:
 Once your desired and valid sensor information has been entered, choose Submit. 
 If you wish to abort the creation of the sensor, press Cancel and all information entered will be discarded.
  
-##Edit a Sensor
+## Edit a Sensor
 
 You can choose to edit any sensor from the list you have provided in the Sensors page. 
 Each sensor has a pop-up box menu where you can choose the command “Edit”.
@@ -85,25 +85,25 @@ Once your desired sensor information has been edited,
 choose Confirm. Or Cancel to discard changes.
 
 
-##Using the Map
+## Using the Map
 
 If you choose “Map” from the menu you will be navigated to the page which shows the locations of the sensors.
 
 Each marker on the map has a tooltip providing brief information and current value of its assigned sensor.  
 
 
-##View on Map
+## View on Map
 
 You can access the View on Map command from the pop-up box menu of every Sensor from the Sensors page.
 
 
-##Deleting a Sensor
+## Deleting a Sensor
 
 You can choose to Remove a Sensor from the pop-up box menu of the sensor you wish to delete from the Sensors page. That will remove it from the Dashboard, Sensors and Map Page.
 This action cannot be undone.
 
 
-##Software and resources used during development
+## Software and resources used during development
 
 1.	Visual Studio 2017
 2.	Telerik UI for WPF 
