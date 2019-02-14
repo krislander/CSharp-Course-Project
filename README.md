@@ -1,13 +1,13 @@
-#Smart Dormitory
+# Smart Dormitory
 
-##User Guide
+## User Guide
 
 Курсов проект изготвен от:
 1. Кристиан Кирилов, ФМИ, Информационни системи, ф.н.71818
 2. Николай Захаров, ФМИ, Софтуерно инженерство, ф.н. 62149                                                 
  
  
-##Introduction
+## Introduction
 
 Smart Dormitory is an information system that collects data from various sensors located in 
 college dormitories all over the world. Data will be analyzed by independent research organization 
